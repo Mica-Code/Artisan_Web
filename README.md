@@ -4,4 +4,6 @@ This is an Artisan Website with concept gotten from [MyHandWork](https://myhandw
 
 I just cloned this repo into my machine and integrated gitbash with VS code terminal
 
-Am edit was made to my git configuration because i installed git on BSSL system so i have to configure my name and email, so my name/email can be seen when i make changes to the repo.
+Am edit was made to my git configuration because i installed git on BSSL system so i have to configure my name and email, so my name/email can be seen when i make changes to the repo.\
+
+change the git configuration of my email
