@@ -273,8 +273,7 @@ i{font-style:italic}
 input[type="text"],
 input[type="password"],
 input[type="email"], textarea {
-    background: #e4e4e4 none repeat scroll 0 0;
-    border: medium none;
+    
     float: left;
     font-size: 12px;
     font-weight: 400;
@@ -895,7 +894,7 @@ label::after {
 }
 .account-popup > form .cfield {
     float: left;
-    width: 100%;
+    width: 80%;
     position: relative;
     margin-bottom: 19px;
     border: 2px solid #e8ecec;
@@ -907,11 +906,16 @@ label::after {
     border-radius: 8px;
 
 }
+
+.input-bg{
+    background-color: white;
+}
 .account-popup > form .cfield input {
     float: left;
-    width: 100%;
+    width: 80%;
     background: no-repeat;
-    margin: 0;
+    margin-left: 10px;
+    margin-right: 10px;
     font-family: Open Sans;
     font-size: 13px;
     color: #474747;
