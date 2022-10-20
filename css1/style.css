@@ -266,7 +266,7 @@ iframe{
     border:0;
 }
 i{font-style:italic}
-{/*! float:left; *//*! height:auto */}
+/*! float:left; *//*! height:auto */
 :-webkit-input-placeholder{opacity:1}
 :-moz-placeholder{opacity:1}
 :-ms-input-placeholder{opacity:1}
@@ -10416,7 +10416,7 @@ terms {
 
 }
 .how-workimg:before{
-    background: ##00670B;
+    background: #00670B;
     /*background: -moz-linear-gradient(45deg,  rgba(251,35,106,1) 0%, rgba(251,35,106,1) 44%, rgba(20,31,114,1) 100%);
     background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(251,35,106,1)), color-stop(44%,rgba(251,35,106,1)), color-stop(100%,rgba(20,31,114,1)));
     background: -webkit-linear-gradient(45deg,  rgba(251,35,106,1) 0%,rgba(251,35,106,1) 44%,rgba(20,31,114,1) 100%);
