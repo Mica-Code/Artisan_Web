@@ -1,69 +1,77 @@
 
 <!DOCTYPE html>
 <html>
-
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Find Artisan</title>
+    <title>Find Local Artisan or Handyman in Your Area | myhandwork.ng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    <meta name="description" content="myhandwork.ng is an online platform where you can find, hire and pay a handyman or artisan anywhere in Nigeria.
+                            Designed to enable people from all over Nigeria connect with handymen or artisans around their location and anywhere in Nigeria. ">
+    <meta name="keywords" content="my handwork, rent a handyman, hire a handyman, carpenter near me, handywoman, artisan employment, I need a carpenter, cleaner,artisan jobs, wesabi,I need a cobbler, skilled artisans , waste disposal in Nigeria, welding and fabrication jobs in Nigeria.
+                                   inverter technician, get artisan in Lagos, DSTV installer, generator repairer, Pest control in lagos, handyman in Nigeria, mechanical artisan jobs, artisan welder jobs, handwork in Nigeria, pest control in Nigeria, fix ng, sabi work, man wey sabi work
+                                   house cleaning in Lagos, Quotation for handyman, Get Quote for artisan, handyman Quotation, learn handwork in Nigeria, lekki art market, Abuja, Portharcourt, Nigeria, Plumber in Lagos, artisan near me, artisans in Nigeria, electrician in Lagos, electrician in Nigeria,fumigation in Nigeria,
+                                   Appraising of property, Barbecue pit maintenance, Cabinet refacing, Carpentry,Ceiling repair, Ceramic tile repair, Cleaning, Concrete work, Countertops, Crown moulding, Curtain hanging, Decks, Door installation, Door repair, Dryer repair, Dryer vent cleaning, Drywall Installation, Drywall repair
+                                   Electrical wiring, Energy Updates, Fan installation, Fence fixing, Fireplace cleaning, Flooring Installation and Repair, Foundations, Framing, Garage door openers, Garage doors, General MaintenanceGutter Cleaning, Gutter Repair, Heating system tune-up, Home inspections, Home security systems, Hot tubs and spas, Insulation installation (batts),
+                                   Insulation installation, Lamp repairs, Landscaping, Lawn care, Lock set adjustment, Maid service, Molding installation, Moving, Paint removal, Painting, Patio stone installation, Pest control, Plumbing repairs, Porches, Remodeling basements, Remodeling bathrooms, Remodeling kitchens, Roofing, Safety modifications, Sealing driveways, Senior Living Modifications,
+                                   Septic system repair, Shelf installation, Shelving, Skylight installation, Solar panels, Soundproofing, Sprinkler repair, Sprinkler system installation, Stain removal, Staining furniture, Stone work, Storage area construction, Storage area repair, Swapping a toilet, Tiling, Tile and Grout Cleaning, Re-Grouting, Trash Removal, Wall building, Waste and junk removal,
+                                   Water purification, Water softening, Window cleaning, Welding, Window installation, Window repair, Window screens, Refrigerator Technician, Refrigerator Technician near me, Refrigerator Technician in Lagos, fridge repair ">
+    <meta name="author" content="myhandwork.ng">
 
-     
+    <link rel="icon" type="image/png" href="/Uploads/General/myhandworkng.ico" />
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="../css1/bootstrap-grid.css" />
-    <link rel="stylesheet" href="../css1/icons.css">
-    <link rel="stylesheet" href="../css1/animate.min.css">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../css1/style.css" />
-    <link rel="stylesheet" type="text/css" href="../css1/responsive.css" />
-    <link rel="stylesheet" type="text/css" href="../css1/chosen.css" />
-    <link rel="stylesheet" type="text/css" href="../css1/colors/colors.css" />
-    <link rel="stylesheet" type="text/css" href="../css1/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="../css1/bootstrapmaxcdn.css" />
+    <link rel="stylesheet" type="text/css" href="/css1/bootstrap-grid.css" />
+    <link rel="stylesheet" href="/css1/icons.css">
+    <link rel="stylesheet" href="/css1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/css1/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css1/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/css1/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="/css1/colors/colors.css" />
+    <link rel="stylesheet" type="text/css" href="/css1/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css1/bootstrapmaxcdn.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <!-- <link rel="icon" type="image/x-icon" href="../Uploads/General/myhandworkng.ico" /> -->
-    <link rel="icon" href="../Uploads/General/myhandworkng.png" type="image/x-icon">
+
+
+
+
 </head>
-
-
-
-
 <body class="newbg">
     <div class="theme-layout" id="scrollup">
 
         <div class="responsive-header three">
             <div class="responsive-menubar">
-                <div class="res-logo"><a title="" href="../myhandwork_default.html"><img src="../Uploads/General/myhandworkng-logo.png" alt="" /></a></div>
+                <div class="res-logo"><a title="" href="/"><img src="/Uploads/General/myhandworkng-logo.png" alt="" /></a></div>
                 <div class="menu-resaction">
                     <div class="res-openmenu">
-                        <img src="../images1/icon.png" alt="" /> Menu <i class="la la-bars"></i>
+                        <img src="/images1/icon.png" alt="" /> Menu <i class="la la-bars"></i>
                     </div>
                     <div class="res-closemenu">
-                        <img src="../images1/icon2.png" alt="" /> Close <i class="la la-close"></i>
+                        <img src="/images1/icon2.png" alt="" /> Close <i class="la la-close"></i>
                     </div>
                 </div>
             </div>
             <div class="responsive-opensec ">
                 <div class="btn-extars">
-                        <a class="post-job-btn" href="../Account/index.php"><i class="la la-registered"></i>Register now</a>
+                        <a class="post-job-btn" href="/Account/getStarted"><i class="la la-registered"></i>Register now</a>
                         <ul class="account-btns">
-                            <li><a href="../Account/Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                            <li><a href="/Account/Login"><i class="la la-sign-in"></i> Login</a></li>
                         </ul>
+
                 </div>
+
                 <div class="responsivemenu">
                     <ul>
-                        <!-- <li>
+                        <li>
                                 <a class="post-job-btn open-contact" style="background-color:#d42525; border-color:white; color:white">Post a task</a>
-                        </li> -->
-                        <!-- <li>
-                            <a href="../Handworks.htm">Hire handyman</a>
-                        </li> -->
-                        <!-- <li>
-                            <a href="../Handworks/handyJobs.htm">Browse tasks</a>
-                        </li> -->
+                        </li>
+                        <li>
+                            <a href="/Handworks">Hire handyman</a>
+                        </li>
+                        <li>
+                            <a href="/Handworks/handyJobs"> Browse tasks</a>
+                        </li>
+                        <li>
+                            <a href="/Affiliates">Affiliate</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -73,29 +81,29 @@
             <div class="menu-sec">
                 <div class="container">
                     <div class="logo">
-                        <a href="../myhandwork_default.html"><img src="../Uploads/General/myhandworkng-logo.png" alt="myhandwork.ng" /></a>
+                        <a href="/"><img src="/Uploads/General/myhandworkng-logo.png" alt="" /></a>
                     </div><!-- Logo -->
                     <div class="btn-extars">
-                            <a class="post-job-btn" href="../Account/index.php"><i class="la la-registered"></i>Register now</a>
+                            <a class="post-job-btn" href="/Account/getStarted"><i class="la la-registered"></i>Register now</a>
                             <ul class="account-btns">
-                                <li><a href="../Account/Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                                <li><a href="/Account/Login"><i class="la la-sign-in"></i> Login</a></li>
                             </ul>
+
                     </div><!-- Btn Extras -->
                     <nav>
                         <ul>
-                            <!-- <li>
+                            <li>
                                     <a class="post-job-btn open-contact" style="background-color:#d42525; border-color:white; color:white">Post a task</a>
-
                             </li>
                             <li>
-                                <a href="../Handworks.htm">Hire handyman</a>
+                                <a href="/Handworks">Hire handyman</a>
                             </li>
                             <li>
-                                <a href="../Handworks/handyJobs.htm"> Browse tasks</a>
+                                <a href="/Handworks/handyJobs"> Browse tasks</a>
                             </li>
                             <li>
-                                <a href="../Affiliates.htm">Affiliate</a>
-                            </li> -->
+                                <a href="/Affiliates">Affiliate</a>
+                            </li>
                         </ul>
                     </nav><!-- Menus -->
                 </div>
@@ -109,132 +117,58 @@
         <!-- Main Page-Body Content -->
         <section>
 
-
+            <section><br /><br /></section>
             
 
 
 
 
-<section>    
-    <div class="block no-padding">
-        <div class="container fluid">
+<section>
+    <div class="block remove-bottom">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="main-featured-sec">
-                        <div class="new-slide-3">
-                            <img src="../Uploads/General/myhandworkng_home.png" alt="" />
+
+                    <div class="steps-sec">
+                        <div class="step active">
+                            <p><i class="la la-info"></i></p>
+                            <span>Personal Information</span>
                         </div>
-                        <div class="job-search-sec">
-                            <div class="job-search">
-                                <br /><br />
-                                <h4 style="text-align:left;color:#006600">Need to get a fix ?</h4>
-                                <span style="color:darkslategray">you are just one calls away from your solution</span>
+                        <div class="step">
+                            <p><i class="la la-cc-mastercard"></i></p>
+                            <span>Bank Account</span>
+                        </div>
+                        <div class="step">
+                            <p><i class="la  la-check-circle"></i></p>
+                            <span>Profile Picture</span>
+                        </div>
+                    </div>
 
-<form action="../myhandwork_default.html" class="job-search" method="post">                                    <div class="row">
-                                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                            <div class="job-field">
-                                                <b style="font-weight:600;"> <select class="chosen" id="handworks" name="handworks"><option value="">What service are you looking for?</option>
-<option value="AC Installation and Repair">AC Installation and Repair</option>
-<option value="Aluminium Windows">Aluminium Windows</option>
-<option value="Appliance Maintenance">Appliance Maintenance</option>
-<option value="Architectural Design">Architectural Design</option>
-<option value="Artist">Artist</option>
-<option value="Auto Mechanic">Auto Mechanic</option>
-<option value="Bathroom Renovation">Bathroom Renovation</option>
-<option value="Bricklayer and Mason">Bricklayer and Mason</option>
-<option value="CableTV and CCTV Installer">CableTV and CCTV Installer</option>
-<option value="CableTV Installation">CableTV Installation</option>
-<option value="Car Rewire and Car tracker">Car Rewire and Car tracker</option>
-<option value="Car Upholstery">Car Upholstery</option>
-<option value="Car Wash">Car Wash</option>
-<option value="Carpentry">Carpentry</option>
-<option value="Catering">Catering</option>
-<option value="CCTV / Biometric Access Control">CCTV / Biometric Access Control</option>
-<option value="Ceiliing Repair">Ceiliing Repair</option>
-<option value="Ceramic and tiling">Ceramic and tiling</option>
-<option value="Cleaning">Cleaning</option>
-<option value="Cobbler">Cobbler</option>
-<option value="Cosmetologists">Cosmetologists</option>
-<option value="Craftman">Craftman</option>
-<option value="Curtain Hanging">Curtain Hanging</option>
-<option value="Deck Building">Deck Building</option>
-<option value="Digital Marketing">Digital Marketing</option>
-<option value="Door Installation And Repair">Door Installation And Repair</option>
-<option value="Driver/Rider">Driver/Rider</option>
-<option value="Electrical">Electrical</option>
-<option value="Electronic Technician">Electronic Technician</option>
-<option value="Event Planner">Event Planner</option>
-<option value="Event Usher">Event Usher</option>
-<option value="Factory Worker">Factory Worker</option>
-<option value="Farm worker">Farm worker</option>
-<option value="Fascinators">Fascinators</option>
-<option value="Flooring installation and Repair">Flooring installation and Repair</option>
-<option value="Framing">Framing</option>
-<option value="Furniture Refinishing">Furniture Refinishing</option>
-<option value="Gadgets Repairs">Gadgets Repairs</option>
-<option value="Gardening">Gardening</option>
-<option value="Gas Man">Gas Man</option>
-<option value="Hair Stylist">Hair Stylist</option>
-<option value="Heating Systems">Heating Systems</option>
-<option value="Heavy Duty Machines">Heavy Duty Machines</option>
-<option value="Horticulturist">Horticulturist</option>
-<option value="Hot Tubs and Spa">Hot Tubs and Spa</option>
-<option value="House Renovation">House Renovation</option>
-<option value="Housekeeping">Housekeeping</option>
-<option value="Insulation Installation">Insulation Installation</option>
-<option value="Interior Decoration">Interior Decoration</option>
-<option value="Inverter Technician">Inverter Technician</option>
-<option value="Janitorial Services">Janitorial Services</option>
-<option value="Landscaping">Landscaping</option>
-<option value="Laundry Service">Laundry Service</option>
-<option value="Makeup Artist">Makeup Artist</option>
-<option value="Manicure and Pedicure">Manicure and Pedicure</option>
-<option value="Mini Generators">Mini Generators</option>
-<option value="Motor mechanic">Motor mechanic</option>
-<option value="Musical studio">Musical studio</option>
-<option value="Networking and Access Control">Networking and Access Control</option>
-<option value="Painting">Painting</option>
-<option value="Panel Beater">Panel Beater</option>
-<option value="Patio Stone Installation">Patio Stone Installation</option>
-<option value="Pest Control">Pest Control</option>
-<option value="Photography">Photography</option>
-<option value="Plumbing">Plumbing</option>
-<option value="POP Ceiling Services">POP Ceiling Services</option>
-<option value="Porches">Porches</option>
-<option value="Property Valuers">Property Valuers</option>
-<option value="Refrigerator Technician">Refrigerator Technician</option>
-<option value="Roofing">Roofing</option>
-<option value="Septic Systems">Septic Systems</option>
-<option value="Solar and Inverter Technician">Solar and Inverter Technician</option>
-<option value="Solar Panels">Solar Panels</option>
-<option value="Soundproof and Mini Generators">Soundproof and Mini Generators</option>
-<option value="Soundproof Generators">Soundproof Generators</option>
-<option value="Soundproofing">Soundproofing</option>
-<option value="Sprinkler System">Sprinkler System</option>
-<option value="Stain Removal">Stain Removal</option>
-<option value="Surveyor">Surveyor</option>
-<option value="Swimming Pool Maintenance">Swimming Pool Maintenance</option>
-<option value="System Technician">System Technician</option>
-<option value="Tailoring">Tailoring</option>
-<option value="Tiling">Tiling</option>
-<option value="Video and Graphics">Video and Graphics</option>
-<option value="vulcanizer">vulcanizer</option>
-<option value="Wall Building">Wall Building</option>
-<option value="Wallpapering">Wallpapering</option>
-<option value="Waste and Junk Removal">Waste and Junk Removal</option>
-<option value="Water Purification">Water Purification</option>
-<option value="Water Softening">Water Softening</option>
-<option value="Web Designer">Web Designer</option>
-<option value="Welder">Welder</option>
-<option value="Window Installation">Window Installation</option>
-</select></b>
+                </div>
+                <div class="col-lg-12">
+                    <div class="account-popup-area signup-popup-box static">
+                        <div class="account-popup">
 
-                                                <i class="la la-hand-grab-o"></i>
+<form action="/Account/Signupstep2" method="post">                                <div class="profile-form-edit">
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <span class="pf-title">First Name</span>
+                                            <div class="pf-field">
+                                                <input class="form-control text-box single-line" data-val="true" data-val-required="Firstname is required" id="FirstName" name="FirstName" placeholder="First Name" type="text" value="" />
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
-                                            <div class="job-field">
-                                                <b style="font-weight:600;"> <select class="chosen" id="Location" name="Location"><option value="">Where or what location?</option>
+                                        <div class="col-lg-6">
+                                            <span class="pf-title">Last Name</span>
+                                            <div class="pf-field">
+                                                <input class="form-control text-box single-line" data-val="true" data-val-required="Lastname is required" id="LastName" name="LastName" placeholder="Last Name" type="text" value="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <span class="pf-title">Your Location</span>
+                                            <div class="pf-field">
+                                                <select class="chosen" data-val="true" data-val-required="Location is required" id="Area" name="Area"><option value="">Select Location</option>
 <option value="Aba">Aba</option>
 <option value="Abadam">Abadam</option>
 <option value="Abaji">Abaji</option>
@@ -891,27 +825,167 @@
 <option value="Zaria">Zaria</option>
 <option value="Zing">Zing</option>
 <option value="Zuru">Zuru</option>
-</select></b>
-                                                <i class="la la-map-marker"></i>
+</select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-1 col-md-2 col-sm-12 col-xs-12">
-                                            <button type="submit"><i class="la la-search"></i></button>
+
+                                        <div class="col-lg-6">
+                                            <span class="pf-title">Age</span>
+                                            <div class="pf-field">
+                                                <select data-placeholder="Your Age Range" class="chosen" name="Age" id="Age">
+                                                    <option>20-25 Years</option>
+                                                    <option>26-30 Years</option>
+                                                    <option>31-35 Years</option>
+                                                    <option>36-40 Years</option>
+                                                    <option>41-45 Years</option>
+                                                    <option>45 Years and Above</option>
+                                                </select>
+                                            </div>
                                         </div>
+
+                                        <div class="col-lg-12">
+                                            <span class="pf-title">Handwork</span>
+                                            <div class="pf-field">
+                                                <select class="chosen" data-val="true" data-val-required="handwork is required" id="handwork" name="handwork"><option value="">Select handwork</option>
+<option value="AC Installation and Repair">AC Installation and Repair</option>
+<option value="Aluminium Windows">Aluminium Windows</option>
+<option value="Appliance Maintenance">Appliance Maintenance</option>
+<option value="Architectural Design">Architectural Design</option>
+<option value="Artist">Artist</option>
+<option value="Auto Mechanic">Auto Mechanic</option>
+<option value="Bathroom Renovation">Bathroom Renovation</option>
+<option value="Bricklayer and Mason">Bricklayer and Mason</option>
+<option value="CableTV and CCTV Installer">CableTV and CCTV Installer</option>
+<option value="CableTV Installation">CableTV Installation</option>
+<option value="Car Rewire and Car tracker">Car Rewire and Car tracker</option>
+<option value="Car Upholstery">Car Upholstery</option>
+<option value="Car Wash">Car Wash</option>
+<option value="Carpentry">Carpentry</option>
+<option value="Catering">Catering</option>
+<option value="CCTV / Biometric Access Control">CCTV / Biometric Access Control</option>
+<option value="Ceiliing Repair">Ceiliing Repair</option>
+<option value="Ceramic and tiling">Ceramic and tiling</option>
+<option value="Cleaning">Cleaning</option>
+<option value="Cobbler">Cobbler</option>
+<option value="Cosmetologists">Cosmetologists</option>
+<option value="Craftman">Craftman</option>
+<option value="Curtain Hanging">Curtain Hanging</option>
+<option value="Deck Building">Deck Building</option>
+<option value="Digital Marketing">Digital Marketing</option>
+<option value="Door Installation And Repair">Door Installation And Repair</option>
+<option value="Driver/Rider">Driver/Rider</option>
+<option value="Electrical">Electrical</option>
+<option value="Electronic Technician">Electronic Technician</option>
+<option value="Event Planner">Event Planner</option>
+<option value="Event Usher">Event Usher</option>
+<option value="Factory Worker">Factory Worker</option>
+<option value="Farm worker">Farm worker</option>
+<option value="Fascinators">Fascinators</option>
+<option value="Flooring installation and Repair">Flooring installation and Repair</option>
+<option value="Framing">Framing</option>
+<option value="Furniture Refinishing">Furniture Refinishing</option>
+<option value="Gadgets Repairs">Gadgets Repairs</option>
+<option value="Gardening">Gardening</option>
+<option value="Gas Man">Gas Man</option>
+<option value="Hair Stylist">Hair Stylist</option>
+<option value="Heating Systems">Heating Systems</option>
+<option value="Heavy Duty Machines">Heavy Duty Machines</option>
+<option value="Horticulturist">Horticulturist</option>
+<option value="Hot Tubs and Spa">Hot Tubs and Spa</option>
+<option value="House Renovation">House Renovation</option>
+<option value="Housekeeping">Housekeeping</option>
+<option value="Insulation Installation">Insulation Installation</option>
+<option value="Interior Decoration">Interior Decoration</option>
+<option value="Inverter Technician">Inverter Technician</option>
+<option value="Janitorial Services">Janitorial Services</option>
+<option value="Landscaping">Landscaping</option>
+<option value="Laundry Service">Laundry Service</option>
+<option value="Makeup Artist">Makeup Artist</option>
+<option value="Manicure and Pedicure">Manicure and Pedicure</option>
+<option value="Mini Generators">Mini Generators</option>
+<option value="Motor mechanic">Motor mechanic</option>
+<option value="Musical studio">Musical studio</option>
+<option value="Networking and Access Control">Networking and Access Control</option>
+<option value="Painting">Painting</option>
+<option value="Panel Beater">Panel Beater</option>
+<option value="Patio Stone Installation">Patio Stone Installation</option>
+<option value="Pest Control">Pest Control</option>
+<option value="Photography">Photography</option>
+<option value="Plumbing">Plumbing</option>
+<option value="POP Ceiling Services">POP Ceiling Services</option>
+<option value="Porches">Porches</option>
+<option value="Property Valuers">Property Valuers</option>
+<option value="Refrigerator Technician">Refrigerator Technician</option>
+<option value="Roofing">Roofing</option>
+<option value="Septic Systems">Septic Systems</option>
+<option value="Solar and Inverter Technician">Solar and Inverter Technician</option>
+<option value="Solar Panels">Solar Panels</option>
+<option value="Soundproof and Mini Generators">Soundproof and Mini Generators</option>
+<option value="Soundproof Generators">Soundproof Generators</option>
+<option value="Soundproofing">Soundproofing</option>
+<option value="Sprinkler System">Sprinkler System</option>
+<option value="Stain Removal">Stain Removal</option>
+<option value="Surveyor">Surveyor</option>
+<option value="Swimming Pool Maintenance">Swimming Pool Maintenance</option>
+<option value="System Technician">System Technician</option>
+<option value="Tailoring">Tailoring</option>
+<option value="Tiling">Tiling</option>
+<option value="Video and Graphics">Video and Graphics</option>
+<option value="vulcanizer">vulcanizer</option>
+<option value="Wall Building">Wall Building</option>
+<option value="Wallpapering">Wallpapering</option>
+<option value="Waste and Junk Removal">Waste and Junk Removal</option>
+<option value="Water Purification">Water Purification</option>
+<option value="Water Softening">Water Softening</option>
+<option value="Web Designer">Web Designer</option>
+<option value="Welder">Welder</option>
+<option value="Window Installation">Window Installation</option>
+</select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <span class="pf-title">Address</span>
+                                            <div class="pf-field no-margin">
+                                                <input class="form-control text-box single-line" data-val="true" data-val-length="Address: must be 10 char min and 100 char max" data-val-length-max="100" data-val-length-min="10" data-val-required="Address is required" id="Address" maxlength="100" name="Address" placeholder="Address" type="text" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <span class="pf-title">Skill Description - Tell us about your handwork</span>
+                                            <div class="pf-field">
+                                                <textarea data-val="true" data-val-length="skill Description: must be 65 char minimum, 300 char maximum" data-val-length-max="300" data-val-length-min="61" data-val-required="Skills is required" htmlAttributes="{ class = form-control, placeholder = Tell us what kind of work can you do. Are you a carpenter or an electrican, etc. Let people know your core area of specialization }" id="skilldescription" maxlength="300" name="skilldescription">
+</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <button class="btn btn-success" type="submit">Next</button>
+                                        </div>
+
+
+                                        <ul>
+                                            <li> <span class="field-validation-valid text-danger" data-valmsg-for="FirstName" data-valmsg-replace="true"></span></li>
+                                            <li> <span class="field-validation-valid text-danger" data-valmsg-for="LastName" data-valmsg-replace="true"></span></li>
+                                            <li> <span class="field-validation-valid text-danger" data-valmsg-for="Area" data-valmsg-replace="true"></span> </li>
+                                            <li> <span class="field-validation-valid text-danger" data-valmsg-for="handwork" data-valmsg-replace="true"></span> </li>
+                                            <li> <span class="field-validation-valid text-danger" data-valmsg-for="Address" data-valmsg-replace="true"></span></li>
+                                            <li> <span class="field-validation-valid text-danger" data-valmsg-for="skilldescription" data-valmsg-replace="true"></span> </li>
+                                            <li> <span class="field-validation-valid text-danger" data-valmsg-for="state" data-valmsg-replace="true"></span> </li>
+                                        </ul>
+
+                                        <div>
+                                        </div>
+
+
+                                        <div>
+                                        </div>
+
+
                                     </div>
-<input name="__RequestVerificationToken" type="hidden" value="CfDJ8IxpwAgpJgZKhredemyMRdAbcrwuiHlcyOOXslYaObMH8yihnZ0VAQKt1Yfvu-bXsmbJ2fLj9iH8Hd6tZLwu5M1Gj19z4SKHvbJXJP9o-iojPRYKorgMc4U7RhVyyj1q9zyMUzONz-Po18GjZzgPXG4" /></form>
 
-                            <!-- <div class="or-browser">
-
-                                <span style="color:#006600;"><a href="https://myhandwork.ng/Handworks/handyjobs">Browse tasks</a></span>
-                                <a href="https://wa.me/message/S232FZLTJ6PBD1" target="_blank" title="" style="color:#006600;"><i class="la la-whatsapp"></i>Need help? </a>
-                            </div> -->
-                            </div>
-                            
-                        </div>
-                        <!-- <div class="scroll-to">
-                            <a href="Home.html#scroll-here" title=""><i class="la la-arrow-down"></i></a>
-                        </div> -->
+                                </div>
+                                <br />
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8IxpwAgpJgZKhredemyMRdCjgUP_XQMzLfP4FvWVyzmB6MAuHqoOK_bV_by8c0ZG9xgAOzGF0-JAWgYcHdmiIE-ttGPgmRqApMM9m8EpukoEyFZ5LPNfxgFTBb4czq1bp3wGJM2I8NwRDaNO5sDHAPI" /></form>                        </div>
                     </div>
                 </div>
             </div>
@@ -920,89 +994,184 @@
 </section>
 
 
-<script>
-    $(document).ready(function () {
-        /* Get iframe src attribute value i.e. YouTube video url
-        and store it in a variable */
-        var url = $("#cartoonVideo").attr('src');
 
-        /* Assign empty url value to the iframe src attribute when
-        modal hide, which stop the video playing */
-        $("#myModal").on('hide.bs.modal', function () {
-            $("#cartoonVideo").attr('src', '');
-        });
 
-        /* Assign the initially stored url back to the iframe src
-        attribute when modal is displayed again */
-        $("#myModal").on('show.bs.modal', function () {
-            $("#cartoonVideo").attr('src', url);
-        });
-    });
-</script>
 
-<script>
-    $(document).ready(function () {
-        /* Get iframe src attribute value i.e. YouTube video url
-        and store it in a variable */
-        var url = $("#cartoonVideo3").attr('src');
 
-        /* Assign empty url value to the iframe src attribute when
-        modal hide, which stop the video playing */
-        $("#myModal3").on('hide.bs.modal', function () {
-            $("#cartoonVideo3").attr('src', '');
-        });
-
-        /* Assign the initially stored url back to the iframe src
-        attribute when modal is displayed again */
-        $("#myModal3").on('show.bs.modal', function () {
-            $("#cartoonVideo3").attr('src', url);
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        /* Get iframe src attribute value i.e. YouTube video url
-        and store it in a variable */
-        var url = $("#cartoonVideo2").attr('src');
-
-        /* Assign empty url value to the iframe src attribute when
-        modal hide, which stop the video playing */
-        $("#myModal2").on('hide.bs.modal', function () {
-            $("#cartoonVideo2").attr('src', '');
-        });
-
-        /* Assign the initially stored url back to the iframe src
-        attribute when modal is displayed again */
-        $("#myModal2").on('show.bs.modal', function () {
-            $("#cartoonVideo2").attr('src', url);
-        });
-    });
-</script>
 
 
         </section>
 
 
 
-        
+        <footer class="ft">
+            <div class="block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 column">
+                            <div class="widget">
+                                <div class="about_widget">
+                                    <div class="logo">
+                                        <a title="" href="/"><img src="/Uploads/General/myhandwork_ng.png" alt="" /></a>
+                                    </div>
 
-       
+                                    <span> <a href="/Home/Privacy" target="_blank">Privacy Policy </a></span>
+                                    <span>+234 701-219-2860</span>
+                                    <span>contact@myhandwork.ng</span>
+                                    <div class="social">
+                                        <a href="https://twitter.com/myhandworkng" target="_blank" title=""><i style="color:#006600; font-size:24px" class="fa fa-twitter"></i></a>
+                                        <a href="https://www.facebook.com/myhandworkng" target="_blank" title=""><i style="color:#006600; font-size:24px" class="fa fa-facebook"></i></a>
+                                        <a href="https://www.instagram.com/myhandworkng/" target="_blank" title=""><i style="color:#006600; font-size:24px" class="la la-instagram"></i></a>
+                                        <a href="https://www.linkedin.com/company/myhandworkng/" title=""><i style="color:#006600; font-size:24px" class="la la-linkedin"></i></a>
+                                        <a href="https://wa.me/message/S232FZLTJ6PBD1" title=""><i style="color:#006600; font-size:24px" class="la la-whatsapp"></i></a>
+                                    </div>
+                                </div><!-- About Widget -->
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 column">
+                            <div class="widget">
+                                <h3 class="footer-title">About Us</h3>
+                                <div class="link_widgets3 nolines">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <a href="/Home/HowItWorks">How it Works </a>
+                                            <a href="/Home/Video_How_to_register_on_myhandworkng">Videos: How To Register </a>
+                                            <a href="/Home/Video_How_it_works">Video: How it works </a>
+                                            <a href="/Home/TermsandCondition" title="" target="_blank">Terms & Condition </a>
+                                            <a href="/Home/Faq">FAQ’s </a>
+                                            <a href="/Home/Contact">Contact Us </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 column">
+                            <div class="widget">
+                                <h3 class="footer-title">Follow Us</h3>
+                                <div class="link_widgets3 nolines">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <a href="https://www.facebook.com/myhandworkng" target="_blank" title=""><i class="fa fa-facebook"></i> Facebook</a>
+                                            <a href="https://twitter.com/myhandworkng" target="_blank" title=""><i class="fa fa-twitter"></i> Twitter</a>
+                                            <a href="https://www.instagram.com/myhandworkng/" target="_blank" title=""><i class="la la-instagram"></i> Instagram</a>
+                                            <a href="https://www.youtube.com/channel/UCUL5CBfQRibmg_nO35YSo2Q" target="_blank" title=""><i class="la la-youtube"></i> YouTube</a>
+                                            <a href="https://www.linkedin.com/company/myhandworkng/" title=""><i class="la la-linkedin"></i> Linkedin</a>
+                                            <a href="https://wa.me/message/S232FZLTJ6PBD1" title=""><i class="la la-whatsapp"></i> Chat on WhatsApp</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 column">
+                            <div class="widget">
+                                <h3 class="footer-title">Partner With Us</h3>
+                                <div class="link_widgets3 nolines">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <a href="/Account/PartnerSignup">Partner Program </a>
+                                            <a href="/Home/SecurityTips">Security Tips </a>
+                                            <a href="/Affiliates">Join Affiliate Team</a>
+                                            <a href="/Affiliates/Signup">Affiliates Signup</a>
+                                            <a href="/Affiliates/Login">Affiliates Login </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 column">
+                            <div class="widget">
+                                <h3 class="footer-title">Accepted Payments</h3>
+                                <div class="subscribe_widget">
+                                    <p>We accept payments from any of the debit and credit cards.</p>
+
+                                    <img src="/Uploads/General/acceptedPayments.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="bottom-line">
+                <div class="container">
+                    <span>©
+                    <script>document.write(new Date().getFullYear())</script> myhandwork.ng. All rights reserved.</span>
+                    <a href="#scrollup" class="scrollup" title=""><i class="la la-long-arrow-up"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
 
 
+    <div class="contactus-popup">
+        <div class="contact-popup">
+            <i class="la la-close close-contact"></i>
+            <img src="/Uploads/General/post_task_working.svg" width="290" height="214" alt="" />
+
+            <h4>Start getting offers in no time</h4>
+            <p style="font-size:14px">We're just going to ask a few questions to help you find the right handyman - it'll only take a few minutes!</p>
 
 
+            <a class="btn btn-success  signup-popup" data-toggle="modal" data-dismiss="modal">continue</a>
+        </div>
+    </div>
 
 
-    <script src="../js1/jquery.min.js" type="text/javascript"></script>
-    <script src="../js1/modernizr.js" type="text/javascript"></script>
-    <script src="../js1/script.js" type="text/javascript"></script>
-    <script src="../js1/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../js1/wow.min.js" type="text/javascript"></script>
-    <script src="../js1/slick.min.js" type="text/javascript"></script>
-    <script src="../js1/parallax.js" type="text/javascript"></script>
-    <script src="../js1/select-chosen.js" type="text/javascript"></script>
-    <script src="../js1/jquery.scrollbar.min.js" type="text/javascript"></script>
-    <script src="../js1/counter.js" type="text/javascript"></script>
+    <div class="account-popup-area signup-popup-box">
+        <div class="account-popup">
+            <span class="close-popup"><i class="la la-close"></i></span>
+            <b>Tell us what you need done?</b>
+            <form method="post" action="/Account/ClientTaskPost">
+                
+                <div class="cfield">
+                    <input type="text" name="handymantask" placeholder="What is the task to be done?" required />
+                    <i class="la la-user"></i>
+                </div>
+                <div class="cfield">
+                    <textarea style="height:10px;background-color:white;" placeholder="Describe the task and Be as specific as you can about what needs to be done" id="details" name="details" required></textarea>
+                    <i class="la la-tasks"></i>
+                </div>
+                <div class="cfield">
+                    <input type="text" name="taskbudget" placeholder="What is your budget? e.g:1000" class="form-control" required />
+                    <i class="la la-envelope-o"></i>
+                </div>
+
+                <div class="dropdown-field">
+                    <select data-placeholder="Please Select Delivery Timeline" class="chosen" name="Timeline" id="Timeline" required>
+                        <option value="Just a day">Select Delivery Timeline</option>
+                        <option value="Just a day">Just a day</option>
+                        <option value="Less than a week">Less than a week</option>
+                        <option value="Less than a month">Less than a month</option>
+                        <option value="More than one month">More than one month</option>
+                    </select>
+                </div>
+
+                <div>
+                    <span class="pf-title"><b>Where would this task be done?</b></span>
+                </div>
+                <div class="cfield">
+
+                    <input type="text" name="taskaddress" placeholder="e.g: Block 34B,arena " class="form-control" required />
+                </div>
+
+                <button type="submit">Continue</button>
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IxpwAgpJgZKhredemyMRdCjgUP_XQMzLfP4FvWVyzmB6MAuHqoOK_bV_by8c0ZG9xgAOzGF0-JAWgYcHdmiIE-ttGPgmRqApMM9m8EpukoEyFZ5LPNfxgFTBb4czq1bp3wGJM2I8NwRDaNO5sDHAPI" /></form>
+
+        </div>
+    </div><!-- SIGNUP POPUP -->
+
+    <script src="/js1/jquery.min.js" type="text/javascript"></script>
+    <script src="/js1/modernizr.js" type="text/javascript"></script>
+    <script src="/js1/script.js" type="text/javascript"></script>
+    <script src="/js1/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/js1/wow.min.js" type="text/javascript"></script>
+    <script src="/js1/slick.min.js" type="text/javascript"></script>
+    <script src="/js1/parallax.js" type="text/javascript"></script>
+    <script src="/js1/select-chosen.js" type="text/javascript"></script>
+    <script src="/js1/jquery.scrollbar.min.js" type="text/javascript"></script>
+    <script src="/js1/counter.js" type="text/javascript"></script>
 </body>
 </html>

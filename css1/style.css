@@ -6707,16 +6707,19 @@ aside .widget.border:first-child {
 .pf-title {
     float: left;
     width: 100%;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     font-family: Open Sans;
     font-size: 13px;
     color: #202020;
     margin-bottom: 13px;
 }
+
+
 .pf-field {
     float: left;
     width: 100%;
     position: relative;
+    margin-bottom: 20px;
 
 }
 
@@ -11694,11 +11697,11 @@ footer.ft .scrollup {
 .newbg .job-field input,
 .newbg .chosen-container-single .chosen-single{
     border-radius: 8px;
-     -webkit-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+     /* -webkit-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
     -ms-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
     -o-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
-    box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.1); */
 }
 
 
