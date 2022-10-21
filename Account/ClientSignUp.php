@@ -1,34 +1,34 @@
+<?php
+session_start();
+require('../includes/mydatabase2.php');
+// $title='Chainsius | Create Account';
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Find Local Artisan or Handyman in Your Area | myhandwork.ng</title>
+    <title>Artisan_Hub | Client SignUp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="myhandwork.ng is an online platform where you can find, hire and pay a handyman or artisan anywhere in Nigeria.
-                            Designed to enable people from all over Nigeria connect with handymen or artisans around their location and anywhere in Nigeria. ">
-    <meta name="keywords" content="my handwork, rent a handyman, hire a handyman, carpenter near me, handywoman, artisan employment, I need a carpenter, cleaner,artisan jobs, wesabi,I need a cobbler, skilled artisans , waste disposal in Nigeria, welding and fabrication jobs in Nigeria.
-                                   inverter technician, get artisan in Lagos, DSTV installer, generator repairer, Pest control in lagos, handyman in Nigeria, mechanical artisan jobs, artisan welder jobs, handwork in Nigeria, pest control in Nigeria, fix ng, sabi work, man wey sabi work
-                                   house cleaning in Lagos, Quotation for handyman, Get Quote for artisan, handyman Quotation, learn handwork in Nigeria, lekki art market, Abuja, Portharcourt, Nigeria, Plumber in Lagos, artisan near me, artisans in Nigeria, electrician in Lagos, electrician in Nigeria,fumigation in Nigeria,
-                                   Appraising of property, Barbecue pit maintenance, Cabinet refacing, Carpentry,Ceiling repair, Ceramic tile repair, Cleaning, Concrete work, Countertops, Crown moulding, Curtain hanging, Decks, Door installation, Door repair, Dryer repair, Dryer vent cleaning, Drywall Installation, Drywall repair
-                                   Electrical wiring, Energy Updates, Fan installation, Fence fixing, Fireplace cleaning, Flooring Installation and Repair, Foundations, Framing, Garage door openers, Garage doors, General MaintenanceGutter Cleaning, Gutter Repair, Heating system tune-up, Home inspections, Home security systems, Hot tubs and spas, Insulation installation (batts),
-                                   Insulation installation, Lamp repairs, Landscaping, Lawn care, Lock set adjustment, Maid service, Molding installation, Moving, Paint removal, Painting, Patio stone installation, Pest control, Plumbing repairs, Porches, Remodeling basements, Remodeling bathrooms, Remodeling kitchens, Roofing, Safety modifications, Sealing driveways, Senior Living Modifications,
-                                   Septic system repair, Shelf installation, Shelving, Skylight installation, Solar panels, Soundproofing, Sprinkler repair, Sprinkler system installation, Stain removal, Staining furniture, Stone work, Storage area construction, Storage area repair, Swapping a toilet, Tiling, Tile and Grout Cleaning, Re-Grouting, Trash Removal, Wall building, Waste and junk removal,
-                                   Water purification, Water softening, Window cleaning, Welding, Window installation, Window repair, Window screens, Refrigerator Technician, Refrigerator Technician near me, Refrigerator Technician in Lagos, fridge repair ">
-    <meta name="author" content="myhandwork.ng">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
 
-    <link rel="icon" type="image/png" href="../Uploads/General/myhandworkng.ico" />
+    
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="../css1/bootstrap-grid.css" />
     <link rel="stylesheet" href="../css1/icons.css">
     <link rel="stylesheet" href="../css1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="../css1/style.css" />
     <link rel="stylesheet" type="text/css" href="../css1/responsive.css" />
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css1/chosen.css" />
     <link rel="stylesheet" type="text/css" href="../css1/colors/colors.css" />
     <link rel="stylesheet" type="text/css" href="../css1/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../css1/bootstrapmaxcdn.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+    <link rel="icon" href="../Uploads/General/myhandworkng.png" type="image/x-icon" />
 
 
 
@@ -60,7 +60,7 @@
 
                 <div class="responsivemenu">
                     <ul>
-                        <li>
+                        <!-- <li>
                                 <a class="post-job-btn open-contact" style="background-color:#d42525; border-color:white; color:white">Post a task</a>
                         </li>
                         <li>
@@ -71,7 +71,7 @@
                         </li>
                         <li>
                             <a href="../Affiliates.htm">Affiliate</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -145,17 +145,17 @@
                         <div class="account-popup">
                             <h3>Client Sign-Up</h3>
 
-<form action="ClientSignUp.htm" method="post">                                <div class="row">
+<form action="client_signup_code.php" method="post">                                <div class="row">
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-required="First and Surname is required" id="FullName" name="FullName" placeholder="First and Last Name" type="text" value="" />
+                                            <input class="form-control text-box single-line" data-val="true" data-val-required="First and Surname is required" id="FullName" name="FullName" placeholder="First and Last Name" type="text" value="" required/>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-required="username is required" id="CmURS" name="CmURS" placeholder="Username" type="text" value="" />
+                                            <input class="form-control text-box single-line" data-val="true" data-val-required="username is required" id="CmURS" name="CmURS" placeholder="Username" type="text" value="" required/>
                                             <i class="la la-user"></i>
 
                                         </div>
@@ -163,7 +163,7 @@
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-regex="Wrong email address" data-val-regex-pattern="^[\w\.-]&#x2B;@[\w\.-]&#x2B;\.\w{2,4}$" data-val-required="email is required" id="Email" name="Email" placeholder="Email" type="text" value="" />
+                                            <input class="form-control text-box single-line" data-val="true" data-val-regex="Wrong email address" data-val-regex-pattern="^[\w\.-]&#x2B;@[\w\.-]&#x2B;\.\w{2,4}$" data-val-required="email is required" id="Email" name="Email" placeholder="Email" type="email" value="" required/>
                                             <i class="la la-envelope-o"></i>
 
                                         </div>
@@ -171,7 +171,7 @@
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line password" data-val="true" data-val-required="password is required" id="Password" name="Password" placeholder="password" type="password" />
+                                            <input class="form-control text-box single-line password" data-val="true" data-val-required="password is required" id="Password" name="Password" placeholder="password" type="password" required/>
                                             <i class="la la-key"></i>
 
                                         </div>
@@ -180,7 +180,7 @@
 
                                     <div class="col-md-6">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-length="The Mobile number incorrect" data-val-length-max="11" data-val-length-min="10" data-val-regex="valid Phone number is required" data-val-regex-pattern="^(\&#x2B;?1?( ?.?-?\(?\d{3}\)?) ?.?-?)?(\d{3})( ?.?-? ?\d{4})$" data-val-required="phone number is required" id="phone" maxlength="11" name="phone" placeholder="08000000000" type="text" value="" />
+                                            <input class="form-control text-box single-line" data-val="true" data-val-length="The Mobile number incorrect" data-val-length-max="11" data-val-length-min="10" data-val-regex="valid Phone number is required" data-val-regex-pattern="^(\&#x2B;?1?( ?.?-?\(?\d{3}\)?) ?.?-?)?(\d{3})( ?.?-? ?\d{4})$" data-val-required="phone number is required" id="phone" maxlength="11" name="phone" placeholder="08000000000" type="text" value="" required/>
 
                                             <i class="la la-phone"></i>
 
@@ -189,7 +189,7 @@
 
                                     <div class="col-md-6">
                                         <div class="cfield">
-                                            <select class="chosen" data-val="true" data-val-required="Location is required" id="Area" name="Area"><option value="">Select Location</option>
+                                            <select class="chosen" data-val="true" data-val-required="Location is required" id="Area" name="Area" required><option value="">Select Location</option>
 <option value="Aba">Aba</option>
 <option value="Abadam">Abadam</option>
 <option value="Abaji">Abaji</option>
@@ -854,18 +854,26 @@
 
                                     <div class="specialism_widget">
                                         <div class="simple-checkbox">
-                                            <p><input data-val="true" data-val-required="The agreement field is required." id="agreement" name="agreement" type="checkbox" value="true" /><label for="agreement">I agree with <a href="../Home/TermsandCondition.htm" target="_blank">terms and condition</a></label></p>
+                                            <p>
+                                                <input data-val="true" data-val-required="The agreement field is required." id="agreement" name="agreement" type="checkbox" value="true" required/>
+                                            <label for="agreement">
+                                                I agree with 
+                                                <a href="../Home/TermsandConditi.htm" target="_blank">
+                                                    terms and condition
+                                                </a>
+                                            </label>
+                                        </p>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
-                                        <div id="divTest2">
+                                        <div id="divTest">
                                             <button type="submit" class="btn btn-success" name="save" id="save" onclick="AlertName()">Signup</button>
                                         </div>
 
-                                        <div id="divTest" style="display: none;">
+                                        <!-- <div id="divTest2" style="display: none;">
                                             <button type="button" class="btn btn-success"><i class="fa fa-spinner fa-spin"></i> Please wait</button>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <div>
@@ -873,8 +881,12 @@
 
                                     <br />
                                 </div>
-<input name="__RequestVerificationToken" type="hidden" value="CfDJ8IxpwAgpJgZKhredemyMRdAZDcTHmrs3uwExnYw_JHSvjND9MP2M5iZ47ujeGA9GFTc04mVChFbtqsFKne1uOTDMBoS4Pge-PmeWCyRJZbO5HvyPvXl_vNK0DBgJBmKC-y89ddIUT541SgfEC9E-rfY" /><input name="agreement" type="hidden" value="false" /></form>                        </div>
+<!-- <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IxpwAgpJgZKhredemyMRdAZDcTHmrs3uwExnYw_JHSvjND9MP2M5iZ47ujeGA9GFTc04mVChFbtqsFKne1uOTDMBoS4Pge-PmeWCyRJZbO5HvyPvXl_vNK0DBgJBmKC-y89ddIUT541SgfEC9E-rfY" />
+<input name="agreement" type="hidden" value="false" /> -->
+</form>                        
+</div>
                     </div>
+
                 </div>
             </div>
         </div>

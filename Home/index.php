@@ -130,10 +130,11 @@
                                 <h4 style="text-align:left;color:#006600">Need to get a fix ?</h4>
                                 <span style="color:darkslategray">you are just one calls away from your solution</span>
 
-<form action="../myhandwork_default.html" class="job-search" method="post">                                    <div class="row">
+<form action="../Handworks/index.php" class="job-search" method="post">                                    <div class="row">
                                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                             <div class="job-field">
-                                                <b style="font-weight:600;"> <select class="chosen" id="handworks" name="handworks"><option value="">What service are you looking for?</option>
+                                                <b style="font-weight:600;"> 
+                                                <select class="chosen" id="handworks" name="handworks"><option value="">What service are you looking for?</option>
 <option value="AC Installation and Repair">AC Installation and Repair</option>
 <option value="Aluminium Windows">Aluminium Windows</option>
 <option value="Appliance Maintenance">Appliance Maintenance</option>
