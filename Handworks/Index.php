@@ -1139,24 +1139,28 @@
                     <div class="padding-left">
 
 
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="color:black;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                            <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert" style="color:black;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
                                 <strong>Save more by Posting a task.</strong> Sign up and Get free <strong>₦500</strong> Naira wallet top up. &nbsp; <a class="btn btn-sm btn-dark" href="../Account/Login.htm">Post a task</a>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-                            </div>
+                            </div> -->
                         <div class="emply-list-sec style2">
                                     <div class="emply-list">
                                         <div class="emply-list-thumb">
-                                            <a href="Index.htm#" title=""><img src="https://d19620mnk6hjug.cloudfront.net/Oluebube collins.jpg" width="120" height="100" alt="" /></a>
+                                            <a href="" title=""><img src="https://d19620mnk6hjug.cloudfront.net/Oluebube collins.jpg" width="120" height="100" alt="" /></a>
                                             <br /><br /><br /><br /><br />
                                         </div>
 
                                         <div class="emply-list-info">
-                                            <div class="emply-pstn btn btn-success" style="border-radius: 15px;background-color:#728F02; border-color:white"><a href="Detail/Oluebubecollins.htm"><i class="las la-phone-volume"></i> Hire me</a></div>
+                                            <div class="emply-pstn btn btn-success" style="border-radius: 15px;background-color:#728F02; border-color:white">
+                                            <!-- <a href="Detail/Oluebubecollins.htm"> -->
+                                            <a href="">
+                                                <i class="las la-phone-volume"></i> Hire me</a></div>
 
                                             <h3>
-                                                <a href="Detail/Oluebubecollins.htm"><b>Oluebube Collins</b></a>
+                                                <a href=""><b>Oluebube Collins</b></a>
+                                                <!-- <a href="Detail/Oluebubecollins.htm"><b>Oluebube Collins</b></a> -->
                                             </h3>
 
                                             <span style="font-size:small; color:#d42525"><b>Electrical</b></span>
@@ -1165,68 +1169,15 @@
 
 <p style="color:#545454">Rewinding of any coil ( pumping machine,generator and leaser) repair home appliances e.g fan(celling and standing, stabilizer,blender   house wiring Conduit and surface </p>                                        </div>
                                     </div>
-                                    <div class="emply-list">
-                                        <div class="emply-list-thumb">
-                                            <a href="Index.htm#" title=""><img src="https://d19620mnk6hjug.cloudfront.net/Rapheal.jpg" width="120" height="100" alt="" /></a>
-                                            <br /><br /><br /><br /><br />
-                                        </div>
-
-                                        <div class="emply-list-info">
-                                            <div class="emply-pstn btn btn-success" style="border-radius: 15px;background-color:#728F02; border-color:white"><a href="Detail/Rapheal.htm"><i class="las la-phone-volume"></i> Hire me</a></div>
-
-                                            <h3>
-                                                <a href="Detail/Rapheal.htm"><b>Ogungbemibo Olorunjuni. O</b></a>
-                                            </h3>
-
-                                            <span style="font-size:small; color:#d42525"><b>Electrical</b></span>
-
-                                            <h6><i class="la la-map-marker"></i>Lagos State, Lagos</h6>
-
-<p style="color:#545454">&#xD;&#xA; Dealer on Electrical Materials, both domestic materials  and industrial materials&#xD;&#xA; Proficiency in Electrical/Inverter Installation and Maintenance both Home and Office.</p>                                        </div>
-                                    </div>
-                                    <div class="emply-list">
-                                        <div class="emply-list-thumb">
-                                            <a href="Index.htm#" title=""><img src="https://d19620mnk6hjug.cloudfront.net/handyman_ngList.png" width="120" height="100" alt="" /></a>
-                                            <br /><br /><br /><br /><br />
-                                        </div>
-
-                                        <div class="emply-list-info">
-                                            <div class="emply-pstn btn btn-success" style="border-radius: 15px;background-color:#728F02; border-color:white"><a href="Detail/Dapson.com"><i class="las la-phone-volume"></i> Hire me</a></div>
-
-                                            <h3>
-                                                <a href="Detail/Dapson.com"><b>Oladapo Seun</b></a>
-                                            </h3>
-
-                                            <span style="font-size:small; color:#d42525"><b>Electrical</b></span>
-
-                                            <h6><i class="la la-map-marker"></i>Lagos State, Lagos</h6>
-
-<p style="color:#545454">Conduit wiring ,surface wiring and maintenance and fault finding installation of any kind of electrical work&#xD;&#xA;</p>                                        </div>
-                                    </div>
-                                    <div class="emply-list">
-                                        <div class="emply-list-thumb">
-                                            <a href="Index.htm#" title=""><img src="https://d19620mnk6hjug.cloudfront.net/handyman_ngList.png" width="120" height="100" alt="" /></a>
-                                            <br /><br /><br /><br /><br />
-                                        </div>
-
-                                        <div class="emply-list-info">
-                                            <div class="emply-pstn btn btn-success" style="border-radius: 15px;background-color:#728F02; border-color:white"><a href="Detail/LAWADGlobalResources.htm"><i class="las la-phone-volume"></i> Hire me</a></div>
-
-                                            <h3>
-                                                <a href="Detail/LAWADGlobalResources.htm"><b>Adeyemi Lawal</b></a>
-                                            </h3>
-
-                                            <span style="font-size:small; color:#d42525"><b>Electrical</b></span>
-
-                                            <h6><i class="la la-map-marker"></i>Lagos State, Lagos</h6>
-
-<p style="color:#545454">We are available for your &#x1F4A1; Electrification&#x26A1;projects.&#xD;&#xA;Specialized in: Industrial &amp; Domestic Electrical installation, Conduit, Surface, , Materials Procurement, Consult and training.</p>                                        </div>
-                                    </div>
+                                   
+                                    
+  
                                 <div class="pagination">
                                     <ul>
-                                                <li>   <a class="prev btn-success" href="Index_3.htm"><b>1</b></a></li>
-                                                <li> <a class="prev btn-success" href="Index_2.htm"><b>Previous</b></a> </li>
-
+                                                <!-- <li>   <a class="prev btn-success" href="Index_3.htm"><b>1</b></a></li>
+                                                <li> <a class="prev btn-success" href="Index_2.htm"><b>Previous</b></a> </li> -->
+                                                <a class="prev btn-success" href=""><b>1</b></a></li>
+                                                <a class="prev btn-success" href=""><b>Next</b></a>
                                     </ul>
                                 </div>
 
