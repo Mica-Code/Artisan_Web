@@ -110,7 +110,7 @@
 
 
     <!-- Start of Async Drift Code -->
-    <script>
+    <!-- <script>
         "use strict";
 
         !function () {
@@ -138,17 +138,17 @@
     </script>
     <!-- End of Async Drift Code -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136485656-1"></script>
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136485656-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'UA-136485656-1');
-    </script>
+    </script> -->
 
     <!-- Facebook Meta Pixel Code -->
-    <script>
+    <!-- <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
@@ -162,7 +162,7 @@
             'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '730131054252140');
         fbq('track', 'PageView');
-    </script>
+    </script> -->
     <noscript>
         <img height="1" width="1" style="display:none"
              src="https://www.facebook.com/tr?id=730131054252140&ev=PageView&noscript=1" />
@@ -1086,16 +1086,16 @@
             <div class="row no-gape">
 
 
-                <aside class="col-lg-3 column margin_widget">
+                <!-- <aside class="col-lg-3 column margin_widget">
 
 
 
 
                     <div class="widget d-none d-sm-block">
                         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1406041599897915"
-                                crossorigin="anonymous"></script>
+                                crossorigin="anonymous"></script> -->
                         <!-- side ads -->
-                        <ins class="adsbygoogle"
+                        <!-- <ins class="adsbygoogle"
                              style="display:block"
                              data-ad-client="ca-pub-1406041599897915"
                              data-ad-slot="1377908115"
@@ -1105,13 +1105,13 @@
                         <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
-                    </div>
+                    </div> -->
 
-                    <div class="widget d-none d-sm-block">
+                    <!-- <div class="widget d-none d-sm-block">
                         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1406041599897915"
-                                crossorigin="anonymous"></script>
+                                crossorigin="anonymous"></script> -->
                         <!-- side ads -->
-                        <ins class="adsbygoogle"
+                        <!-- <ins class="adsbygoogle"
                              style="display:block"
                              data-ad-client="ca-pub-1406041599897915"
                              data-ad-slot="1377908115"
@@ -1121,17 +1121,17 @@
                         <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
-                    </div>
+                    </div> -->
 
-                    <div class="widget d-none d-sm-block">
+                    <!-- <div class="widget d-none d-sm-block">
                         <a href="../Account/Login.htm">
                             <img src="https://d19620mnk6hjug.cloudfront.net/newads.gif" class="animated" width="270" height="600" />
                         </a>
 
-                    </div>
+                    </div> -->
 
 
-                </aside>
+                <!-- </aside> -->
 
 
 
