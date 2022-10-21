@@ -266,14 +266,15 @@ iframe{
     border:0;
 }
 i{font-style:italic}
-/*! float:left; *//*! height:auto */
+{/*! float:left; *//*! height:auto */}
 :-webkit-input-placeholder{opacity:1}
 :-moz-placeholder{opacity:1}
 :-ms-input-placeholder{opacity:1}
 input[type="text"],
 input[type="password"],
 input[type="email"], textarea {
-    
+    background: #e4e4e4 none repeat scroll 0 0;
+    border: medium none;
     float: left;
     font-size: 12px;
     font-weight: 400;
@@ -894,7 +895,7 @@ label::after {
 }
 .account-popup > form .cfield {
     float: left;
-    width: 80%;
+    width: 100%;
     position: relative;
     margin-bottom: 19px;
     border: 2px solid #e8ecec;
@@ -906,16 +907,11 @@ label::after {
     border-radius: 8px;
 
 }
-
-.input-bg{
-    background-color: white;
-}
 .account-popup > form .cfield input {
     float: left;
-    width: 80%;
+    width: 100%;
     background: no-repeat;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 0;
     font-family: Open Sans;
     font-size: 13px;
     color: #474747;
@@ -6711,19 +6707,16 @@ aside .widget.border:first-child {
 .pf-title {
     float: left;
     width: 100%;
-    /* margin-top: 30px; */
+    margin-top: 30px;
     font-family: Open Sans;
     font-size: 13px;
     color: #202020;
     margin-bottom: 13px;
 }
-
-
 .pf-field {
     float: left;
     width: 100%;
     position: relative;
-    margin-bottom: 20px;
 
 }
 
@@ -10423,7 +10416,7 @@ terms {
 
 }
 .how-workimg:before{
-    background: #00670B;
+    background: ##00670B;
     /*background: -moz-linear-gradient(45deg,  rgba(251,35,106,1) 0%, rgba(251,35,106,1) 44%, rgba(20,31,114,1) 100%);
     background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(251,35,106,1)), color-stop(44%,rgba(251,35,106,1)), color-stop(100%,rgba(20,31,114,1)));
     background: -webkit-linear-gradient(45deg,  rgba(251,35,106,1) 0%,rgba(251,35,106,1) 44%,rgba(20,31,114,1) 100%);
@@ -11701,11 +11694,11 @@ footer.ft .scrollup {
 .newbg .job-field input,
 .newbg .chosen-container-single .chosen-single{
     border-radius: 8px;
-     /* -webkit-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+     -webkit-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
     -ms-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
     -o-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
-    box-shadow: 0px 0px 30px rgba(0,0,0,0.1); */
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
 }
 
 
