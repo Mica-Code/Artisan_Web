@@ -1,7 +1,10 @@
 <?php
-session_start();
-require('../includes/mydatabase2.php');
-// $title='Chainsius | Create Account';
+// session_start();
+// require('../includes/mydatabase2.php');
+
+if (isset($_POST['submit'])){
+    require("clientSignUp-Process.php")
+}
 ?>
 
 <!DOCTYPE html>
@@ -145,17 +148,17 @@ require('../includes/mydatabase2.php');
                         <div class="account-popup">
                             <h3>Client Sign-Up</h3>
 
-<form action="client_signup_code.php" method="post">                                <div class="row">
+<form action="clientSignUp.php" method="post">                                <div class="row">
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-required="First and Surname is required" id="FullName" name="FullName" placeholder="First and Last Name" type="text" value="" required/>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-required="First and Surname is required" id="fullName" name="fullName" placeholder="Enter FullName" type="text" value="" required/>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-required="username is required" id="CmURS" name="CmURS" placeholder="Username" type="text" value="" required/>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-required="username is required" id="username" name="username" placeholder="Username" type="text" value="" required/>
                                             <i class="la la-user"></i>
 
                                         </div>
@@ -163,7 +166,7 @@ require('../includes/mydatabase2.php');
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-regex="Wrong email address" data-val-regex-pattern="^[\w\.-]&#x2B;@[\w\.-]&#x2B;\.\w{2,4}$" data-val-required="email is required" id="Email" name="Email" placeholder="Email" type="email" value="" required/>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-regex="Wrong email address" data-val-regex-pattern="^[\w\.-]&#x2B;@[\w\.-]&#x2B;\.\w{2,4}$" data-val-required="email is required" id="email" name="email" placeholder="Email" type="email" value="" required/>
                                             <i class="la la-envelope-o"></i>
 
                                         </div>
@@ -172,6 +175,14 @@ require('../includes/mydatabase2.php');
                                     <div class="col-md-12">
                                         <div class="cfield">
                                             <input class="form-control text-box single-line password" data-val="true" data-val-required="password is required" id="Password" name="Password" placeholder="password" type="password" required/>
+                                            <i class="la la-key"></i>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="cfield">
+                                            <input class="form-control text-box single-line password" data-val="true" data-val-required="password is required" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" type="password" required/>
                                             <i class="la la-key"></i>
 
                                         </div>
@@ -189,7 +200,8 @@ require('../includes/mydatabase2.php');
 
                                     <div class="col-md-6">
                                         <div class="cfield">
-                                            <select class="chosen" data-val="true" data-val-required="Location is required" id="Area" name="Area" required><option value="">Select Location</option>
+                                            <select class="chosen" data-val="true" data-val-required="Location is required" id="Area" name="Area" required>
+                                                <option value="">Select Location</option>
 <option value="Aba">Aba</option>
 <option value="Abadam">Abadam</option>
 <option value="Abaji">Abaji</option>

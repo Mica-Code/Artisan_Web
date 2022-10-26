@@ -1,4 +1,4 @@
-<?
+<?php
 if(isset($_POST['save'])){
 	//include database connection file
 	include('includes/mydatabase2.php');
