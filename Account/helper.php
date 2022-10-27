@@ -1,6 +1,6 @@
 <?php
 
-echo '<script>alert("Inside helper.php")</script>';
+
 
 function validate_input_text($textValue){
     if (!empty($textValue)){

@@ -1,10 +1,8 @@
 <?php
 
-echo '<script>alert("This signup button was clicked and i am inside signUp-Process")</script>';
-
 require ('helper.php');
 
-echo '<script>alert("Outside helper")</script>';
+
 // error variable.
 $error = array();
 
