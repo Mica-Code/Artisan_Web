@@ -2,9 +2,9 @@
 // session_start();
 // require('../includes/mydatabase2.php');
 
-if (isset($_POST['submit'])){
-    require("clientSignUp-Process.php")
-}
+// if (isset($_POST['submit'])){
+//     require("clientSignUp-Process.php");
+// }
 ?>
 
 <!DOCTYPE html>
@@ -148,7 +148,7 @@ if (isset($_POST['submit'])){
                         <div class="account-popup">
                             <h3>Client Sign-Up</h3>
 
-<form action="clientSignUp.php" method="post">                                <div class="row">
+<form action="clientSignUp-Process.php" method="post">                                <div class="row">
 
                                     <div class="col-md-12">
                                         <div class="cfield">
@@ -174,7 +174,7 @@ if (isset($_POST['submit'])){
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line password" data-val="true" data-val-required="password is required" id="Password" name="Password" placeholder="password" type="password" required/>
+                                            <input class="form-control text-box single-line password" data-val="true" data-val-required="password is required" id="password" name="password" placeholder="password" type="password" required/>
                                             <i class="la la-key"></i>
 
                                         </div>
@@ -191,7 +191,7 @@ if (isset($_POST['submit'])){
 
                                     <div class="col-md-6">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-length="The Mobile number incorrect" data-val-length-max="11" data-val-length-min="10" data-val-regex="valid Phone number is required" data-val-regex-pattern="^(\&#x2B;?1?( ?.?-?\(?\d{3}\)?) ?.?-?)?(\d{3})( ?.?-? ?\d{4})$" data-val-required="phone number is required" id="phone" maxlength="11" name="phone" placeholder="08000000000" type="text" value="" required/>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-length="The Mobile number incorrect" data-val-length-max="11" data-val-length-min="10" data-val-regex="valid Phone number is required" data-val-regex-pattern="^(\&#x2B;?1?( ?.?-?\(?\d{3}\)?) ?.?-?)?(\d{3})( ?.?-? ?\d{4})$" data-val-required="phone number is required" id="tel" maxlength="11" name="tel" placeholder="08000000000" type="text" value="" required/>
 
                                             <i class="la la-phone"></i>
 
@@ -200,7 +200,7 @@ if (isset($_POST['submit'])){
 
                                     <div class="col-md-6">
                                         <div class="cfield">
-                                            <select class="chosen" data-val="true" data-val-required="Location is required" id="Area" name="Area" required>
+                                            <select class="chosen" data-val="true" data-val-required="Location is required" id="location" name="location" required>
                                                 <option value="">Select Location</option>
 <option value="Aba">Aba</option>
 <option value="Abadam">Abadam</option>
