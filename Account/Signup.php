@@ -149,7 +149,7 @@
                     <div class="account-popup">
                       <h3>Artisan - Sign Up</h3>
 
-                      <form action="Signup.htm" method="post">
+                      <!-- <form action="Signup.php" method="post"> -->
 
                         <form action="/Account/Signupstep2" method="post">
                           <div class="profile-form-edit">
@@ -161,11 +161,11 @@
                                     class="form-control text-box single-line"
                                     data-val="true"
                                     data-val-required="Firstname is required"
-                                    id="FirstName"
-                                    name="FirstName"
+                                    id="firstName"
+                                    name="firstName"
                                     placeholder="First Name"
                                     type="text"
-                                    value=""
+                                    value="<?php if (isset($_POST['firstName'])) echo $_POST['firstName'];  ?>"
                                   />
                                 </div>
                               </div>
@@ -176,11 +176,11 @@
                                     class="form-control text-box single-line"
                                     data-val="true"
                                     data-val-required="Lastname is required"
-                                    id="LastName"
-                                    name="LastName"
+                                    id="lastName"
+                                    name="lastName"
                                     placeholder="Last Name"
                                     type="text"
-                                    value=""
+                                    value="<?php if (isset($_POST['lastName'])) echo $_POST['lastName'];  ?>"
                                   />
                                 </div>
                               </div>
@@ -188,13 +188,7 @@
                               <div class="col-lg-6">
                                 <span class="pf-title">Your Location</span>
                                 <div class="pf-field">
-                                  <select
-                                    class="chosen"
-                                    data-val="true"
-                                    data-val-required="Location is required"
-                                    id="Area"
-                                    name="Area"
-                                  >
+                                  <select class="chosen" data-val="true" data-val-required="Location is required" id="area" name="area" value="<?php if (isset($_POST['area'])) echo $_POST['area'];  ?>">
                                     <option value="">Select Location</option>
                                     <option value="Aba">Aba</option>
                                     <option value="Abadam">Abadam</option>
@@ -1068,6 +1062,7 @@
                                     <option value="Zaria">Zaria</option>
                                     <option value="Zing">Zing</option>
                                     <option value="Zuru">Zuru</option>
+                                  
                                   </select>
                                 </div>
                               </div>
@@ -1078,8 +1073,9 @@
                                   <select
                                     data-placeholder="Your Age Range"
                                     class="chosen"
-                                    name="Age"
-                                    id="Age"
+                                    name="age"
+                                    id="age"
+                                    value="<?php if (isset($_POST['age'])) echo $_POST['age'];  ?>"
                                   >
                                     <option>20-25 Years</option>
                                     <option>26-30 Years</option>
@@ -1094,13 +1090,7 @@
                               <div class="col-lg-12">
                                 <span class="pf-title">Handwork</span>
                                 <div class="pf-field">
-                                  <select
-                                    class="chosen"
-                                    data-val="true"
-                                    data-val-required="handwork is required"
-                                    id="handwork"
-                                    name="handwork"
-                                  >
+                                  <select class="chosen" data-val="true" data-val-required="handwork is required" id="handwork" name="handwork" value="<?php if (isset($_POST['handwork'])) echo $_POST['handwork'];  ?>">
                                     <option value="">Select handwork</option>
                                     <option value="AC Installation and Repair">
                                       AC Installation and Repair
@@ -1361,12 +1351,12 @@
                                     data-val-length-max="100"
                                     data-val-length-min="10"
                                     data-val-required="Address is required"
-                                    id="Address"
+                                    id="address"
                                     maxlength="100"
-                                    name="Address"
+                                    name="address"
                                     placeholder="Address"
                                     type="text"
-                                    value=""
+                                    value="<?php if (isset($_POST['address'])) echo $_POST['address'];  ?>"
                                   />
                                 </div>
                               </div>
@@ -1386,13 +1376,14 @@
                                     id="skilldescription"
                                     maxlength="300"
                                     name="skilldescription"
+                                    value="<?php if (isset($_POST['skilldescription'])) echo $_POST['skilldescription'];  ?>"
                                   ></textarea>
                                 </div>
                               </div>
                               <div class="upload-portfolio">
                                 <div class="uploadbox">
                                     <label for="file-upload" class="custom-file-upload">
-                                        <i class="la la-cloud-upload"></i> <span style="color:green">Upload Business CAC Registration document</span>
+                                        <i class="la la-cloud-upload"></i> <span style="color:green">Upload a Passport photograph of yourself</span>
                                     </label>
                                     <input id="file-upload" type="file" name="file" />
                                 </div>
@@ -2944,7 +2935,7 @@
                           type="hidden"
                           value="CfDJ8IxpwAgpJgZKhredemyMRdDbsRvXzxqC3fkEaHWVHnXlFgwPq056a0Y_U-B-VmgV1rjj6AXzzIgNWKpuuAoSKoZct-oNTHZiXt242hnLl_1JrT61WIFcos3XV_Zr3hzUpRkplPkR8n2dH1xcmF5OU7k"
                         /><input name="agreement" type="hidden" value="false" /> -->
-                      </form>
+                      <!-- </form> -->
                     </div>
                   </div>
                 </div>
@@ -2959,14 +2950,14 @@
           <div class="container">
             <span
               >©
-              <script>
+              <!-- <script>
                 document.write(new Date().getFullYear());
-              </script>
-              artisan_hub. All rights reserved.</span
-            >
-            <a href="/Signup.htm#scrollup" class="scrollup" title=""
-              ><i class="la la-long-arrow-up"></i
-            ></a>
+              </script> -->
+              <?php
+              echo date("Y");
+              ?>
+              artisan_hub. All rights reserved.</span>
+            <!-- <a href="index.php">Try here</a> -->
           </div>
         </div>
       </footer>

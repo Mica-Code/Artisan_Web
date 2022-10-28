@@ -127,7 +127,7 @@
                             <br />
                             <h3>Tell us about yourself</h3>
 
-<form action="index.php" method="post">                                <p><div class="btn btn-lg btn-success active"><a href="Signup.htm"> I want to Register as an Artisan</a></div></p>
+<form action="index.php" method="post">                                <p><div class="btn btn-lg btn-success active"><a href="Signup.php"> I want to Register as an Artisan</a></div></p>
                                 <p><div class="btn btn-lg btn-light active"><a style="color:green; font-weight:400" href="ClientSignUp.php">I want to hire an Artisan for a Job</a></div></p>
                                 <br /> <br /> <br /> <br /> <br />
 <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IxpwAgpJgZKhredemyMRdCMb17NohuDgv5lqEKi1J6UzwLngOAiSdaNUI-lKV5Kw8yRwIEPwJSgYxqfd7pRsqY5UpVfJQKxPgLUV8sfdMYph0eBVyZR6Jnbc2SLiSLttGiMGpzaFfL10-WtzFSqnfw" /></form>                        </div>
