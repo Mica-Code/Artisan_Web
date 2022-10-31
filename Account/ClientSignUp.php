@@ -2,9 +2,9 @@
 // session_start();
 // require('../includes/mydatabase2.php');
 
-// if (isset($_POST['submit'])){
-//     require("clientSignUp-Process.php");
-// }
+if (isset($_POST['save'])){
+    require("clientSignUp-Process.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -148,9 +148,20 @@
                         <div class="account-popup">
                             <h3>Client Sign-Up</h3>
 
-<form action="clientSignUp-Process.php" method="post">                                <div class="row">
+<form action="" method="post">                                <div class="row">
 
                                     <div class="col-md-12">
+                                    <?php if(!empty($error)){ ?>
+                                        <div class='alert alert-danger' style="text-align:left;">
+                                        <ul>
+                                                <?php foreach($error as $err){?>
+                                                   <li style="">&bull; <?php echo $err; ?></li>
+                                                <?php }?>
+                                            </ul>
+                                        </div>
+                                        <?php }?>
+
+
                                         <div class="cfield">
                                             <input class="form-control text-box single-line" data-val="true" data-val-required="First and Surname is required" id="fullName" name="fullName" placeholder="Enter FullName" type="text" value="" required/>
                                         </div>

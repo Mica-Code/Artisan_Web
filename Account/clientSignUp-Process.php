@@ -13,7 +13,7 @@ if (empty($fullName)){
 
 $username = validate_input_text($_POST['username']);
 if (empty($username)){
-    $error[] = "You forgot to enter your Last Name";
+    $error[] = "You forgot to enter your Username";
 }
 
 $email = validate_input_email($_POST['email']);
@@ -28,13 +28,8 @@ if (empty($password)){
 
 $confirmPassword = validate_input_text($_POST['confirmPassword']);
 if (empty($confirmPassword)){
-    $error[] = "You forgot to enter your Confirm Password";
+    $error[] = "You forgot to confirm your Password";
 }
-
-if ($password !== $confirmPassword){
-    $error[] = "Your Password must be the same";
-}
-
 
 $tel = validate_input_text($_POST['tel']);
 if (empty($tel)){
@@ -46,21 +41,37 @@ if (empty($location)){
     $error[] = "You forgot to enter your Location";
 }
 
+//Checking if Password and Confirmed Password are the same
+if ($password !== $confirmPassword){
+    $error[] = "Your Password must be the same";
+}
+
+//Checking if Email already exist
+// require ('../includes/mydatabase2.php');
+
+// $query = "SELECT email from `client_tbl` WHERE email='$email'";
+// $run = mysqli_query($dbc, $query);
+
+// if (mysqli_num_rows($run) > 0){
+//     $error[] = "Email Already in use";
+// }
+
 if(empty($error)){
     // register a new user
     $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
+    
     require ('../includes/mydatabase2.php');
-
-
-    $query = "SELECT * from client_tbl" or die(mysqli_error($dbc));
+    $query = "SELECT email from `client_tbl` WHERE email='$email'";
     $run = mysqli_query($dbc, $query);
+
     while ($row = mysqli_fetch_array($run)) {
 
         $demail = $row['email'];
         if ($demail == $email) {
             # code...
-            echo '<script>alert("Email Already existing")</script>';
-            goto a;
+        //    echo '<script>alert("Email Already existing")</script>';
+           $error[] = "Email Already existing";
+           goto a;
         }
     }
 
@@ -79,12 +90,16 @@ if(empty($error)){
         echo mysqli_error($dbc);
     }
 
-}else{
-    echo 'not validate';
 }
 
-a:
+// else{
+//     foreach ($error as $err){
+//         echo $err;
+//     }
+    
+// }
 
+a:
 
 
 
