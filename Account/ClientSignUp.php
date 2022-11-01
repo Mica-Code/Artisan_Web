@@ -56,7 +56,7 @@ if (isset($_POST['save'])){
                 <div class="btn-extars">
                         <a class="post-job-btn" href="index.php"><i class="la la-registered"></i>Register now</a>
                         <ul class="account-btns">
-                            <li><a href="Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                            <li><a href="login.php"><i class="la la-sign-in"></i> Login</a></li>
                         </ul>
 
                 </div>
@@ -89,7 +89,7 @@ if (isset($_POST['save'])){
                     <div class="btn-extars">
                             <a class="post-job-btn" href="index.php"><i class="la la-registered"></i>Register now</a>
                             <ul class="account-btns">
-                                <li><a href="Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                                <li><a href="login.php"><i class="la la-sign-in"></i> Login</a></li>
                             </ul>
 
                     </div><!-- Btn Extras -->
@@ -163,13 +163,13 @@ if (isset($_POST['save'])){
 
 
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-required="First and Surname is required" id="fullName" name="fullName" placeholder="Enter FullName" type="text" value="" required/>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-required="First and Surname is required" id="fullName" name="fullName" placeholder="Enter FullName" type="text" value="<?php echo isset($_POST['fullName']) ? $_POST['fullName'] : '';?>" required/>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-required="username is required" id="username" name="username" placeholder="Username" type="text" value="" required/>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-required="username is required" id="username" name="username" placeholder="Username" type="text" value=""<?php echo isset($_POST['username']) ? $_POST['username'] : '';?> required/>
                                             <i class="la la-user"></i>
 
                                         </div>
@@ -177,7 +177,7 @@ if (isset($_POST['save'])){
 
                                     <div class="col-md-12">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-regex="Wrong email address" data-val-regex-pattern="^[\w\.-]&#x2B;@[\w\.-]&#x2B;\.\w{2,4}$" data-val-required="email is required" id="email" name="email" placeholder="Email" type="email" value="" required/>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-regex="Wrong email address" data-val-regex-pattern="^[\w\.-]&#x2B;@[\w\.-]&#x2B;\.\w{2,4}$" data-val-required="email is required" id="email" name="email" placeholder="Email" type="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '';?>" required/>
                                             <i class="la la-envelope-o"></i>
 
                                         </div>
@@ -202,7 +202,7 @@ if (isset($_POST['save'])){
 
                                     <div class="col-md-6">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-length="The Mobile number incorrect" data-val-length-max="11" data-val-length-min="10" data-val-regex="valid Phone number is required" data-val-regex-pattern="^(\&#x2B;?1?( ?.?-?\(?\d{3}\)?) ?.?-?)?(\d{3})( ?.?-? ?\d{4})$" data-val-required="phone number is required" id="tel" maxlength="11" name="tel" placeholder="08000000000" type="text" value="" required/>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-length="The Mobile number incorrect" data-val-length-max="11" data-val-length-min="10" data-val-regex="valid Phone number is required" data-val-regex-pattern="^(\&#x2B;?1?( ?.?-?\(?\d{3}\)?) ?.?-?)?(\d{3})( ?.?-? ?\d{4})$" data-val-required="phone number is required" id="tel" maxlength="11" name="tel" placeholder="08000000000" type="text" value="<?php echo isset($_POST['tel']) ? $_POST['tel'] : '';?>" required/>
 
                                             <i class="la la-phone"></i>
 

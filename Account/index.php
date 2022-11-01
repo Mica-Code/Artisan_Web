@@ -47,7 +47,7 @@
                 <div class="btn-extars">
                         <a class="post-job-btn" href="index.php"><i class="la la-registered"></i>Register now</a>
                         <ul class="account-btns">
-                            <li><a href="Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                            <li><a href="login.php"><i class="la la-sign-in"></i> Login</a></li>
                         </ul>
 
                 </div>
@@ -80,7 +80,7 @@
                     <div class="btn-extars">
                             <a class="post-job-btn" href="index.php"><i class="la la-registered"></i>Register now</a>
                             <ul class="account-btns">
-                                <li><a href="Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                                <li><a href="login.php"><i class="la la-sign-in"></i> Login</a></li>
                             </ul>
 
                     </div><!-- Btn Extras -->

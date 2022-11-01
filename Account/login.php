@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +46,7 @@
                 <div class="btn-extars">
                         <a class="post-job-btn" href="index.php"><i class="la la-registered"></i>Register now</a>
                         <ul class="account-btns">
-                            <li><a href="Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                            <li><a href="login.php"><i class="la la-sign-in"></i> Login</a></li>
                         </ul>
 
                 </div>
@@ -80,7 +79,7 @@
                     <div class="btn-extars">
                             <a class="post-job-btn" href="index.php"><i class="la la-registered"></i>Register now</a>
                             <ul class="account-btns">
-                                <li><a href="Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                                <li><a href="login.php"><i class="la la-sign-in"></i> Login</a></li>
                             </ul>
 
                     </div><!-- Btn Extras -->
@@ -145,7 +144,15 @@
 
 
 
-<form action="Login.htm" method="post">                                <div class="cfield">
+<form action="login.php" method="post">           
+<?php
+    if(isset($_GET['chk'])){
+        echo "<h3 style='color:green'>Registration Successful</h3>";
+        echo "<small>(Login to Access Your Account)</small></br>";
+    }
+?>
+    
+<div class="cfield">
                                     <input class="form-control text-box single-line" data-val="true" data-val-required="Email is required" id="Email" name="Email" placeholder="Email or Phone number (08000000000)" type="text" value="" />
                                     <i class="la la-envelope-o"></i>
 

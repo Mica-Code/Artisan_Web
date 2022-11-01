@@ -50,7 +50,7 @@
                 <div class="btn-extars">
                         <a class="post-job-btn" href="../Account/index.php"><i class="la la-registered"></i>Register now</a>
                         <ul class="account-btns">
-                            <li><a href="../Account/Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                            <li><a href="../Account/login.php"><i class="la la-sign-in"></i> Login</a></li>
                         </ul>
                 </div>
                 <div class="responsivemenu">
@@ -78,7 +78,7 @@
                     <div class="btn-extars">
                             <a class="post-job-btn" href="../Account/index.php"><i class="la la-registered"></i>Register now</a>
                             <ul class="account-btns">
-                                <li><a href="../Account/Login.htm"><i class="la la-sign-in"></i> Login</a></li>
+                                <li><a href="../Account/login.php"><i class="la la-sign-in"></i> Login</a></li>
                             </ul>
                     </div><!-- Btn Extras -->
                     <nav>

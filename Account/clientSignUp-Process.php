@@ -82,7 +82,7 @@ if(empty($error)){
 
         echo "<script>alert('Registration Successful')</script>";
             
-        header('location: Login.htm');
+        header('location: login.php?chk=successful');
         exit();
         
     }else{
