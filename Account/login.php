@@ -28,6 +28,19 @@
 
 </head>
 <body class="newbg">
+
+<?php
+require('helper.php');
+require('../includes/mydatabase2.php');
+$error = array();
+session_start();
+// When form submitted, check and create user session.
+if (isset($_POST['login'])) {
+    require('login-process.php');
+
+}
+?>
+    
     <div class="theme-layout" id="scrollup">
 
         <div class="responsive-header three">
@@ -52,7 +65,7 @@
                 </div>
 
                 <div class="responsivemenu">
-                    <ul>
+                    <!-- <ul>
                         <li>
                                 <a class="post-job-btn open-contact" style="background-color:#d42525; border-color:white; color:white">Post a task</a>
                         </li>
@@ -64,7 +77,7 @@
                         </li>
                         <li>
                             <a href="../Affiliates.htm">Affiliate</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -144,21 +157,30 @@
 
 
 
-<form action="login.php" method="post">           
+<form action="" method="post">           
 <?php
     if(isset($_GET['chk'])){
         echo "<h3 style='color:green'>Registration Successful</h3>";
         echo "<small>(Login to Access Your Account)</small></br>";
     }
-?>
+if(!empty($error)){ ?>
+    <div class='alert alert-danger' style="text-align:left;">
+    <ul>
+            <?php foreach($error as $err){?>
+                <li style="">&bull; <?php echo $err; ?></li>
+            <?php }?>
+        </ul>
+    </div>
+    <?php }?>
     
 <div class="cfield">
-                                    <input class="form-control text-box single-line" data-val="true" data-val-required="Email is required" id="Email" name="Email" placeholder="Email or Phone number (08000000000)" type="text" value="" />
+
+                                    <input class="form-control text-box single-line" data-val="true" data-val-required="Email is required" id="email" name="email" placeholder="Enter Email" type="text" value="" />
                                     <i class="la la-envelope-o"></i>
 
                                 </div>
                                 <div class="cfield">
-                                    <input class="form-control text-box single-line password" data-val="true" data-val-length="Password Incorrect" data-val-length-max="16" data-val-length-min="6" data-val-required="Password is required" id="Password" maxlength="16" name="Password" placeholder="********" type="password" />
+                                    <input class="form-control text-box single-line password" data-val="true" data-val-length="Password Incorrect" data-val-length-max="16" data-val-length-min="6" data-val-required="Password is required" id="password" maxlength="16" name="password" placeholder="********" type="password" />
                                     <i class="la la-key"></i>
 
                                 </div>
@@ -167,7 +189,7 @@
                                 </p>
                                 <a href="forgotPassword.htm"><b>Forgot Password?</b></a>
                                 <div id="divTest2" class="col-lg-12">
-                                    <button id="save" name="save" class="btn btn-success" type="submit" onclick="AlertName()">Login</button>
+                                    <button id="login" name="login" class="btn btn-success" type="submit">Login</button>
                                 </div>
                                 <div id="divTest" style="display: none;" class="col-lg-12">
                                     <button type="button" class="btn btn-success"><i class="fa fa-spinner fa-spin"></i> Loading, Please wait</button>
@@ -195,63 +217,6 @@
 
         </section>
 
-
-    <div class="contactus-popup">
-        <div class="contact-popup">
-            <i class="la la-close close-contact"></i>
-            <img src="../Uploads/General/post_task_working.svg" width="290" height="214" alt="" />
-
-            <h4>Start getting offers in no time</h4>
-            <p style="font-size:14px">We're just going to ask a few questions to help you find the right handyman - it'll only take a few minutes!</p>
-
-
-            <a class="btn btn-success  signup-popup" data-toggle="modal" data-dismiss="modal">continue</a>
-        </div>
-    </div>
-
-
-    <div class="account-popup-area signup-popup-box">
-        <div class="account-popup">
-            <span class="close-popup"><i class="la la-close"></i></span>
-            <b>Tell us what you need done?</b>
-            <form method="post" action="https://myhandwork.ng/Account/ClientTaskPost">
-                
-                <div class="cfield">
-                    <input type="text" name="handymantask" placeholder="What is the task to be done?" required />
-                    <i class="la la-user"></i>
-                </div>
-                <div class="cfield">
-                    <textarea style="height:10px;background-color:white;" placeholder="Describe the task and Be as specific as you can about what needs to be done" id="details" name="details" required></textarea>
-                    <i class="la la-tasks"></i>
-                </div>
-                <div class="cfield">
-                    <input type="text" name="taskbudget" placeholder="What is your budget? e.g:1000" class="form-control" required />
-                    <i class="la la-envelope-o"></i>
-                </div>
-
-                <div class="dropdown-field">
-                    <select data-placeholder="Please Select Delivery Timeline" class="chosen" name="Timeline" id="Timeline" required>
-                        <option value="Just a day">Select Delivery Timeline</option>
-                        <option value="Just a day">Just a day</option>
-                        <option value="Less than a week">Less than a week</option>
-                        <option value="Less than a month">Less than a month</option>
-                        <option value="More than one month">More than one month</option>
-                    </select>
-                </div>
-
-                <div>
-                    <span class="pf-title"><b>Where would this task be done?</b></span>
-                </div>
-                <div class="cfield">
-
-                    <input type="text" name="taskaddress" placeholder="e.g: Block 34B,arena " class="form-control" required />
-                </div>
-
-                <button type="submit">Continue</button>
-            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IxpwAgpJgZKhredemyMRdA35lVsNUWOIkfOavtQwmJdrGucRLZjpw5d0yfoFXFs_iDQBKmI6dOO0u_YoC4vV9b9bb-zwmgJJkaouh-2w5WiirIV6fgsRXs2Cz4McZn2RvQaYSO-49rv6XWQuYad56o" /></form>
-
-        </div>
-    </div><!-- SIGNUP POPUP -->
 
     <script src="../js1/jquery.min.js" type="text/javascript"></script>
     <script src="../js1/modernizr.js" type="text/javascript"></script>
