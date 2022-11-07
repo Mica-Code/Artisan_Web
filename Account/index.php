@@ -32,7 +32,7 @@
     <div class="theme-layout" id="scrollup">
 
         <div class="responsive-header three">
-            <div class="responsive-menubar">
+            <!-- <div class="responsive-menubar">
                 <div class="res-logo"><a title="" href="../myhandwork_default.html"><img src="../Uploads/General/myhandworkng-logo.png" alt="" /></a></div>
                 <div class="menu-resaction">
                     <div class="res-openmenu">
@@ -42,7 +42,7 @@
                         <img src="../images1/icon2.png" alt="" /> Close <i class="la la-close"></i>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="responsive-opensec ">
                 <div class="btn-extars">
                         <a class="post-job-btn" href="index.php"><i class="la la-registered"></i>Register now</a>
@@ -127,7 +127,7 @@
                             <br />
                             <h3>Tell us about yourself</h3>
 
-<form action="index.php" method="post">                                <p><div class="btn btn-lg btn-success active"><a href="Signup.php"> I want to Register as an Artisan</a></div></p>
+<form action="index.php" method="post">                                <p><div class="btn btn-lg btn-success active"><a href="ArtisanSignup.php"> I want to Register as an Artisan</a></div></p>
                                 <p><div class="btn btn-lg btn-light active"><a style="color:green; font-weight:400" href="ClientSignUp.php">I want to hire an Artisan for a Job</a></div></p>
                                 <br /> <br /> <br /> <br /> <br />
 <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IxpwAgpJgZKhredemyMRdCMb17NohuDgv5lqEKi1J6UzwLngOAiSdaNUI-lKV5Kw8yRwIEPwJSgYxqfd7pRsqY5UpVfJQKxPgLUV8sfdMYph0eBVyZR6Jnbc2SLiSLttGiMGpzaFfL10-WtzFSqnfw" /></form>                        </div>

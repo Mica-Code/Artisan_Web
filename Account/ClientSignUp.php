@@ -202,7 +202,7 @@ if (isset($_POST['save'])){
 
                                     <div class="col-md-6">
                                         <div class="cfield">
-                                            <input class="form-control text-box single-line" data-val="true" data-val-length="The Mobile number incorrect" data-val-length-max="11" data-val-length-min="10" data-val-regex="valid Phone number is required" data-val-regex-pattern="^(\&#x2B;?1?( ?.?-?\(?\d{3}\)?) ?.?-?)?(\d{3})( ?.?-? ?\d{4})$" data-val-required="phone number is required" id="tel" maxlength="11" name="tel" placeholder="08000000000" type="text" value="<?php echo isset($_POST['tel']) ? $_POST['tel'] : '';?>" required/>
+                                            <input class="form-control text-box single-line" data-val="true" data-val-length="The Mobile number incorrect" data-val-length-max="11" data-val-length-min="10" data-val-regex="valid Phone number is required" data-val-regex-pattern="^(\&#x2B;?1?( ?.?-?\(?\d{3}\)?) ?.?-?)?(\d{3})( ?.?-? ?\d{4})$" data-val-required="phone number is required" id="phone" maxlength="11" name="phone" placeholder="08000000000" type="text" value="<?php echo isset($_POST['tel']) ? $_POST['tel'] : '';?>" required/>
 
                                             <i class="la la-phone"></i>
 

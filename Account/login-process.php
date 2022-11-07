@@ -15,7 +15,7 @@ if (empty($password)){
 
 if(empty($error)){
     // sql query
-    $query = "SELECT * FROM client_tbl WHERE email=?";
+    $query = "SELECT * FROM art_reg_tbl WHERE email=?";
     $q = mysqli_stmt_init($dbc);
     mysqli_stmt_prepare($q, $query);
 
@@ -34,7 +34,7 @@ if(empty($error)){
             
             $_SESSION['userID'] = $row['id'];
             $_SESSION['loggedin_time'] = time();
-            header("location: ../userboard");
+            header("location: ../dashboard");
             exit();
             
             

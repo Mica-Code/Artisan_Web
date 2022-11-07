@@ -1,5 +1,6 @@
 <?php
 
+
 require ('helper.php');
 
 
@@ -31,8 +32,8 @@ if (empty($confirmPassword)){
     $error[] = "You forgot to confirm your Password";
 }
 
-$tel = validate_input_text($_POST['tel']);
-if (empty($tel)){
+$phone = validate_input_text($_POST['phone']);
+if (empty($phone)){
     $error[] = "You forgot to enter your Phone Number";
 }
 
@@ -61,7 +62,7 @@ if(empty($error)){
     $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
     
     require ('../includes/mydatabase2.php');
-    $query = "SELECT email from `client_tbl` WHERE email='$email'";
+    $query = "SELECT email from `art_reg_tbl` WHERE email='$email'";
     $run = mysqli_query($dbc, $query);
 
     while ($row = mysqli_fetch_array($run)) {
@@ -75,7 +76,7 @@ if(empty($error)){
         }
     }
 
-    $query = "INSERT into client_tbl (fullName, username, email, password, tel, location, reg_date) values ('$fullName', '$username', '$email', '$hashed_pass', '$tel', 'location', now())" or die(mysqli_error($dbc));
+    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, location, reg_date) values ('$fullName', '$username', '$email', '$hashed_pass', '$phone', 'client', '$location', now())" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){
