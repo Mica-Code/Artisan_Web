@@ -13,12 +13,14 @@ if (empty($password)){
     $error[] = "You forgot to enter your password";
 }
 
+//echo "<script>alert('".$password."')</script>";
+
 if(empty($error)){
     // sql query
     $query = "SELECT * FROM art_reg_tbl WHERE email=?";
     $q = mysqli_stmt_init($dbc);
     mysqli_stmt_prepare($q, $query);
-
+    
     // bind parameter
     mysqli_stmt_bind_param($q, 's', $email);
     //execute query
@@ -30,7 +32,8 @@ if(empty($error)){
 
     if (!empty($row)){
         // verify password
-        if(password_verify($password, $row['password'])){
+
+        if($row['password'] == md5($password)){
             
             $_SESSION['userID'] = $row['id'];
             $_SESSION['loggedin_time'] = time();

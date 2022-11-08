@@ -59,7 +59,7 @@ if ($password !== $confirmPassword){
 
 if(empty($error)){
     // register a new user
-    $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
+    //$hashed_pass = password_hash($password, PASSWORD_DEFAULT);
     
     require ('../includes/mydatabase2.php');
     $query = "SELECT email from `art_reg_tbl` WHERE email='$email'";
@@ -76,7 +76,7 @@ if(empty($error)){
         }
     }
 
-    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, location, reg_date) values ('$fullName', '$username', '$email', '$hashed_pass', '$phone', 'client', '$location', now())" or die(mysqli_error($dbc));
+    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, location, reg_date) values ('$fullName', '$username', '$email', '".md5($password)."', '$phone', 'client', '$location', now())" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){
