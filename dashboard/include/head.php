@@ -1,11 +1,35 @@
+<?php
+require ('session.php');
+
+
+//Getting all data from the Registration Table
+$query = "SELECT * from art_reg_tbl WHERE id = $session_id ";
+
+$result = mysqli_query($dbc, $query);
+$row = mysqli_fetch_array($result);
+
+$fname = $row['fullname'];
+$uname = $row['username'];
+$email = $row['email'];
+$phone = $row['phone'];
+$location = $row['location'];
+$age = $row['age'];
+$handwork = $row['handwork'];
+$address = $row['address'];
+$skill_desc = $row['skill_desc'];
+$dob = $row['dob'];
+$profile_pic = $row['profile_pic'];
+
+?>
+
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="eng">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="author" content="Themezhub" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-        <title>Workplex - Creative Job Board HTML Template</title>
+        <title>artisan_hub - <?php echo $title; ?></title>
 		 
         <!-- Custom CSS -->
         <link href="assets/css/styles.css" rel="stylesheet">
@@ -39,7 +63,7 @@
 							<div class="mobile_nav">
 								<ul>
 								<li>
-									<a href="javascript:void(0);" data-toggle="modal" data-target="#login" class="crs_yuo12 w-auto text-dark gray">
+									<a href="logout.php" data-toggle="modal" data-target="#login" class="crs_yuo12 w-auto text-dark gray">
 										<span class="embos_45"><i class="lni lni-power-switch mr-1 mr-1"></i>Logout</span>
 									</a>
 								</li>
@@ -47,7 +71,7 @@
 							</div>
 						</div>
 						<div class="nav-menus-wrapper" style="transition-property: none;">
-							<ul class="nav-menu">
+							<!-- <ul class="nav-menu">
 							
 								<li><a href="#">Home</a>
 									<ul class="nav-dropdown nav-submenu">
@@ -120,11 +144,16 @@
 									</ul>
 								</li>
 								
-							</ul>
+							</ul> -->
 							
 							<ul class="nav-menu nav-menu-social align-to-right">
 								<li class="add-listing gray">
-									<a href="dashboard-post-job.html" >
+										<a href="dashboard-post-job.html">
+											<i class="fas fa-plus-circle mr-1 mr-1"></i>Post Job</span>
+										</a>
+									</li>
+								<li class="add-listing gray">
+									<a href="logout.php" >
 										<i class="lni lni-power-switch mr-1"></i> Logout
 									</a>
 								</li>
@@ -140,128 +169,30 @@
 			<!-- ============================================================== -->
 			
 			<!-- ======================= dashboard Detail ======================== -->
+			
 			<div class="dashboard-wrap bg-light">
-				<a class="mobNavigation" data-toggle="collapse" href="#MobNav" role="button" aria-expanded="false" aria-controls="MobNav">
-					<i class="fas fa-bars mr-2"></i>Dashboard Navigation
-				</a>
+			<a class="mobNavigation" data-toggle="collapse" href="#MobNav" role="button" aria-expanded="false" aria-controls="MobNav">
+				<i class="fas fa-bars mr-2"></i>Dashboard Navigation
+			</a>
 				 <div class="collapse" id="MobNav">
 					<div class="dashboard-nav">
 						<div class="dashboard-inner">
 							<ul data-submenu-title="Main Navigation">
-								<li><a href="candidate-dashboard.html"><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
-								<li><a href="dashboard-manage-resume.html"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li>
-								<li><a href="dashboard-add-resume.html"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
-								<li><a href="dashboard-applied-jobs.html"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
-								<li><a href="dashboard-alert-job.html"><i class="ti-bell mr-2"></i>Alert Jobs<span class="count-tag bg-warning">4</span></a></li>
-								<li><a href="dashboard-saved-jobs.html"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li>
-								<li><a href="dashboard-packages.html"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
-								<li><a href="dashboard-messages.html"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li>
+								<li class="active"><a href="index.php"><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
+								<!-- S<li><a href="dashboard-manage-resume.php"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li> -->
+								<li><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
+								<li><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
+								<li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs<span class="count-tag bg-warning">4</span></a></li>
+								<li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li>
+								<!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
+								<li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
 							</ul>
 							<ul data-submenu-title="My Accounts">
-								<li><a href="dashboard-my-profile.html"><i class="lni lni-user mr-2"></i>My Profile </a></li>
-								<li class="active"><a href="dashboard-change-password.html"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
+								<li><a href="dashboard-my-profile.php"><i class="lni lni-user mr-2"></i>My Profile </a></li>
+								<li><a href="dashboard-change-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
 								<li><a href="javascript:void(0);"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
-								<li><a href="login.html"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
+								<li><a href="logout.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
 							</ul>
 						</div>					
 					</div>
 				</div>
-			
-				<div class="dashboard-content">
-					<div class="dashboard-tlbar d-block mb-5">
-						<div class="row">
-							<div class="colxl-12 col-lg-12 col-md-12">
-								<h1 class="ft-medium">Change Password</h1>
-								<nav aria-label="breadcrumb">
-									<ol class="breadcrumb">
-										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>
-										<li class="breadcrumb-item text-muted"><a href="#">Dashboard</a></li>
-										<li class="breadcrumb-item"><a href="#" class="theme-cl">Change Password</a></li>
-									</ol>
-								</nav>
-							</div>
-						</div>
-					</div>
-					
-					<div class="dashboard-widg-bar d-block">
-						<div class="row">
-							<div class="col-xl-12 col-lg-12 col-md-12">
-								<div class="_dashboard_content bg-white rounded mb-4">
-									<div class="_dashboard_content_header br-bottom py-3 px-3">
-										<div class="_dashboard__header_flex">
-											<h4 class="mb-0 ft-medium fs-md"><i class="fa fa-lock mr-1 theme-cl fs-sm"></i>Change Password</h4>	
-										</div>
-									</div>
-									
-									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">
-											<div class="col-xl-8 col-lg-9 col-md-12 col-sm-12">
-												<div class="form-group">
-													<label class="text-dark ft-medium">Old Password</label>
-													<input type="text" class="form-control rounded" placeholder="">
-												</div>
-											</div>
-											<div class="col-xl-8 col-lg-9 col-md-12 col-sm-12">
-												<div class="form-group">
-													<label class="text-dark ft-medium">New Password</label>
-													<input type="text" class="form-control rounded" placeholder="">
-												</div>
-											</div>
-											<div class="col-xl-8 col-lg-9 col-md-12 col-sm-12">
-												<div class="form-group">
-													<label class="text-dark ft-medium">Confirm Password</label>
-													<input type="text" class="form-control rounded" placeholder="">
-												</div>
-											</div>
-											<div class="col-xl-12 col-lg-12">
-												<div class="form-group">
-													<button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">Save Changes</button>
-												</div>
-											</div>
-											
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-							
-					</div>
-					
-					<!-- footer -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="py-3">© 2022 Workplex. Designd By ThemezHub.</div>
-						</div>
-					</div>
-		
-				</div>
-				
-			</div>
-			<!-- ======================= dashboard Detail End ======================== -->
-			
-			<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
-			
-
-		</div>
-		<!-- ============================================================== -->
-		<!-- End Wrapper -->
-		<!-- ============================================================== -->
-
-		<!-- ============================================================== -->
-		<!-- All Jquery -->
-		<!-- ============================================================== -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/popper.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/slick.js"></script>
-		<script src="assets/js/slider-bg.js"></script>
-		<script src="assets/js/smoothproducts.js"></script>
-		<script src="assets/js/snackbar.min.js"></script>
-		<script src="assets/js/jQuery.style.switcher.js"></script>
-		<script src="assets/js/custom.js"></script>
-		<!-- ============================================================== -->
-		<!-- This page plugins -->
-		<!-- ============================================================== -->		
-
-	</body>
-</html>
