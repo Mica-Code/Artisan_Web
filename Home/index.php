@@ -36,7 +36,7 @@
 
         <div class="responsive-header three">
             <div class="responsive-menubar">
-                <div class="res-logo"><a title="" href="../index.php"><img src="../Uploads/General/myhandworkng-logo.png" alt="" /></a></div>
+                <div class="res-logo"><a title="" href="./index.php"><img src="../Uploads/General/artificer-logo.png" alt="" width="141px;" height="32.7x;""/></a></div>
                 <div class="menu-resaction">
                     <div class="res-openmenu">
                         <img src="../images1/icon.png" alt="" /> Menu <i class="la la-bars"></i>
@@ -73,7 +73,7 @@
             <div class="menu-sec">
                 <div class="container">
                     <div class="logo">
-                        <a href="../myhandwork_default.html"><img src="../Uploads/General/myhandworkng-logo.png" alt="artisan_hub" /></a>
+                        <a href="./index.php"><img src="../Uploads/General/artificer-logo.png" alt="" width="141px;" height="32.7x;"/></a>
                     </div><!-- Logo -->
                     <div class="btn-extars">
                             <a class="post-job-btn" href="../Account/index.php"><i class="la la-registered"></i>Register now</a>

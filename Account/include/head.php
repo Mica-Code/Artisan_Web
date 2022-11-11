@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,17 +31,17 @@
     <div class="theme-layout" id="scrollup">
 
         <div class="responsive-header three">
-            <!-- <div class="responsive-menubar">
-                <div class="res-logo"><a title="" href="../myhandwork_default.html"><img src="../Uploads/General/artificer-logo.png" alt="" /></a></div>
-                <div class="menu-resaction">
+             <div class="responsive-menubar">
+                <div class="res-logo"><a title="" href="../"><img src="../Uploads/General/artificer-logo.png" alt="" width="141px;" height="32.7px;" /></a></div>
+                <!--<div class="menu-resaction">
                     <div class="res-openmenu">
                         <img src="../images1/icon.png" alt="" /> Menu <i class="la la-bars"></i>
                     </div>
                     <div class="res-closemenu">
                         <img src="../images1/icon2.png" alt="" /> Close <i class="la la-close"></i>
                     </div>
-                </div>
-            </div> -->
+                </div> -->
+            </div>
             <div class="responsive-opensec ">
                 <div class="btn-extars">
                         <a class="post-job-btn" href="index.php"><i class="la la-registered"></i>Register now</a>
@@ -75,7 +74,7 @@
             <div class="menu-sec">
                 <div class="container">
                     <div class="logo">
-                        <a href="../myhandwork_default.html"><img src="../Uploads/General/artificer-logo.png" alt="" /></a>
+                        <a title="" href="../"><img src="../Uploads/General/artificer-logo.png" alt="" width="141px;" height="32.7px;" /></a>
                     </div><!-- Logo -->
                     <div class="btn-extars">
                             <a class="post-job-btn" href="index.php"><i class="la la-registered"></i>Register now</a>
