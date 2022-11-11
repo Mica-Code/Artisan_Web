@@ -1,6 +1,8 @@
 <?php
 
-echo "<script>alert('Am inside login process')</script>";
+$status = "";
+
+// echo "<script>alert('Am inside login process')</script>";
 
 
 $email = validate_input_email($_POST['email']);
@@ -37,8 +39,18 @@ if(empty($error)){
             
             $_SESSION['userID'] = $row['id'];
             $_SESSION['loggedin_time'] = time();
-            header("location: ../dashboard");
-            exit();
+
+            if($row['status'] == 'artisan'){
+                $status = "artisan";
+                header("location: ../dashboard");
+                exit();
+            }
+            else {
+                $status = "client";
+                header("location: ../dashboard/client-index.php");
+                exit();
+            }
+            
             
             
         } else {

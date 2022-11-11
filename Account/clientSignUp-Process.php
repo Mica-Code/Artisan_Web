@@ -71,7 +71,7 @@ if(empty($error)){
         if ($demail == $email) {
             # code...
         //    echo '<script>alert("Email Already existing")</script>';
-           $error[] = "Email Already existing";
+           $error[] = "Email Already Exist";
            goto a;
         }
     }

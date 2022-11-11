@@ -1,21 +1,4 @@
 <?php
-	// include './include/database2.php';
-	// // include 'fxn.php';
-	// session_start();
-
-	// if(!isset($_SESSION["userID"]) || (trim ($_SESSION["userID"] == ""))) {
-	// 	header("location:../Account/login.php");
-	// 	exit();
-	// }
-	// if(isset($_SESSION["id"])) {
-	// 	if(isLoginSessionExpired()) {
-	// 		header("Location:logout.php?session_expired=1");
-	// 	}
-	// }
-
-
-	// $session_id = $_SESSION["userID"];
-
 	include './include/database2.php';
 	// include 'fxn.php';
 	session_start();
@@ -28,7 +11,6 @@
 		header("location:../Account/login.php");
 		exit();
 	}
-	//echo "<script>alert('".$session_id."')</script>";
 
 	$query = "SELECT * from art_reg_tbl WHERE id = $session_id ";
 
@@ -41,11 +23,16 @@
 		header("location:../Account/login.php");
 		exit();
 	}
-	if(isset($_SESSION["id"])) {
-		if($status != 'artisan'){
+	else{
+		if ($status != 'client'){
 			header("location:../Account/login.php");
 			exit();
 		}
+	}
+
+	// echo "<script>alert('".$status."')</script>";
+
+	if(isset($_SESSION["id"])) {
 		if(isLoginSessionExpired()) {
 			header("Location:logout.php?session_expired=1");
 		}

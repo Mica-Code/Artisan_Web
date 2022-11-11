@@ -1,3 +1,28 @@
+<?php
+require ('session-client.php');
+
+
+//Getting all data from the Registration Table
+$query = "SELECT * from art_reg_tbl WHERE id = $session_id ";
+
+$result = mysqli_query($dbc, $query);
+$row = mysqli_fetch_array($result);
+
+$fname = $row['fullname'];
+$uname = $row['username'];
+$email = $row['email'];
+$phone = $row['phone'];
+$location = $row['location'];
+$age = $row['age'];
+$handwork = $row['handwork'];
+$address = $row['address'];
+$skill_desc = $row['skill_desc'];
+$dob = $row['dob'];
+$profile_pic = $row['profile_pic'];
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 	<head>
@@ -123,8 +148,13 @@
 							</ul> -->
 							
 							<ul class="nav-menu nav-menu-social align-to-right">
+                            <li class="add-listing gray">
+										<a href="dashboard-post-job.php">
+											<i class="fas fa-plus-circle mr-1 mr-1"></i>Post Job</span>
+										</a>
+									</li>
 								<li class="add-listing gray">
-									<a href="dashboard-post-job.html" >
+									<a href="logout.php" >
 										<i class="lni lni-power-switch mr-1"></i> Logout
 									</a>
 								</li>
@@ -153,12 +183,12 @@
 								<li><a href="dashboard-post-job.php"><i class="lni lni-files mr-2"></i>Post New Job</a></li>
 								<li><a href="dashboard-manage-jobs.php"><i class="lni lni-add-files mr-2"></i>Manage Jobs</a></li>
 								<li><a href="dashboard-manage-applications.php"><i class="lni lni-briefcase mr-2"></i>Manage Applicants</a></li>
-								<li><a href="dashboard-shortlisted-resume.php"><i class="lni lni-bookmark mr-2"></i>BookmarkResumes<span class="count-tag bg-warning">4</span></a></li>
+								<!-- <li><a href="dashboard-shortlisted-resume.php"><i class="lni lni-bookmark mr-2"></i>BookmarkResumes<span class="count-tag bg-warning">4</span></a></li> -->
 								<!-- <li><a href="dashboard-packages.html"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
 								<li><a href="dashboard-messages.html"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
 							</ul>
 							<ul data-submenu-title="My Accounts">
-								<li><a href="dashboard-my-profile.php"><i class="lni lni-user mr-2"></i>My Profile </a></li>
+								<li><a href="dashboard-client-profile.php"><i class="lni lni-user mr-2"></i>My Profile </a></li>
 								<li><a href="dashboard-change-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
 								<li><a href="javascript:void(0);"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
 								<li><a href="index.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>

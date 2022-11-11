@@ -5,7 +5,7 @@ include_once('include/head.php');
 					<div class="dashboard-tlbar d-block mb-5">
 						<div class="row">
 							<div class="colxl-12 col-lg-12 col-md-12">
-								<h1 class="ft-medium">Hello, <?php echo $uname ?></h1>
+								<h1 class="ft-medium">Hello, <?php echo $fname ?></h1>
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>

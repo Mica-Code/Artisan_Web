@@ -1,3 +1,21 @@
+
+<?php
+require('helper.php');
+require('../includes/mydatabase2.php');
+$error = array();
+session_start();
+
+if(isset($_SESSION['userID'])){
+    header("location: ../dashboard");
+    exit();
+}
+// When form submitted, check and create user session.
+elseif (isset($_POST['login'])) {
+    require('login-process.php');
+}
+else {
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,18 +47,6 @@
 </head>
 <body class="newbg">
 
-<?php
-require('helper.php');
-require('../includes/mydatabase2.php');
-$error = array();
-session_start();
-// When form submitted, check and create user session.
-if (isset($_POST['login'])) {
-    require('login-process.php');
-
-}
-?>
-    
     <div class="theme-layout" id="scrollup">
 
         <div class="responsive-header three">
@@ -216,6 +222,7 @@ if(!empty($error)){ ?>
 
 
         </section>
+        <?php } ?>
 
 
     <script src="../js1/jquery.min.js" type="text/javascript"></script>
