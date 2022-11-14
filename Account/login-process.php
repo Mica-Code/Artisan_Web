@@ -15,7 +15,9 @@ if (empty($password)){
     $error[] = "You forgot to enter your password";
 }
 
-//echo "<script>alert('".$password."')</script>";
+// echo "<script>alert('".$password."')</script>";
+
+
 
 if(empty($error)){
     // sql query
@@ -31,16 +33,15 @@ if(empty($error)){
     $result = mysqli_stmt_get_result($q);
 
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
     if (!empty($row)){
         // verify password
-
         if($row['password'] == md5($password)){
             
-            $_SESSION['userID'] = $row['id'];
+            $_SESSION['userID'] = $row['userID'];
             $_SESSION['loggedin_time'] = time();
 
             if($row['status'] == 'artisan'){
+                echo "<script>alert('".$password."')</script>";
                 $status = "artisan";
                 header("location: ../dashboard");
                 exit();

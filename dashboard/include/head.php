@@ -3,7 +3,7 @@ require ('session.php');
 
 
 //Getting all data from the Registration Table
-$query = "SELECT * from art_reg_tbl WHERE id = $session_id ";
+$query = "SELECT * from art_reg_tbl WHERE userID = $session_id ";
 
 $result = mysqli_query($dbc, $query);
 $row = mysqli_fetch_array($result);
@@ -33,6 +33,7 @@ $profile_pic = $row['profile_pic'];
 		 
         <!-- Custom CSS -->
         <link href="assets/css/styles.css" rel="stylesheet">
+		<link rel="icon" href="../Uploads/General/favicon.png" type="image/x-icon">
 		
     </head>
 	
@@ -56,7 +57,7 @@ $profile_pic = $row['profile_pic'];
 				<div class="container">
 					<nav id="navigation" class="navigation navigation-landscape">
 						<div class="nav-header">
-							<a class="nav-brand" href="#">
+							<a class="nav-brand" href="index.php">
 								<img src="assets/img/logo.png" class="logo" alt="" />
 							</a>
 							<div class="nav-toggle"></div>

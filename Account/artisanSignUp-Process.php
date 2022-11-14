@@ -76,6 +76,8 @@ if ($password !== $cfm_password){
     $error[] = "Your Password must be the same";
 }
 
+$userToken = sha1(uniqid(rand(),true));
+
 //uploading the picture
 $imgContent = '';
 if(!empty($_FILES["profile_pic"]["name"])) { 
@@ -128,8 +130,8 @@ if(empty($error)){
         }
     }
 
-    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, age, handwork, address, skill_desc, location, profile_pic, reg_date) 
-    values ('$fullname', '$username', '$email', '".md5($password)."', '$phone', 'artisan', '$age', '$handwork', '$address', '$skill_desc', '$location', '$imgContent', now())" or die(mysqli_error($dbc));
+    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, age, handwork, address, skill_desc, location, profile_pic, userToken, reg_date) 
+    values ('$fullname', '$username', '$email', '".md5($password)."', '$phone', 'artisan', '$age', '$handwork', '$address', '$skill_desc', '$location', '$imgContent', '$userToken', now())" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){

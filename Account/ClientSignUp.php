@@ -779,7 +779,7 @@ if (isset($_POST['save'])){
                                                 <input data-val="true" data-val-required="The agreement field is required." id="agreement" name="agreement" type="checkbox" value="true" required/>
                                             <label for="agreement">
                                                 I agree with 
-                                                <a href="../Home/TermsandConditi.htm" target="_blank">
+                                                <a  target="_blank">
                                                     terms and condition
                                                 </a>
                                             </label>

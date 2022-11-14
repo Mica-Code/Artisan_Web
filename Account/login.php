@@ -1,5 +1,6 @@
 
 <?php
+
 require('helper.php');
 require('../includes/mydatabase2.php');
 $error = array();
@@ -10,10 +11,10 @@ if(isset($_SESSION['userID'])){
     exit();
 }
 // When form submitted, check and create user session.
-elseif (isset($_POST['login'])) {
+if (isset($_POST['login'])) {
     require('login-process.php');
 }
-else {
+// else {
 ?>
 
 <?php
@@ -120,7 +121,7 @@ if(!empty($error)){ ?>
 
 
         </section>
-        <?php }?>
+        <?php //}?>
 
 
     <script src="../js1/jquery.min.js" type="text/javascript"></script>

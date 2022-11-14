@@ -47,6 +47,8 @@ if ($password !== $confirmPassword){
     $error[] = "Your Password must be the same";
 }
 
+$userToken = sha1(uniqid(rand(),true));
+
 //Checking if Email already exist
 // require ('../includes/mydatabase2.php');
 
@@ -76,7 +78,7 @@ if(empty($error)){
         }
     }
 
-    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, location, reg_date) values ('$fullName', '$username', '$email', '".md5($password)."', '$phone', 'client', '$location', now())" or die(mysqli_error($dbc));
+    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, location, userToken, reg_date) values ('$fullName', '$username', '$email', '".md5($password)."', '$phone', 'client', '$location', '$userToken', now())" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){

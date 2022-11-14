@@ -12,7 +12,7 @@
 		exit();
 	}
 
-	$query = "SELECT * from art_reg_tbl WHERE id = $session_id ";
+	$query = "SELECT * from art_reg_tbl WHERE userID = $session_id ";
 
 	$result = mysqli_query($dbc, $query);
 	$row = mysqli_fetch_array($result);
