@@ -19,13 +19,25 @@ $nav='<ul data-submenu-title="Main Navigation">
 </ul>';
 
 include_once('include/client-head.php');
+
+
+
+$query = "SELECT * from postjob WHERE userID = $session_id ";
+
+$result = mysqli_query($dbc, $query);
+
+$postJobCount = 0;
+
+while(mysqli_fetch_array($result)){
+	$postJobCount += 1;
+}
 ?>	
 				
 				<div class="dashboard-content">
 					<div class="dashboard-tlbar d-block mb-5">
 						<div class="row">
 							<div class="colxl-12 col-lg-12 col-md-12">
-								<h1 class="ft-medium">Hello, Adam Jesuf</h1>
+								<h1 class="ft-medium">Hello, <?php echo $fname;?></h1>
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>
@@ -40,7 +52,7 @@ include_once('include/client-head.php');
 						<div class="row">
 							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
 								<div class="dash-widgets py-5 px-4 bg-success rounded">
-									<h2 class="ft-medium mb-1 fs-xl text-light">46</h2>
+									<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $postJobCount;?></h2>
 									<p class="p-0 m-0 text-light fs-md">Submit Jobs</p>
 									<i class="lni lni-empty-file"></i>
 								</div>

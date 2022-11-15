@@ -62,6 +62,8 @@ if(empty($error)){
 
     if($result){
 
+
+        echo "<script>alert('Job Posted Successfully')</script>";
         echo "<script>window.location = 'client-index.php';</script>";
             
         // header('location: dashboard-post-job.php#myModal');

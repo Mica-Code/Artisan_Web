@@ -64,19 +64,26 @@ if(empty($error)){
     //$hashed_pass = password_hash($password, PASSWORD_DEFAULT);
     
     require ('../includes/mydatabase2.php');
-    $query = "SELECT email from `art_reg_tbl` WHERE email='$email'";
+    $query = "SELECT email, username from `art_reg_tbl` WHERE email='$email' OR username='$username'";
     $run = mysqli_query($dbc, $query);
 
     while ($row = mysqli_fetch_array($run)) {
 
         $demail = $row['email'];
+        $duname = $row['username'];
         if ($demail == $email) {
             # code...
         //    echo '<script>alert("Email Already existing")</script>';
            $error[] = "Email Already Exist";
            goto a;
         }
+
+        if ($duname == $username){
+            $error[] = "Username Already Exist";
+            goto a;
+        }
     }
+
 
     $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, location, userToken, reg_date) values ('$fullName', '$username', '$email', '".md5($password)."', '$phone', 'client', '$location', '$userToken', now())" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
