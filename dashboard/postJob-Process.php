@@ -7,142 +7,70 @@ require ('./include/helper.php');
 // error variable.
 $error = array();
 
-$firstname = validate_input_text($_POST['firstname']);
-if (empty($firstname)){
-    $error[] = "You forgot to enter your First Name";
+$postJobTitle = validate_input_text($_POST['postJobTitle']);
+if (empty($postJobTitle)){
+    $error[] = "You forgot to enter the Job Title";
 }
 
-$lastname = validate_input_text($_POST['lastname']);
-if (empty($lastname)){
-    $error[] = "You forgot to enter your Last Name";
+$postJobDesc = validate_input_text($_POST['postJobDesc']);
+if (empty($postJobDesc)){
+    $error[] = "You forgot to enter the Job Description";
 }
 
-//Adding both first and last name together
-$fullname = $lastname." ".$firstname;
-
-$username = validate_input_text($_POST['username']);
-if (empty($username)){
-    $error[] = "You forgot to enter your Username";
+$postJobProfession = validate_input_text($_POST['postJobProfession']);
+if (empty($postJobProfession)){
+    $error[] = "You forgot to select the Profession Needed";
 }
 
-$phone = validate_input_text($_POST['phone']);
-if (empty($phone)){
-    $error[] = "You forgot to enter your Phone Number";
+$postJobLevel = validate_input_text($_POST['postJobLevel']);
+if (empty($postJobLevel)){
+    $error[] = "You forgot to select the Experience Level Needed";
 }
 
-$email = validate_input_email($_POST['email']);
-if (empty($email)){
-    $error[] = "You forgot to enter your Email";
+$postJobType = validate_input_text($_POST['postJobType']);
+if (empty($postJobType)){
+    $error[] = "You forgot to select the Job Type";
 }
 
-$location = validate_input_text($_POST['location']);
-if (empty($location)){
-    $error[] = "You forgot to enter your Location";
+$postJobGender = validate_input_text($_POST['postJobGender']);
+if (empty($postJobGender)){
+    $error[] = "You forgot to select the gender needed";
 }
 
-$age = validate_input_text($_POST['age']);
-if (empty($age)){
-    $error[] = "You forgot to enter your Age";
+$postJobDeadline = validate_input_text($_POST['postJobDeadline']);
+if (empty($postJobDeadline)){
+    $error[] = "You forgot to select the application deadline";
 }
 
-$handwork = validate_input_text($_POST['handwork']);
-if (empty($handwork)){
-    $error[] = "You have to have a Handwork";
+$postJobLocation = validate_input_text($_POST['postJobLocation']);
+if (empty($postJobLocation)){
+    $error[] = "You forgot to select the Job Location";
 }
 
-$address = validate_input_text($_POST['address']);
-if (empty($address)){
-    $error[] = "You forgot to enter your Address";
+$postJobAddress = validate_input_text($_POST['postJobAddress']);
+if (empty($postJobAddress)){
+    $error[] = "You forgot to Enter the full Address of the job";
 }
 
-$skill_desc = validate_input_text($_POST['skill_desc']);
-if (empty($skill_desc)){
-    $error[] = "You have to input your work description";
-}
-
-$password = validate_input_text($_POST['password']);
-if (empty($password)){
-    $error[] = "You forgot to enter your password";
-}
-
-$cfm_password = validate_input_text($_POST['cfm_password']);
-if (empty($cfm_password)){
-    $error[] = "You forgot to confirm your Password";
-}
-
-
-//Checking if Password and Confirmed Password are the same
-if ($password !== $cfm_password){
-    $error[] = "Your Password must be the same";
-}
-
-$userToken = sha1(uniqid(rand(),true));
-
-//uploading the picture
-$imgContent = '';
-if(!empty($_FILES["profile_pic"]["name"])) { 
-    // Get file info 
-    $fileName = basename($_FILES["profile_pic"]["name"]); 
-    $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
-        
-    // Allow certain file formats 
-    $allowTypes = array('jpg','png','jpeg','gif'); 
-    if(in_array($fileType, $allowTypes)){ 
-        $image = $_FILES['profile_pic']['tmp_name']; 
-        $imgContent = addslashes(file_get_contents($image)); 
-        
-        // Insert image content into database 
-        //$insert = $db->query("INSERT into images (image, created) VALUES ('$imgContent', NOW())"); 
-    }else{ 
-        $error[] = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
-    } 
-}else{ 
-    $error[] = 'Please select an image file to upload.'; 
-} 
-
-
-//Checking if Email already exist
-// require ('../includes/mydatabase2.php');
-
-// $query = "SELECT email from `client_tbl` WHERE email='$email'";
-// $run = mysqli_query($dbc, $query);
-
-// if (mysqli_num_rows($run) > 0){
-//     $error[] = "Email Already in use";
-// }
+$postJobToken = sha1(uniqid(rand(),true));
 
 if(empty($error)){
-    // register a new user
-    //$hashed_pass = password_hash($password, PASSWORD_DEFAULT);
     
-    require ('../includes/mydatabase2.php');
-    $query = "SELECT email from `art_reg_tbl` WHERE email='$email'";
-    $run = mysqli_query($dbc, $query);
-
-    while ($row = mysqli_fetch_array($run)) {
-
-        $demail = $row['email'];
-        if ($demail == $email) {
-            # code...
-        //    echo '<script>alert("Email Already existing")</script>';
-           $error[] = "Email Already Exists";
-           goto a;
-        }
-    }
-
-    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, age, handwork, address, skill_desc, location, profile_pic, userToken, reg_date) 
-    values ('$fullname', '$username', '$email', '".md5($password)."', '$phone', 'artisan', '$age', '$handwork', '$address', '$skill_desc', '$location', '$imgContent', '$userToken', now())" or die(mysqli_error($dbc));
+    $query = "INSERT into postjob (postJobTitle, postJobDesc, postJobProfession, postJobLevel, postJobType, postJobGender, postJobDeadline, postJobLocation, postJobAddress, postJobDate, userID, postJobToken) 
+    values ('$postJobTitle', '$postJobDesc', '$postJobProfession', '$postJobLevel', '$postJobType', '$postJobGender', '$postJobDeadline', '$postJobLocation', '$postJobAddress', now(), '$session_id', '$postJobToken')" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){
 
-        echo "<script>alert('Registration Successful')</script>";
+        echo "<script>window.location = 'client-index.php';</script>";
             
-        header('location: login.php?chk=successful');
-        exit();
+        // header('location: dashboard-post-job.php#myModal');
+        // header('location: logout.php');
+        // exit(header("Location: /logout.php"));
+        // echo "<script>alert('The page will exit after this')</script>";
         
     }else{
-        print "Error while registration...!";
+        print "Error while Posting Job Try Again Later...!";
         echo mysqli_error($dbc);
     }
 

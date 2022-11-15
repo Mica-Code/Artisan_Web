@@ -53,11 +53,20 @@ if(isset($_POST['postJob'])){
 									</div>
 									
 									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">
+										<form class="row" method="post">
 											<div class="col-xl-12 col-lg-12 col-md-12">
 												<div class="row">
 												
 													<div class="col-xl-12 col-lg-12 col-md-12">
+													<?php if(!empty($error)){ ?>
+                                        <div class='alert alert-danger' style="text-align:left;">
+                                        <ul>
+                                                <?php foreach($error as $err){?>
+                                                   <li style="">&bull; <?php echo $err; ?></li>
+                                                <?php }?>
+                                            </ul>
+                                        </div>
+                                        <?php }?>
 														<div class="form-group">
 															<label class="text-dark ft-medium">Job Title</label>
 															<input type="text" id="postJobTitle" name="postJobTitle" class="form-control rounded" placeholder="Title">
@@ -88,7 +97,7 @@ if(isset($_POST['postJob'])){
 													<div class="col-xl-6 col-lg-6 col-md-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Profession Needed</label>
-															<select class="form-control rounded" id="postJobProfessional" name="postJobProfessional">
+															<select class="form-control rounded" id="postJobProfession" name="postJobProfession">
                                     <option value="">Select Profession</option>
                                     <option value="AC Installation and Repair">
                                       AC Installation and Repair
@@ -343,9 +352,10 @@ if(isset($_POST['postJob'])){
 													<div class="form-group">
 															<label class="text-dark ft-medium">Career/Experience Level</label>
 															<select class="form-control rounded" id="postJobLevel" name="postJobLevel">
-																<option>Beginner</option>
-																<option>Intermediate</option>
-																<option>Expert</option>
+															<option value="">Select Level</option>
+																<option value="Beginner">Beginner</option>
+																<option value="Intermediate">Intermediate</option>
+																<option value="Expert">Expert</option>
 															</select>
 														</div>
 													</div>
@@ -354,11 +364,12 @@ if(isset($_POST['postJob'])){
 														<div class="form-group">
 															<label class="text-dark ft-medium">Job Type</label>
 															<select class="form-control rounded" id="postJobType" name="postJobType">
-																<option>Full Time</option>
-																<option>Part Time</option>
-																<option>Internship</option>
-																<option>Contract</option>
-																<option>Freelancing</option>
+															<option value="">Select Job Type</option>
+																<option value="Full Time">Full Time</option>
+																<option value="Part Time">Part Time</option>
+																<option value="Internship">Internship</option>
+																<option value="Contract">Contract</option>
+																<option value="Freelancing">Freelancing</option>
 															</select>
 														</div>
 													</div>
@@ -422,9 +433,10 @@ if(isset($_POST['postJob'])){
 														<div class="form-group">
 															<label class="text-dark ft-medium">Gender</label>
 															<select class="form-control rounded" id="postJobGender" name="postJobGender">
-																<option>Male</option>
-																<option>Female</option>
-																<option>Other</option>
+															<option value="">--- Select Gender ---</option>
+																<option value="Male">Male</option>
+																<option value="Female">Female</option>
+																<option value="Other">Other</option>
 															</select>
 														</div>
 													</div>
@@ -441,6 +453,7 @@ if(isset($_POST['postJob'])){
 															<label class="text-dark ft-medium">Wanted Local Government Area (Lagos)</label>
 															<select class="form-control rounded" id="postJobLocation" name="postJobLocation">
 															<optgroup label="Your Location">
+															<option value="">--- Select Location ---</option>
                                     <option value="Agege">Agege</option>
                                     <option value="Ajeromi-Ifelodun">Ajeromi-Ifelodun</option>
                                     <option value="Alimosho">Alimosho</option>
@@ -506,8 +519,7 @@ if(isset($_POST['postJob'])){
 															<label class="text-dark ft-medium">Longitude</label>
 															<input type="text" class="form-control" placeholder="Liverpool" />
 														</div>
-													</div> -->
-													
+													</div> -->													
 													<div class="col-12">
 														<div class="form-group">
 															<button type="submit" id="postJob" name="postJob"class="btn btn-md ft-medium text-light rounded theme-bg">Publish Job</button>
@@ -540,6 +552,27 @@ if(isset($_POST['postJob'])){
 			
 
 		</div>
+
+
+
+				<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header justify-content-center">
+				<div class="icon-box">
+					<i class="material-icons">&#xE876;</i>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body text-center">
+				<h4>Great!</h4>	
+				<p>Your account has been created successfully.</p>
+				<button class="btn btn-success" data-dismiss="modal"><span>Start Exploring</span> <i class="material-icons">&#xE5C8;</i></button>
+			</div>
+		</div>
+	</div>
+</div>     
 		<!-- ============================================================== -->
 		<!-- End Wrapper -->
 		<!-- ============================================================== -->

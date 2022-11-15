@@ -20,8 +20,6 @@ $skill_desc = $row['skill_desc'];
 $dob = $row['dob'];
 $profile_pic = $row['profile_pic'];
 
-
-
 //Selecting all from posted jobs Table
 $query = "SELECT * from art_reg_tbl WHERE userID = $session_id ";
 
