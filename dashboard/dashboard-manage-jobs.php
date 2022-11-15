@@ -152,7 +152,7 @@ include_once('include/client-head.php');
 					<!-- footer -->
 					<div class="row">
 						<div class="col-md-12">
-							<div class="py-3">© 2022 Workplex. Designd By ThemezHub.</div>
+						<div class="py-3">© 2022 AtificerHub</div>
 						</div>
 					</div>
 		

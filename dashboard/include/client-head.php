@@ -20,6 +20,26 @@ $skill_desc = $row['skill_desc'];
 $dob = $row['dob'];
 $profile_pic = $row['profile_pic'];
 
+
+
+//Selecting all from posted jobs Table
+$query = "SELECT * from art_reg_tbl WHERE userID = $session_id ";
+
+$result = mysqli_query($dbc, $query);
+$row = mysqli_fetch_array($result);
+
+$fname = $row['fullname'];
+$uname = $row['username'];
+$email = $row['email'];
+$phone = $row['phone'];
+$location = $row['location'];
+$age = $row['age'];
+$handwork = $row['handwork'];
+$address = $row['address'];
+$skill_desc = $row['skill_desc'];
+$dob = $row['dob'];
+$profile_pic = $row['profile_pic'];
+
 ?>
 
 

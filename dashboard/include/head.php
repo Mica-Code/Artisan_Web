@@ -20,6 +20,11 @@ $skill_desc = $row['skill_desc'];
 $dob = $row['dob'];
 $profile_pic = $row['profile_pic'];
 
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
