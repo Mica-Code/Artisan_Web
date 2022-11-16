@@ -149,10 +149,12 @@ include_once('include/head.php');
 														<div class="form-group">
 															<label class="text-dark ft-medium">Age</label>
 															<select class="custom-select rounded">
-																<option>20 Years+</option>
-																<option>23+ Years</option>
-																<option>25+ Years</option>
-																<option>30+ Years</option>
+															<option>20-25 Years</option>
+                                    <option>26-30 Years</option>
+                                    <option>31-35 Years</option>
+                                    <option>36-40 Years</option>
+                                    <option>41-45 Years</option>
+                                    <option>45 Years and Above</option>
 															</select>
 														</div>
 													</div>
