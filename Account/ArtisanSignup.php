@@ -119,6 +119,7 @@ if (isset($_POST['submit'])){
                                 <div class="pf-field">
                                   <select class="chosen" data-val="true" data-val-required="Location is required" id="location" name="location" value="<?php if (isset($_POST['area'])) echo $_POST['area'];  ?>">
                                     <optgroup label="Your Location">
+                                    <option value="">Select your Location</option>
                                     <option value="Agege">Agege</option>
                                     <option value="Ajeromi-Ifelodun">Ajeromi-Ifelodun</option>
                                     <option value="Alimosho">Alimosho</option>
@@ -508,13 +509,15 @@ if (isset($_POST['submit'])){
                                   ></textarea>
                                 </div>
                               </div>
+
                               <div class="upload-portfolio">
                                 <div class="uploadbox">
                                     <label for="file-upload" class="custom-file-upload">
-                                        <i class="la la-cloud-upload"></i> <span style="color:green">Upload a Passport photograph of yourself</span>
+                                        <i class="la la-cloud-upload"></i> <span style="color:green">Upload Profile picture</span>
                                     </label>
                                     <input id="file-upload" type="file" name="profile_pic" />
-                                </div>
+                                  </div>
+                              </div>
                               <div class="col-lg-12">
                                 <button class="btn btn-success" type="submit" name="submit">
                                   Sign up

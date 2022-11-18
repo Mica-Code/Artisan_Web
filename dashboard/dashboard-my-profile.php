@@ -45,16 +45,32 @@ include_once('include/head.php');
 											<h4 class="mb-0 ft-medium fs-md"><i class="fa fa-user mr-1 theme-cl fs-sm"></i>My Account</h4>	
 										</div>
 									</div>
-									
+									<!-- <img src="../Account/<?php echo $profile_pic; ?>" width="100px"> -->
 									<div class="_dashboard_content_body py-3 px-3">
 										<form class="row">
 											<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
 												<div class="custom-file avater_uploads">
-												  <input type="file" class="custom-file-input" id="customFile">
-												  <label class="custom-file-label" for="customFile"><i class="fa fa-user"></i></label>
+													<?php //echo "<script>alert('".$profile_pic."')</script>";?>
+													<p>Upload Picture</p>
+													<i class="fa fa-plus icon" style="font-size: 12px"> </i>
+													<input type="file" class="custom-file-input" id="customFile">
+													
+												  <!-- <input type="file" class="custom-file-input" id="customFile"> -->
+												  <img src="../Account/<?php echo $profile_pic; ?>" width="170px" height="180px">
+												  <!-- <label class="custom-file-label" for="customFile"></label> -->
 												</div>
+
+												<div class="profile-pic">
+<label class="-label" for="file">
+<span class="glyphicon glyphicon-camera"></span>
+<span>Change Image</span>
+</label>
+<input id="file" type="file" onchange="loadFile(event)"/>
+<img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output" width="200" />
+</div>
+
+
 											</div>
-											
 											<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
 												<div class="row">
 													<div class="col-xl-6 col-lg-6">
@@ -149,12 +165,10 @@ include_once('include/head.php');
 														<div class="form-group">
 															<label class="text-dark ft-medium">Age</label>
 															<select class="custom-select rounded">
-															<option>20-25 Years</option>
-                                    <option>26-30 Years</option>
-                                    <option>31-35 Years</option>
-                                    <option>36-40 Years</option>
-                                    <option>41-45 Years</option>
-                                    <option>45 Years and Above</option>
+																<option>20 Years+</option>
+																<option>23+ Years</option>
+																<option>25+ Years</option>
+																<option>30+ Years</option>
 															</select>
 														</div>
 													</div>

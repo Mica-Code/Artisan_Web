@@ -79,26 +79,31 @@ if ($password !== $cfm_password){
 $userToken = sha1(uniqid(rand(),true));
 
 //uploading the picture
-$imgContent = '';
-if(!empty($_FILES["profile_pic"]["name"])) { 
-    // Get file info 
-    $fileName = basename($_FILES["profile_pic"]["name"]); 
-    $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+
+$files = $_FILES['profileUpload'];
+$profileImage = upload_profile('assets/profile/', $files);
+
+
+// $imgContent = '';
+// if(!empty($_FILES["profile_pic"]["name"])) { 
+//     // Get file info 
+//     $fileName = basename($_FILES["profile_pic"]["name"]); 
+//     $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
         
-    // Allow certain file formats 
-    $allowTypes = array('jpg','png','jpeg','gif'); 
-    if(in_array($fileType, $allowTypes)){ 
-        $image = $_FILES['profile_pic']['tmp_name']; 
-        $imgContent = addslashes(file_get_contents($image)); 
+//     // Allow certain file formats 
+//     $allowTypes = array('jpg','png','jpeg','gif'); 
+//     if(in_array($fileType, $allowTypes)){ 
+//         $image = $_FILES['profile_pic']['tmp_name']; 
+//         $imgContent = addslashes(file_get_contents($image)); 
         
-        // Insert image content into database 
-        //$insert = $db->query("INSERT into images (image, created) VALUES ('$imgContent', NOW())"); 
-    }else{ 
-        $error[] = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
-    } 
-}else{ 
-    $error[] = 'Please select an image file to upload.'; 
-} 
+//         // Insert image content into database 
+//         //$insert = $db->query("INSERT into images (image, created) VALUES ('$imgContent', NOW())"); 
+//     }else{ 
+//         $error[] = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+//     } 
+// }else{ 
+//     $error[] = 'Please select an image file to upload.'; 
+// } 
 
 
 //Checking if Email already exist
@@ -131,7 +136,7 @@ if(empty($error)){
     }
 
     $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, age, handwork, address, skill_desc, location, profile_pic, userToken, reg_date) 
-    values ('$fullname', '$username', '$email', '".md5($password)."', '$phone', 'artisan', '$age', '$handwork', '$address', '$skill_desc', '$location', '$imgContent', '$userToken', now())" or die(mysqli_error($dbc));
+    values ('$fullname', '$username', '$email', '".md5($password)."', '$phone', 'artisan', '$age', '$handwork', '$address', '$skill_desc', '$location', '$profileImage', '$userToken', now())" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){

@@ -13,9 +13,9 @@ $nav='<ul data-submenu-title="Main Navigation">
 </ul>
 <ul data-submenu-title="My Accounts">
 <li><a href="dashboard-client-profile.php"><i class="lni lni-user mr-2"></i>Edit Profile </a></li>
-<li><a href="dashboard-change-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
+<li><a href="dashboard-change-client-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
 <li><a href="javascript:void(0);"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
-<li><a href="index.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
+<li><a href="logout.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
 </ul>';
 
 include_once('include/client-head.php');
@@ -210,7 +210,7 @@ while(mysqli_fetch_array($result)){
 					<!-- footer -->
 					<div class="row">
 						<div class="col-md-12">
-							<div class="py-3">© 2022 Workplex. Designd By ThemezHub.</div>
+							<div class="py-3">© <?php echo date("Y");?> ArtificerHub.</div>
 						</div>
 					</div>
 		

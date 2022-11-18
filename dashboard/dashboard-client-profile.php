@@ -12,12 +12,21 @@ $nav='<ul data-submenu-title="Main Navigation">
 </ul>
 <ul data-submenu-title="My Accounts">
 <li class="active"><a href="dashboard-client-profile.php"><i class="lni lni-user mr-2"></i>Edit Profile </a></li>
-<li><a href="dashboard-change-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
+<li><a href="dashboard-change-client-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
 <li><a href="javascript:void(0);"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
-<li><a href="index.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
+<li><a href="logout.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
 </ul>';
 
 include_once('include/client-head.php');
+
+
+if(isset($_POST['save'])){
+
+	require('edit-client-profile-process.php');
+
+}
+
+
 ?>			
 				<div class="dashboard-content">
 					<div class="dashboard-tlbar d-block mb-5">
@@ -46,7 +55,7 @@ include_once('include/client-head.php');
 									</div>
 									
 									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">
+										<form class="row" method="post" enctype="multipart/form-data">
 											<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
 												<div class="custom-file avater_uploads">
 												  <input type="file" class="custom-file-input" id="customFile">
@@ -59,19 +68,19 @@ include_once('include/client-head.php');
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Full Name</label>
-															<input type="text" class="form-control rounded" value="<?php echo $fname;?>">
+															<input type="text" name="fullName" class="form-control rounded" value="<?php echo $fname;?>">
 														</div>
 													</div>
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Username</label>
-															<input type="text" class="form-control rounded" value="<?php echo $uname;?>">
+															<input type="text" name="username" class="form-control rounded" value="<?php echo $uname;?>">
 														</div>
 													</div>
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Phone</label>
-															<input type="text" class="form-control rounded" value="<?php echo $phone;?>">
+															<input type="text" name="phone" class="form-control rounded" value="<?php echo $phone;?>">
 														</div>
 													</div>
 
@@ -79,7 +88,7 @@ include_once('include/client-head.php');
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Email</label>
-															<input type="email" class="form-control rounded" value="<?php echo $fname;?>">
+															<input type="email"name="email" class="form-control rounded" value="<?php echo $email;?>">
 														</div>
 													</div>
 													
@@ -87,7 +96,7 @@ include_once('include/client-head.php');
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 														<label class="text-dark ft-medium">Select your Location</label>
-															<select class="form-control rounded" id="postJobLocation" name="postJobLocation">
+															<select class="form-control rounded" id="location" name="location">
 																<optgroup label="Your Location">
 																	<option value="">--- Select Location ---</option>
 																	<option value="Agege">Agege</option>
@@ -118,7 +127,8 @@ include_once('include/client-head.php');
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Age</label>
-															<select class="custom-select rounded">
+															<select class="custom-select rounded" name="age">
+																<option value="">--- Age ---</option>
 															<option>20-25 Years</option>
                                     <option>26-30 Years</option>
                                     <option>31-35 Years</option>
@@ -131,13 +141,13 @@ include_once('include/client-head.php');
 													<div class="col-xl-12 col-lg-12">
 														<div class="form-group">
 															<label class="text-dark ft-medium">About Info</label>
-															<textarea class="form-control with-light" placeholder="A little about yourself"></textarea>
+															<textarea class="form-control with-light" name="about" placeholder="A little about yourself"></textarea>
 														</div>
 													</div>
 													
 													<div class="col-xl-12 col-lg-12">
 														<div class="form-group">
-															<button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">Save Changes</button>
+															<button type="submit" name="save" id="save" class="btn btn-md ft-medium text-light rounded theme-bg">Save Changes</button>
 														</div>
 													</div>
 												</div>
