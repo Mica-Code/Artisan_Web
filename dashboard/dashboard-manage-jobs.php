@@ -65,6 +65,7 @@ include_once('include/client-head.php');
 											$result = mysqli_query($dbc, $query);
 
 											while($row = mysqli_fetch_array($result)){
+												$postJobID = $row['postJobID'];
 												$postJobTitle = $row['postJobTitle'];
 												$postJobDesc = $row['postJobDesc'];
 												$postJobProfession = $row['postJobProfession'];
@@ -124,7 +125,8 @@ include_once('include/client-head.php');
 														<div class="dash-action">
 															<a href="dashboard-single-job.php" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
 															<a href="dashboard-edit-job.php" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center"><i class="lni lni-pencil"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+															<a onclick="return confirm('Are you sure you want to delete this Job? \n This Action cannot be reversed!');" href='dashboard-delete-job.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>' class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+															
 														</div>
 													</td>
 												</tr>

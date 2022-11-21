@@ -30,7 +30,7 @@ include_once('include/client-head.php');
 										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>
 										<li class="breadcrumb-item text-muted"><a href="client-index.php">Dashboard</a></li>
 										<li class="breadcrumb-item"><a href="dashboard-manage-jobs.php">Manage Jobs</a></li>
-										<li class="breadcrumb-item"><a href="#" class="theme-cl">Edit Job</a></li>
+										<li class="breadcrumb-item"><a href="#" class="theme-cl">View Job</a></li>
 									</ol>
 								</nav>
 							</div>

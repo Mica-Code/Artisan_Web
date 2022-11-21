@@ -36,7 +36,7 @@ if(isset($_POST['editJob'])){
 										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>
 										<li class="breadcrumb-item text-muted"><a href="client-index.php">Dashboard</a></li>
 										<li class="breadcrumb-item"><a href="dashboard-manage-jobs.php">Manage Job</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="theme-cl">View Job</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="theme-cl">Edit Job</a></li>
                                         
 									</ol>
 								</nav>
