@@ -18,6 +18,7 @@ $handwork = $row['handwork'];
 $address = $row['address'];
 $skill_desc = $row['skill_desc'];
 $dob = $row['dob'];
+$about = $row['about'];
 $profile_pic = $row['profile_pic'];
 
 
@@ -69,7 +70,7 @@ $profile_pic = $row['profile_pic'];
 							<div class="mobile_nav">
 								<ul>
 								<li>
-									<a href="logout.php" data-toggle="modal" data-target="#login" class="crs_yuo12 w-auto text-dark gray">
+									<a href="logout.php" class="crs_yuo12 w-auto text-dark gray">
 										<span class="embos_45"><i class="lni lni-power-switch mr-1 mr-1"></i>Logout</span>
 									</a>
 								</li>

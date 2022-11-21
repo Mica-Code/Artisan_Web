@@ -18,25 +18,37 @@ $handwork = $row['handwork'];
 $address = $row['address'];
 $skill_desc = $row['skill_desc'];
 $dob = $row['dob'];
+$about = $row['about'];
 $profile_pic = $row['profile_pic'];
 
-//Selecting all from posted jobs Table
-$query = "SELECT * from art_reg_tbl WHERE userID = $session_id ";
 
-$result = mysqli_query($dbc, $query);
-$row = mysqli_fetch_array($result);
 
-$fname = $row['fullname'];
-$uname = $row['username'];
-$email = $row['email'];
-$phone = $row['phone'];
-$location = $row['location'];
-$age = $row['age'];
-$handwork = $row['handwork'];
-$address = $row['address'];
-$skill_desc = $row['skill_desc'];
-$dob = $row['dob'];
-$profile_pic = $row['profile_pic'];
+
+//Getting all data from the Post Job Table
+// $query = "SELECT * from postjob WHERE userID = $session_id ";
+
+// $result = mysqli_query($dbc, $query);
+// $row = mysqli_fetch_array($result);
+
+// if ($row == 0){
+// 	$justsave = "This";
+// }
+// else{
+// 	$postJobTitle = $row['postJobTitle'];
+// 	$postJobDesc = $row['postJobDesc'];
+// 	$postJobProfession = $row['postJobProfession'];
+// 	$postJobLevel = $row['postJobLevel'];
+// 	$postJobType = $row['postJobType'];
+// 	$postJobGender = $row['postJobGender'];
+// 	$postJobDeadline = $row['postJobDeadline'];
+// 	$postJobLocation = $row['postJobLocation'];
+// 	$postJobAddress = $row['postJobAddress'];
+// 	$postJobDate = $row['postJobDate'];
+// 	$postJobStatus = $row['postJobStatus'];
+// 	$postJobToken = $row['postJobToken'];	
+// }
+
+
 
 ?>
 
@@ -82,11 +94,17 @@ $profile_pic = $row['profile_pic'];
 							<div class="nav-toggle"></div>
 							<div class="mobile_nav">
 								<ul>
-								<li>
-									<a href="javascript:void(0);" data-toggle="modal" data-target="#login" class="crs_yuo12 w-auto text-dark gray">
-										<span class="embos_45"><i class="lni lni-power-switch mr-1 mr-1"></i>Logout</span>
-									</a>
-								</li>
+									<li>
+										<a href="dashboard-post-job.php" class="crs_yuo12 w-auto text-dark gray">
+											<span class="embos_45"><i class="fas fa-plus-circle mr-1 mr-1"></i>Post Job</span>
+										</a>
+									</li>
+									<li>
+										<a href="logout.php" class="crs_yuo12 w-auto text-dark gray">
+											<span class="embos_45"><i class="lni lni-power-switch mr-1 mr-1"></i>Logout</span>
+										</a>
+									</li>
+									
 								</ul>
 							</div>
 						</div>

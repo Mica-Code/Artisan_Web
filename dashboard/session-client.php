@@ -32,11 +32,11 @@
 
 	// echo "<script>alert('".$status."')</script>";
 
-	if(isset($_SESSION["id"])) {
-		if(isLoginSessionExpired()) {
-			header("Location:logout.php?session_expired=1");
-		}
-	}
+	// if(isset($_SESSION["id"])) {
+	// 	if(isLoginSessionExpired()) {
+	// 		header("Location:logout.php?session_expired=1");
+	// 	}
+	// }
  
 
 	

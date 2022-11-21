@@ -56,8 +56,8 @@ $postJobToken = sha1(uniqid(rand(),true));
 
 if(empty($error)){
     
-    $query = "INSERT into postjob (postJobTitle, postJobDesc, postJobProfession, postJobLevel, postJobType, postJobGender, postJobDeadline, postJobLocation, postJobAddress, postJobDate, userID, postJobToken) 
-    values ('$postJobTitle', '$postJobDesc', '$postJobProfession', '$postJobLevel', '$postJobType', '$postJobGender', '$postJobDeadline', '$postJobLocation', '$postJobAddress', now(), '$session_id', '$postJobToken')" or die(mysqli_error($dbc));
+    $query = "INSERT into postjob (postJobTitle, postJobDesc, postJobProfession, postJobLevel, postJobType, postJobGender, postJobDeadline, postJobLocation, postJobAddress, postJobDate, postJobStatus, userID, postJobToken) 
+    values ('$postJobTitle', '$postJobDesc', '$postJobProfession', '$postJobLevel', '$postJobType', '$postJobGender', '$postJobDeadline', '$postJobLocation', '$postJobAddress', now(), 'Pending', '$session_id', '$postJobToken')" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){

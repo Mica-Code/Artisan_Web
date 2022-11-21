@@ -20,6 +20,76 @@ $nav='<ul data-submenu-title="Main Navigation">
 
 
 include_once('include/head.php');
+
+
+if(isset($_POST['submit'])){
+
+	require('./include/helper.php');
+
+	// error variable.
+	$error = array();
+
+	$password = validate_input_text($_POST['password']);
+	if (empty($password)){
+		$error[] = "You forgot to enter your Old Password";
+	}
+
+	$new_password = validate_input_text($_POST['new_password']);
+	if (empty($new_password)){
+		$error[] = "You forgot to enter your New Password";
+	}
+
+	$c_new_password = validate_input_email($_POST['c_new_password']);
+	if (empty($c_new_password)){
+		$error[] = "You forgot to Confirm your password";
+	}
+
+
+	if(empty($error)){
+    
+		require ('../includes/mydatabase2.php');
+
+		$query = "SELECT * from art_reg_tbl WHERE userID = $session_id";
+		$result = mysqli_query($dbc, $query);
+
+		$row = mysqli_fetch_array($result);
+		$pass = $row['password'];
+
+
+		if(md5($password) != $pass){
+			$error[] = "Password is Incorrect";
+		}
+		elseif($new_password != $c_new_password){
+			$error[] = "New Password and Confirm Password must match";
+		}
+		else{
+			$hashpassword = md5($new_password);
+			$query = "UPDATE art_reg_tbl SET password='$hashpassword' WHERE userID=$session_id" or die(mysqli_error($dbc));;
+			$result = mysqli_query($dbc, $query);
+			if($result){
+		
+				echo "<script>alert('Password Updated Successfully')</script>";
+					
+				echo '<script>window.location="client-index.php"</script>';
+				
+			}else{
+				print "Error while registration...!";
+				echo mysqli_error($dbc);
+			}
+		}
+	
+
+
+
+		
+	}
+	
+
+}
+
+
+
+
 ?>			
 			
 				<div class="dashboard-content">
@@ -49,28 +119,37 @@ include_once('include/head.php');
 									</div>
 									
 									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">
+										<form class="row" method="post">
 											<div class="col-xl-8 col-lg-9 col-md-12 col-sm-12">
+											<?php if(!empty($error)){ ?>
+                                        <div class='alert alert-danger' style="text-align:left;">
+                                        <ul>
+                                                <?php foreach($error as $err){?>
+                                                   <li style="">&bull; <?php echo $err; ?></li>
+                                                <?php }?>
+                                            </ul>
+                                        </div>
+                                        <?php }?>
 												<div class="form-group">
 													<label class="text-dark ft-medium">Old Password</label>
-													<input type="text" class="form-control rounded" placeholder="">
+													<input type="password" name="password" class="form-control rounded" style="font-size:48px;">
 												</div>
 											</div>
 											<div class="col-xl-8 col-lg-9 col-md-12 col-sm-12">
 												<div class="form-group">
 													<label class="text-dark ft-medium">New Password</label>
-													<input type="text" class="form-control rounded" placeholder="">
+													<input type="password" name="new_password" class="form-control rounded" style="font-size:48px;">
 												</div>
 											</div>
 											<div class="col-xl-8 col-lg-9 col-md-12 col-sm-12">
 												<div class="form-group">
 													<label class="text-dark ft-medium">Confirm Password</label>
-													<input type="text" class="form-control rounded" placeholder="">
+													<input type="password" name="c_new_password" class="form-control rounded" style="font-size:48px;">
 												</div>
 											</div>
 											<div class="col-xl-12 col-lg-12">
 												<div class="form-group">
-													<button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">Save Changes</button>
+													<button type="submit" name="submit" class="btn btn-md ft-medium text-light rounded theme-bg">Save Changes</button>
 												</div>
 											</div>
 											

@@ -1,7 +1,7 @@
 <?php
 
 $title = "Edit Profile";
-$nav='<ul data-submenu-title="Main Navigation">
+$mob_nav=$nav='<ul data-submenu-title="Main Navigation">
 <li><a href="client-index.php"><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
 <li><a href="dashboard-post-job.php"><i class="lni lni-files mr-2"></i>Post New Job</a></li>
 <li><a href="dashboard-manage-jobs.php"><i class="lni lni-add-files mr-2"></i>Manage Jobs</a></li>
@@ -57,7 +57,7 @@ if(isset($_POST['save'])){
 									<div class="_dashboard_content_body py-3 px-3">
 										<form class="row" method="post" enctype="multipart/form-data">
 											<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-												<div class="custom-file avater_uploads">
+											<div class="custom-file avater_uploads">
 												  <input type="file" class="custom-file-input" id="customFile">
 												  <label class="custom-file-label" for="customFile"><i class="fa fa-user"></i></label>
 												</div>
@@ -65,6 +65,17 @@ if(isset($_POST['save'])){
 											
 											<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
 												<div class="row">
+												<div class="col-xl-12 col-lg-12 col-md-12">
+												<?php if(!empty($error)){ ?>
+                                        <div class='alert alert-danger' style="text-align:left;">
+                                        <ul>
+                                                <?php foreach($error as $err){?>
+                                                   <li style="">&bull; <?php echo $err; ?></li>
+                                                <?php }?>
+                                            </ul>
+                                        </div>
+                                        <?php }?>
+													</div>
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Full Name</label>
@@ -130,18 +141,24 @@ if(isset($_POST['save'])){
 															<select class="custom-select rounded" name="age">
 																<option value="">--- Age ---</option>
 															<option>20-25 Years</option>
-                                    <option>26-30 Years</option>
-                                    <option>31-35 Years</option>
-                                    <option>36-40 Years</option>
-                                    <option>41-45 Years</option>
-                                    <option>45 Years and Above</option>
+															<option>26-30 Years</option>
+															<option>31-35 Years</option>
+															<option>36-40 Years</option>
+															<option>41-45 Years</option>
+															<option>45 Years and Above</option>
 															</select>
 														</div>
 													</div>
+													<div class="col-xl-12 col-lg-12 col-md-12">
+													<div class="form-group">
+														<label class="text-dark ft-medium">Full Address</label>
+														<input type="text" name="address" class="form-control rounded" value="<?php echo $address;?>">
+													</div>
+												</div>
 													<div class="col-xl-12 col-lg-12">
 														<div class="form-group">
 															<label class="text-dark ft-medium">About Info</label>
-															<textarea class="form-control with-light" name="about" placeholder="A little about yourself"></textarea>
+															<textarea class="form-control with-light" name="about"><?php echo $about;?></textarea>
 														</div>
 													</div>
 													

@@ -28,7 +28,7 @@ include_once('include/client-head.php');
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>
-										<li class="breadcrumb-item text-muted"><a href="#">Dashboard</a></li>
+										<li class="breadcrumb-item text-muted"><a href="client-index.php">Dashboard</a></li>
 										<li class="breadcrumb-item"><a href="#" class="theme-cl">Manage Jobs</a></li>
 									</ol>
 								</nav>
@@ -50,27 +50,90 @@ include_once('include/client-head.php');
 												  <th scope="col">Title</th>
 												  <th scope="col">Filled</th>
 												  <th scope="col">Posted Date</th>
-												  <th scope="col">Expired</th>
+												  <th scope="col">Expire</th>
 												  <th scope="col">Applications</th>
 												  <th scope="col">Action</th>
 												</tr>
 											</thead>
 											<tbody>
+
+											<?php
+											$count = 0;
+											
+											$query = "SELECT * from postjob WHERE userID = $session_id ";
+
+											$result = mysqli_query($dbc, $query);
+
+											while($row = mysqli_fetch_array($result)){
+												$postJobTitle = $row['postJobTitle'];
+												$postJobDesc = $row['postJobDesc'];
+												$postJobProfession = $row['postJobProfession'];
+												$postJobLevel = $row['postJobLevel'];
+												$postJobType = $row['postJobType'];
+												$postJobGender = $row['postJobGender'];
+												$postJobDeadline = $row['postJobDeadline'];
+												$postJobLocation = $row['postJobLocation'];
+												$postJobAddress = $row['postJobAddress'];
+												$postJobDate = $row['postJobDate'];
+												$postJobStatus = $row['postJobStatus'];
+												$postJobToken = $row['postJobToken'];	
+											?>
 												<tr>
-													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">Senior Web Developer<span class="medium theme-cl rounded text-success bg-light-success ml-1 py-1 px-2">Pending</span></h4></div></td>
-													<td><div class="dash-filled"><span class="p-2 circle gray d-inline-flex align-items-center justify-content-center"><i class="lni lni-minus"></i></span></div></td>
-													<td>10 Sep 2021</td>
-													<td>12 Nov 2021</td>
+													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm"><?php echo $postJobTitle;
+
+													if ($postJobStatus == "Pending"){
+														echo "<span class='medium theme-cl rounded text-warning bg-light-warning ml-1 py-1 px-2'>Pending</span>";
+													}
+													elseif ($postJobStatus == "Active"){
+														echo "<span class='medium theme-cl rounded text-primary bg-light-primary ml-1 py-1 px-2'>Active</span>";
+													}
+													elseif ($postJobStatus == "Completed"){
+														echo "<span class='medium theme-cl rounded text-success bg-light-success ml-1 py-1 px-2'>Completed</span>";
+													}
+													elseif ($postJobStatus == "Cancled"){
+														echo "<span class='medium theme-cl rounded text-danger bg-light-danger ml-1 py-1 px-2'>Cancled</span>";
+													}
+													?></h4></div></td>
+													<td><div class="dash-filled">
+														<?php
+														if ($postJobStatus == "Active" || $postJobStatus == "Completed"){
+															echo "<span class='p-2 circle text-light bg-success d-inline-flex align-items-center justify-content-center'><i class='lni lni-checkmark'></i></span>";
+														}
+														else{
+															echo "<span class='p-2 circle gray d-inline-flex align-items-center justify-content-center'><i class='lni lni-minus'></i></span></div></td>";
+														}
+														?>
+
+													<td><?php 
+													$phpdate = strtotime( $postJobDate );
+													// $mysqldate = date( 'Y-m-d H:i:s', $phpdate );
+													// $mysqldate = date( '(D) j M Y <br> h:i A', $phpdate);
+													$mysqldate = date( 'j M Y', $phpdate);
+													echo $mysqldate;?></td>
+
+
+													<td><?php 
+													$phpdate2 = strtotime( $postJobDeadline );
+													// $mysqldate = date( 'Y-m-d H:i:s', $phpdate );
+													// $mysqldate = date( '(D) j M Y <br> h:i A', $phpdate);
+													$mysqldate2 = date( 'j M Y', $phpdate2);
+													echo $mysqldate2;?></td>
+
 													<td><a href="dashboard-manage-applications.html" class="gray rounded px-3 py-2 ft-medium">----</a></td>
 													<td>
 														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center"><i class="lni lni-pencil"></i></a>
+															<a href="dashboard-single-job.php" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
+															<a href="dashboard-edit-job.php" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center"><i class="lni lni-pencil"></i></a>
 															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
 														</div>
 													</td>
 												</tr>
-												<tr>
+
+												<?php
+												$count++;
+												}
+												?>
+												<!-- <tr>
 													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">Experienced UI/UX Product Designer</h4></div></td>
 													<td><div class="dash-filled"><span class="p-2 circle gray d-inline-flex align-items-center justify-content-center"><i class="lni lni-minus"></i></span></div></td>
 													<td>18 Sep 2021</td>
@@ -139,7 +202,7 @@ include_once('include/client-head.php');
 															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
 														</div>
 													</td>
-												</tr>
+												</tr> -->
 											</tbody>
 										</table>
 									</div>

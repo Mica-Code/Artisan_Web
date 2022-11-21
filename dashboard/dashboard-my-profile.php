@@ -19,6 +19,14 @@ $nav='<ul data-submenu-title="Main Navigation">
 </ul>';
 
 include_once('include/head.php');
+
+
+if(isset($_POST['save'])){
+
+	require('edit-profile-process.php');
+
+}
+
 ?>			
 				<div class="dashboard-content">
 					<div class="dashboard-tlbar d-block mb-5">
@@ -45,149 +53,126 @@ include_once('include/head.php');
 											<h4 class="mb-0 ft-medium fs-md"><i class="fa fa-user mr-1 theme-cl fs-sm"></i>My Account</h4>	
 										</div>
 									</div>
-									<!-- <img src="../Account/<?php echo $profile_pic; ?>" width="100px"> -->
+									
 									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">
+										<form class="row" method="post" enctype="multipart/form-data">
 											<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
 												<div class="custom-file avater_uploads">
-													<?php //echo "<script>alert('".$profile_pic."')</script>";?>
-													<p>Upload Picture</p>
-													<i class="fa fa-plus icon" style="font-size: 12px"> </i>
-													<input type="file" class="custom-file-input" id="customFile">
-													
-												  <!-- <input type="file" class="custom-file-input" id="customFile"> -->
-												  <img src="../Account/<?php echo $profile_pic; ?>" width="170px" height="180px">
-												  <!-- <label class="custom-file-label" for="customFile"></label> -->
+												  <input type="file" class="custom-file-input" id="customFile">
+												  <label class="custom-file-label" for="customFile"><i class="fa fa-user"></i></label>
 												</div>
-
-												<div class="profile-pic">
-<label class="-label" for="file">
-<span class="glyphicon glyphicon-camera"></span>
-<span>Change Image</span>
-</label>
-<input id="file" type="file" onchange="loadFile(event)"/>
-<img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output" width="200" />
-</div>
-
-
 											</div>
+											
 											<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
 												<div class="row">
+
+												<div class="col-xl-12 col-lg-12 col-md-12">
+												<?php if(!empty($error)){ ?>
+                                        <div class='alert alert-danger' style="text-align:left;">
+                                        <ul>
+                                                <?php foreach($error as $err){?>
+                                                   <li style="">&bull; <?php echo $err; ?></li>
+                                                <?php }?>
+                                            </ul>
+                                        </div>
+                                        <?php }?>
+													</div>
+
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Full Name</label>
-															<input type="text" class="form-control rounded" value="Full Name">
+															<input type="text" name="fullName" class="form-control rounded" value="<?php echo $fname;?>">
 														</div>
 													</div>
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
-															<label class="text-dark ft-medium">Job Title</label>
-															<input type="text" class="form-control rounded" value="Job Name">
+															<label class="text-dark ft-medium">Username</label>
+															<input type="text" name="username" class="form-control rounded" value="<?php echo $uname;?>">
 														</div>
 													</div>
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Phone</label>
-															<input type="text" class="form-control rounded" value="Phone">
+															<input type="text" name="phone" class="form-control rounded" value="<?php echo $phone;?>">
 														</div>
 													</div>
+
+
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Email</label>
-															<input type="email" class="form-control rounded" value="uppcl@gmail.com">
+															<input type="email"name="email" class="form-control rounded" value="<?php echo $email;?>">
 														</div>
 													</div>
+													
+
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
-															<label class="text-dark ft-medium">Job Type</label>
-															<select class="custom-select rounded">
-																<option>Choose Job Type</option>
-																<option>Full Time</option>
-																<option>Part Time</option>
-																<option>Freelance</option>
+														<label class="text-dark ft-medium">Select your Location</label>
+															<select class="form-control rounded" id="location" name="location">
+																<optgroup label="Your Location">
+																	<option value="">--- Select Location ---</option>
+																	<option value="Agege">Agege</option>
+																	<option value="Ajeromi-Ifelodun">Ajeromi-Ifelodun</option>
+																	<option value="Alimosho">Alimosho</option>
+																	<option value="Amuwo-Odofin">Amuwo-Odofin</option>
+																	<option value="Apapa">Apapa</option>
+																	<option value="Badagry">Badagry</option>
+																	<option value="Epe">Epe</option>
+																	<option value="Eti-Osa">Eti-Osa</option>
+																	<option value="Ibeju/Lekki">Ibeju/Lekki</option>
+																	<option value="Ifako-Ijaye">Ifako-Ijaye</option>
+																	<option value="Ikeja">Ikeja</option>
+																	<option value="Ikorodu">Ikorodu</option>
+																	<option value="Kosofe">Kosofe</option>
+																	<option value="Lagos Island">Lagos Island</option>
+																	<option value="Lagos Mainland">Lagos Mainland</option>
+																	<option value="Mushin">Mushin</option>
+																	<option value="Ojo">Ojo</option>
+																	<option value="Oshodi-Isolo">Oshodi-Isolo</option>
+																	<option value="Shomolu">Shomolu</option>
+																	<option value="Surulere">Surulere</option>
+																</optgroup>
 															</select>
-														</div>
+														</div>	
 													</div>
-													<div class="col-xl-6 col-lg-6">
-														<div class="form-group">
-															<label class="text-dark ft-medium">Job Category</label>
-															<select class="custom-select rounded">
-																<option>Choose Categories</option>
-																<option>IT & Software</option>
-																<option>Bank Services</option>
-																<option>Hospitals</option>
-															</select>
-														</div>
-													</div>
-													<div class="col-xl-6 col-lg-6">
-														<div class="form-group">
-															<label class="text-dark ft-medium">Experience</label>
-															<select class="custom-select rounded">
-																<option>Select Experience</option>
-																<option>Begginer</option>
-																<option>01 Years</option>
-																<option>02 Years</option>
-																<option>03 Years</option>
-																<option>04 Years</option>
-																<option>05 Years</option>
-															</select>
-														</div>
-													</div>
-													<div class="col-xl-6 col-lg-6">
-														<div class="form-group">
-															<label class="text-dark ft-medium">Education</label>
-															<input type="text" class="form-control rounded" value="Education">
-														</div>
-													</div>
-													<div class="col-xl-6 col-lg-6">
-														<div class="form-group">
-															<label class="text-dark ft-medium">Current Salary</label>
-															<select class="custom-select rounded">
-																<option>10-20 K</option>
-																<option>20-30 K</option>
-																<option>30-40 K</option>
-																<option>40-50 K</option>
-															</select>
-														</div>
-													</div>
-													<div class="col-xl-6 col-lg-6">
-														<div class="form-group">
-															<label class="text-dark ft-medium">Expected Salary</label>
-															<select class="custom-select rounded">
-																<option>10-20 K</option>
-																<option>20-30 K</option>
-																<option>30-40 K</option>
-																<option>40-50 K</option>
-															</select>
-														</div>
-													</div>
+													
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Age</label>
-															<select class="custom-select rounded">
-																<option>20 Years+</option>
-																<option>23+ Years</option>
-																<option>25+ Years</option>
-																<option>30+ Years</option>
+															<select class="custom-select rounded" name="age">
+																<option value="">--- Age ---</option>
+															<option>20-25 Years</option>
+															<option>26-30 Years</option>
+															<option>31-35 Years</option>
+															<option>36-40 Years</option>
+															<option>41-45 Years</option>
+															<option>45 Years and Above</option>
 															</select>
 														</div>
 													</div>
-													<div class="col-xl-6 col-lg-6">
+													<div class="col-xl-6 col-lg-6 col-md-6">
 														<div class="form-group">
-															<label class="text-dark ft-medium">Language</label>
-															<input type="email" class="form-control rounded" value="e.x Englisg, Hindi">
+															<label class="text-dark ft-medium">Full Address</label>
+															<input type="text" name="address" class="form-control rounded" value="<?php echo $address;?>">
+														</div>
+													</div>
+													<div class="col-xl-6 col-lg-6 col-md-6">
+														<div class="form-group">
+															<label class="text-dark ft-medium">Handwork</label>
+															<input type="text" name="address" class="form-control rounded" value="<?php echo $handwork;?>" disabled>
 														</div>
 													</div>
 													<div class="col-xl-12 col-lg-12">
 														<div class="form-group">
 															<label class="text-dark ft-medium">About Info</label>
-															<textarea class="form-control with-light">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</textarea>
+															<textarea class="form-control with-light" name="about"><?php echo $about;?></textarea>
 														</div>
 													</div>
 													
 													<div class="col-xl-12 col-lg-12">
 														<div class="form-group">
-															<button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">Save Changes</button>
+															<button type="submit" name="save" id="save" class="btn btn-md ft-medium text-light rounded theme-bg">Save Changes</button>
 														</div>
 													</div>
 												</div>
@@ -199,116 +184,7 @@ include_once('include/head.php');
 							</div>
 						</div>
 						
-						<div class="row">
-							<div class="col-lg-12 col-md-12">
-								<div class="_dashboard_content bg-white rounded mb-4">
-									<div class="_dashboard_content_header br-bottom py-3 px-3">
-										<div class="_dashboard__header_flex">
-											<h4 class="mb-0 ft-medium fs-md"><i class="ti-facebook mr-1 theme-cl fs-sm"></i>Social Accounts</h4>	
-										</div>
-									</div>
-									
-									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">
-											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-												<div class="form-group">
-													<label class="text-dark ft-medium">Facebook</label>
-													<input type="text" class="form-control rounded" placeholder="https://www.facebook.com/">
-												</div>
-											</div>
-											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-												<div class="form-group">
-													<label class="text-dark ft-medium">Twitter</label>
-													<input type="text" class="form-control rounded" placeholder="https://www.twitter.com/">
-												</div>
-											</div>
-											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-												<div class="form-group">
-													<label class="text-dark ft-medium">LinkedIn</label>
-													<input type="text" class="form-control rounded" placeholder="https://www.linkedin.com/">
-												</div>
-											</div>
-											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-												<div class="form-group">
-													<label class="text-dark ft-medium">GooglePlus</label>
-													<input type="text" class="form-control rounded" placeholder="https://www.gplus.com/">
-												</div>
-											</div>
-											<div class="col-xl-12 col-lg-12">
-												<div class="form-group">
-													<button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">Save Changes</button>
-												</div>
-											</div>
-											
-										</form>
-									</div>
-								</div>
-							</div>
-							
-							<div class="col-lg-12 col-md-12">
-								<div class="_dashboard_content bg-white rounded mb-4">
-									<div class="_dashboard_content_header br-bottom py-3 px-3">
-										<div class="_dashboard__header_flex">
-											<h4 class="mb-0 ft-medium fs-md"><i class="fas fa-lock mr-1 theme-cl fs-sm"></i>Contact Information</h4>	
-										</div>
-									</div>
-									
-									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">	
-											<div class="col-xl-6 col-lg-6 col-md-12">
-												<div class="form-group">
-													<label class="text-dark ft-medium">Country</label>
-													<select class="custom-select rounded">
-														<option>Australia</option>
-														<option>United States</option>
-														<option>United Kingdom</option>
-														<option>China</option>
-														<option>India</option>
-														<option>Pakistan</option>
-													</select>
-												</div>
-											</div>
-											<div class="col-xl-6 col-lg-6 col-md-12">
-												<div class="form-group">
-													<label class="text-dark ft-medium">City</label>
-													<select class="custom-select rounded">
-														<option>Madhya Pradesh</option>
-														<option>Punjab</option>
-														<option>Uttar Pradesh</option>
-														<option>Arudachal</option>
-														<option>Nepal</option>
-														<option>Afganistan</option>
-													</select>
-												</div>
-											</div>
-											<div class="col-xl-12 col-lg-12 col-md-12">
-												<div class="form-group">
-													<label class="text-dark ft-medium">Full Address</label>
-													<input type="password" class="form-control rounded" placeholder="#10 Marke Juger, SBI Road">
-												</div>
-											</div>
-											<div class="col-xl-6 col-lg-6 col-md-12">
-												<div class="form-group">
-													<label class="text-dark ft-medium">Latitude</label>
-													<input type="password" class="form-control rounded" placeholder="#10 Marke Juger, SBI Road">
-												</div>
-											</div>
-											<div class="col-xl-6 col-lg-6 col-md-12">
-												<div class="form-group">
-													<label class="text-dark ft-medium">Longitude</label>
-													<input type="password" class="form-control rounded" placeholder="#10 Marke Juger, SBI Road">
-												</div>
-											</div>
-											<div class="col-xl-12 col-lg-12">
-												<div class="form-group">
-													<button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">Save Changes</button>
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>	
-						</div>	
+						
 							
 					</div>
 					<?php

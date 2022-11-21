@@ -257,7 +257,7 @@ html body .db {
 	color:#005536;
 }
 .trans-bg{
-	background:rgba(255,255,255,0.1); !important;
+	background:rgba(255,255,255,0.1) !important;
 }
 .theme-bg-light{
 	background:rgba(40, 182, 97,0.11) !important;
@@ -709,7 +709,7 @@ html body .text-purple {
   color: #7460ee; }
 
 html body .text-primary {
-  color:#e42d29 !important; }
+  color:#006cff !important; }
 
 html body .text-megna {
   color: #1dc8cd; }
@@ -1148,7 +1148,7 @@ button.close {
     color:#28b661;
     cursor: pointer;
     background-color:transparent;
-    border-color#28b661;
+    border-color: #28b661;
 }
 
 .pagination li:first-child a {

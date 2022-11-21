@@ -46,9 +46,9 @@
 			header("location:../Account/login.php");
 			exit();
 		}
-		if(isLoginSessionExpired()) {
-			header("Location:logout.php?session_expired=1");
-		}
+		// if(isLoginSessionExpired()) {
+		// 	header("Location:logout.php?session_expired=1");
+		// }
 	}
 
 ?>
