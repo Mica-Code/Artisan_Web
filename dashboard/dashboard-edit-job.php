@@ -19,9 +19,49 @@ $nav='<ul data-submenu-title="Main Navigation">
 
 include_once('include/client-head.php');
 
+if (isset($_GET['JobID']) && isset($_GET['JobToken'])) {
+
+    $jobId = $_GET['JobID'];
+    $jobToken = $_GET['JobToken'];
+
+    //echo "<script>alert('".$jobId." and ".$jobToken."');</script>";
+
+    if (($jobId != '') && ($jobToken != '')){
+        
+        $query = "SELECT * from postjob where postJobID='$jobId' AND postJobToken='$jobToken'";
+        $execute = mysqli_query($dbc, $query);
+        $num_row=mysqli_num_rows($execute);
+        if($num_row > 0){
+            $row=mysqli_fetch_array($execute);
+
+            $postJobTitle = $row['postJobTitle'];
+            $postJobDesc = $row['postJobDesc'];
+            $postJobProfession = $row['postJobProfession'];
+            $postJobLevel = $row['postJobLevel'];
+            $postJobType = $row['postJobType'];
+            $postJobGender = $row['postJobGender'];
+            $postJobDeadline = $row['postJobDeadline'];
+            $postJobLocation = $row['postJobLocation'];
+            $postJobAddress = $row['postJobAddress'];
+            $postJobDate = $row['postJobDate'];
+            $postJobStatus = $row['postJobStatus'];
+            $postJobMinBud = $row['postJobMinBudget'];
+            $postJobMaxBud = $row['postJobMaxBudget'];
+            $postJobToken = $row['postJobToken'];	
+          
+        }else{
+            echo "<script>window.location='dashboard-manage-jobs.php'</script>";
+        }
+    }else{
+        echo "<script>window.location='dashboard-manage-jobs.php'</script>";
+    }
+}else{
+    echo "<script>window.location='dashboard-manage-jobs.php'</script>";
+}
+
 
 if(isset($_POST['editJob'])){
-	require("postJob-Process.php");
+	require("editJob-Process.php");
 }
 
 ?>	
@@ -30,7 +70,7 @@ if(isset($_POST['editJob'])){
 					<div class="dashboard-tlbar d-block mb-5">
 						<div class="row">
 							<div class="colxl-12 col-lg-12 col-md-12">
-								<h1 class="ft-medium">Post A New Job</h1>
+								<h1 class="ft-medium">Edit Job</h1>
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>
@@ -50,7 +90,7 @@ if(isset($_POST['editJob'])){
 								<div class="_dashboard_content bg-white rounded mb-4">
 									<div class="_dashboard_content_header br-bottom py-3 px-3">
 										<div class="_dashboard__header_flex">
-											<h4 class="mb-0 ft-medium fs-md"><i class="fa fa-file mr-1 theme-cl fs-sm"></i>Post Job</h4>	
+											<h4 class="mb-0 ft-medium fs-md"><i class="fa fa-file mr-1 theme-cl fs-sm"></i>Edit Job</h4>	
 										</div>
 									</div>
 									
@@ -71,14 +111,14 @@ if(isset($_POST['editJob'])){
                                         <?php }?>
 														<div class="form-group">
 															<label class="text-dark ft-medium">Job Title</label>
-															<input type="text" id="postJobTitle" name="postJobTitle" class="form-control rounded" placeholder="Title">
+															<input type="text" id="postJobTitle" name="postJobTitle" class="form-control rounded" value="<?php echo $postJobTitle;?>">
 														</div>
 													</div>
 													
 													<div class="col-xl-12 col-lg-12 col-md-12">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Job Description</label>
-															<textarea id="postJobDesc" name="postJobDesc" class="form-control rounded" placeholder="Job Description"></textarea>
+															<textarea id="postJobDesc" name="postJobDesc" class="form-control rounded"><?php echo $postJobDesc;?></textarea>
 														</div>
 													</div>
 													
@@ -446,7 +486,7 @@ if(isset($_POST['editJob'])){
 													<div class="col-xl-12 col-lg-12 col-md-12">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Application Deadline</label>
-															<input type="date" id="postJobDeadline" name="postJobDeadline" class="form-control rounded" placeholder="dd-mm-yyyy">
+															<input type="date" id="postJobDeadline" name="postJobDeadline" class="form-control rounded" value="<?php echo $postJobDeadline;?>">
 														</div>
 													</div>
 													
@@ -494,11 +534,53 @@ if(isset($_POST['editJob'])){
 															<input type="text" class="form-control" placeholder="City" />
 														</div>
 													</div> -->
+
+                                                    <div class="col-xl-12 col-lg-12 col-md-12">
+														<div class="form-group" style="margin-bottom: 0px;">
+                              <label class="text-dark ft-medium" style="margin-top: 5px; margin-bottom: 0px;"><h5>Budget (&#x20A6;)</h5></label>
+														</div>
+                          </div>                 
+
+                          <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="form-group">
+                              <label class="text-dark ft-medium">Minimum Budget</label>
+                              <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="arrow"></span>
+                                &#x20A6;
+                                </span>
+                                <input type="number" class="form-control" name="postJobMinBud" value="<?php echo $postJobMinBud?>" required>
+                                <span class="input-group-addon">
+                                <span class="arrow"></span>
+                                .00
+                                </span>
+                              </div>
+                              <!-- <input type="text" class="form-control"/> -->
+                            </div>
+                          </div>
+
+                          <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="form-group">
+                              <label class="text-dark ft-medium">Minimum Budget</label>
+                              <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="arrow"></span>
+                                &#x20A6;
+                                </span>
+                                <input type="number" class="form-control" name="postJobMaxBud" value="<?php echo $postJobMaxBud?>" required>
+                                <span class="input-group-addon">
+                                <span class="arrow"></span>
+                                .00
+                                </span>
+                              </div>
+                              <!-- <input type="text" class="form-control"/> -->
+                            </div>
+                          </div>
 													
 													<div class="col-xl-12 col-lg-12 col-md-12">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Full Address</label>
-															<input type="text" id="postJobAddress" name="postJobAddress" class="form-control" placeholder="10, Marke Juger, SBI Road" />
+															<input type="text" id="postJobAddress" name="postJobAddress" class="form-control" value="<?php echo $postJobAddress;?>"/>
 														</div>
 													</div>
 													
@@ -524,7 +606,7 @@ if(isset($_POST['editJob'])){
 													</div> -->													
 													<div class="col-12">
 														<div class="form-group">
-															<button type="submit" id="postJob" name="postJob"class="btn btn-md ft-medium text-light rounded theme-bg">Publish Job</button>
+															<button type="submit" id="editJob" name="editJob"class="btn btn-md ft-medium text-light rounded theme-bg">Publish Job</button>
 														</div>
 													</div>
 													

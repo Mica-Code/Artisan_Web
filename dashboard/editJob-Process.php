@@ -7,77 +7,74 @@ require ('./include/helper.php');
 // error variable.
 $error = array();
 
-$postJobTitle = validate_input_text($_POST['postJobTitle']);
+$postJobTitlen = validate_input_text($_POST['postJobTitle']);
 if (empty($postJobTitle)){
     $error[] = "You forgot to enter the Job Title";
 }
 
-$postJobDesc = validate_input_text($_POST['postJobDesc']);
+$postJobDescn = validate_input_text($_POST['postJobDesc']);
 if (empty($postJobDesc)){
     $error[] = "You forgot to enter the Job Description";
 }
 
-$postJobProfession = validate_input_text($_POST['postJobProfession']);
+$postJobProfessionn = validate_input_text($_POST['postJobProfession']);
 if (empty($postJobProfession)){
     $error[] = "You forgot to select the Profession Needed";
 }
 
-$postJobLevel = validate_input_text($_POST['postJobLevel']);
+$postJobLeveln = validate_input_text($_POST['postJobLevel']);
 if (empty($postJobLevel)){
     $error[] = "You forgot to select the Experience Level Needed";
 }
 
-$postJobType = validate_input_text($_POST['postJobType']);
+$postJobTypen = validate_input_text($_POST['postJobType']);
 if (empty($postJobType)){
     $error[] = "You forgot to select the Job Type";
 }
 
-$postJobGender = validate_input_text($_POST['postJobGender']);
+$postJobGendern = validate_input_text($_POST['postJobGender']);
 if (empty($postJobGender)){
     $error[] = "You forgot to select the gender needed";
 }
 
-$postJobDeadline = validate_input_text($_POST['postJobDeadline']);
+$postJobDeadlinen = validate_input_text($_POST['postJobDeadline']);
 if (empty($postJobDeadline)){
     $error[] = "You forgot to select the application deadline";
 }
 
-$postJobLocation = validate_input_text($_POST['postJobLocation']);
+$postJobLocationn = validate_input_text($_POST['postJobLocation']);
 if (empty($postJobLocation)){
     $error[] = "You forgot to select the Job Location";
 }
 
-$postJobMinBud = validate_input_text($_POST['postJobMinBud']);
-if (empty($postJobMinBud)){
+$postJobMinBudn = validate_input_text($_POST['postJobMinBud']);
+if (empty($postJobMinBudn)){
     $error[] = "You forgot to Enter a Minimum Budget for the project";
 }
 
-$postJobMaxBud = validate_input_text($_POST['postJobMaxBud']);
-if (empty($postJobMaxBud)){
+$postJobMaxBudn = validate_input_text($_POST['postJobMaxBud']);
+if (empty($postJobMaxBudn)){
     $error[] = "You forgot to Enter a Maximum Budget for the project";
 }
 
-if ($postJobMaxBud < $postJobMinBud){
+if ($postJobMaxBudn < $postJobMinBudn){
     $error[] = "Maximum Budget should be greater than minimum budget";
 }
 
-$postJobAddress = validate_input_text($_POST['postJobAddress']);
+$postJobAddressn = validate_input_text($_POST['postJobAddress']);
 if (empty($postJobAddress)){
     $error[] = "You forgot to Enter the full Address of the job";
 }
 
-$postJobToken = sha1(uniqid(rand(),true));
-
 if(empty($error)){
     
-    $query = "INSERT into postjob (postJobTitle, postJobDesc, postJobProfession, postJobLevel, postJobType, postJobGender, postJobDeadline, postJobLocation, postJobAddress, postJobDate, postJobMinBudget, postJobMaxBudget, postJobStatus, userID, postJobToken) 
-    values ('$postJobTitle', '$postJobDesc', '$postJobProfession', '$postJobLevel', '$postJobType', '$postJobGender', '$postJobDeadline', '$postJobLocation', '$postJobAddress', now(), '$postJobMinBud', '$postJobMaxBud', 'Pending', '$session_id', '$postJobToken')" or die(mysqli_error($dbc));
+    $query = "UPDATE postjob SET postJobTitle='$postJobTitlen', postJobDesc='$postJobDescn', postJobProfession='$postJobProfessionn', postJobLevel='$postJobLeveln', postJobType='$postJobTypen', postJobGender='$postJobGendern', postJobDeadline='$postJobDeadlinen', postJobLocation='$postJobLocationn', postJobAddress='$postJobAddressn', postJobMinBudget='$postJobMinBudn', postJobMaxBudget='$postJobMaxBudn', postJobEditDate=now(), postJobStatus='Pending' WHERE postJobToken='$postJobToken'" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){
 
 
-        echo "<script>alert('Job Posted Successfully')</script>";
+        echo "<script>alert('Job Edited Successfully')</script>";
         echo "<script>window.location = 'client-index.php';</script>";
             
         // header('location: dashboard-post-job.php#myModal');

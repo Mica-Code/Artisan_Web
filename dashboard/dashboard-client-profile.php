@@ -138,8 +138,8 @@ if(isset($_POST['save'])){
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Age</label>
-															<select class="custom-select rounded" name="age">
-																<option value="">--- Age ---</option>
+															<select class="form-control rounded" name="age">
+															<option value="">--- Age ---</option>
 															<option>20-25 Years</option>
 															<option>26-30 Years</option>
 															<option>31-35 Years</option>

@@ -485,6 +485,7 @@ if(isset($_POST['postJob'])){
 															<input type="text" class="form-control" value="<?php echo $phone;?>" disabled />
 														</div>
 													</div>
+                          
 													
 													<!-- <div class="col-xl-6 col-lg-6 col-md-6">
 														<div class="form-group">
@@ -492,11 +493,57 @@ if(isset($_POST['postJob'])){
 															<input type="text" class="form-control" placeholder="City" />
 														</div>
 													</div> -->
+
+
+                          <div class="col-xl-12 col-lg-12 col-md-12">
+														<div class="form-group" style="margin-bottom: 0px;">
+                              <label class="text-dark ft-medium" style="margin-top: 5px; margin-bottom: 0px;"><h5>Budget (&#x20A6;)</h5></label>
+														</div>
+                          </div>                 
+
+                          <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="form-group">
+                              <label class="text-dark ft-medium">Minimum Budget</label>
+                              <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="arrow"></span>
+                                &#x20A6;
+                                </span>
+                                <input type="number" class="form-control" name="postJobMinBud" placeholder="Enter Minimum Amount" required>
+                                <span class="input-group-addon">
+                                <span class="arrow"></span>
+                                .00
+                                </span>
+                              </div>
+                              <!-- <input type="text" class="form-control"/> -->
+                            </div>
+                          </div>
+
+                          <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="form-group">
+                              <label class="text-dark ft-medium">Minimum Budget</label>
+                              <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="arrow"></span>
+                                &#x20A6;
+                                </span>
+                                <input type="number" class="form-control" name="postJobMaxBud" placeholder="Enter Minimum Amount" required>
+                                <span class="input-group-addon">
+                                <span class="arrow"></span>
+                                .00
+                                </span>
+                              </div>
+                              <!-- <input type="text" class="form-control"/> -->
+                            </div>
+                          </div>
+
+                          
+
 													
 													<div class="col-xl-12 col-lg-12 col-md-12">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Full Address</label>
-															<input type="text" id="postJobAddress" name="postJobAddress" class="form-control" placeholder="10, Marke Juger, SBI Road" />
+															<input type="text" id="postJobAddress" name="postJobAddress" class="form-control" placeholder="Enter Address" />
 														</div>
 													</div>
 													

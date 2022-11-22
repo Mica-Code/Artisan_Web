@@ -65,6 +65,8 @@ $profile_pic = $row['profile_pic'];
         <!-- Custom CSS -->
         <link href="assets/css/styles.css" rel="stylesheet">
 		<link rel="icon" href="../Uploads/General/favicon.png" type="image/x-icon">
+
+	
 		
     </head>
 	
