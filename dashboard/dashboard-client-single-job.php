@@ -18,13 +18,70 @@ $nav='<ul data-submenu-title="Main Navigation">
 </ul>';
 
 include_once('include/client-head.php');
+
+
+if (isset($_GET['JobID']) && isset($_GET['JobToken'])) {
+
+    $jobId = $_GET['JobID'];
+    $jobToken = $_GET['JobToken'];
+
+    //echo "<script>alert('".$jobId." and ".$jobToken."');</script>";
+
+    if (($jobId != '') && ($jobToken != '')){
+        
+        $query = "SELECT * from postjob where postJobID='$jobId' AND postJobToken='$jobToken'";
+        $execute = mysqli_query($dbc, $query);
+        $num_row=mysqli_num_rows($execute);
+        if($num_row > 0){
+            $row=mysqli_fetch_array($execute);
+
+			$postJobID = $row['postJobID'];
+            $postJobTitle = $row['postJobTitle'];
+            $postJobDesc = $row['postJobDesc'];
+            $postJobProfession = $row['postJobProfession'];
+            $postJobLevel = $row['postJobLevel'];
+            $postJobType = $row['postJobType'];
+            $postJobGender = $row['postJobGender'];
+            $postJobDeadline = $row['postJobDeadline'];
+            $postJobLocation = $row['postJobLocation'];
+            $postJobAddress = $row['postJobAddress'];
+            $postJobDate = $row['postJobDate'];
+            $postJobStatus = $row['postJobStatus'];
+            $postJobMinBud = $row['postJobMinBudget'];
+            $postJobMaxBud = $row['postJobMaxBudget'];
+            $postJobToken = $row['postJobToken'];	
+			$postJobUserID = $row['userID'];	
+
+			$query2 = "SELECT * from art_reg_tbl where userID=$postJobUserID";
+			$execute2 = mysqli_query($dbc, $query2);
+
+			$row2=mysqli_fetch_array($execute2);
+
+			$postJobUserName = $row2['username'];
+			
+          
+        }else{
+            echo "<script>window.location='dashboard-manage-jobs.php'</script>";
+        }
+    }else{
+        echo "<script>window.location='dashboard-manage-jobs.php'</script>";
+    }
+}else{
+    echo "<script>window.location='dashboard-manage-jobs.php'</script>";
+}
+
+
+if(isset($_POST['editJob'])){
+	require("editJob-Process.php");
+}
+
 ?>	
 				
 				<div class="dashboard-content">
 					<div class="dashboard-tlbar d-block mb-5">
 						<div class="row">
 							<div class="colxl-12 col-lg-12 col-md-12">
-								<h1 class="ft-medium">Name of Job</h1>
+								<h1 class="ft-medium">View Job</h1>
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>
@@ -37,7 +94,7 @@ include_once('include/client-head.php');
 						</div>
 					</div>
 					
-					<section class="middle">
+					<section class="middle" style="background-color:white;">
 				<div class="container">
 					<div class="row">
 						
@@ -56,14 +113,14 @@ include_once('include/client-head.php');
 									</div>
 									<div class="jbd-01-caption pl-3">
 										<div class="tbd-title">
-											<div class="ft-medium medium"><span>InfosysX</span></div>
-											<h4 class="mb-3 ft-medium fs-lg">Senior UI/UX Web Designer in USA<img src="assets/img/verify.svg" class="ml-1" width="12" alt=""></h4>
+											<div class="ft-medium medium"><span><?php echo $postJobUserName;?></span></div>
+											<h4 class="mb-3 ft-medium fs-lg"><?php echo $postJobTitle;?><img src="assets/img/verify.svg" class="ml-1" width="12" alt=""></h4>
 										</div>
 										<div class="jbd-list mb-2">
-											<span class="px-2 py-1 rounded theme-cl theme-bg-light mr-2"><i class="lni lni-briefcase mr-1"></i>Full Time</span>
-											<span><i class="lni lni-map-marker mr-1"></i>San Francisco, USA</span>
-											<span class="px-2 py-1 rounded text-warning bg-light-warning ml-2"><i class="lni lni-star mr-1"></i>Featured</span>
-											<span class="rounded ml-2"><i class="lni lni-money-protection mr-1"></i>$85k - 100k PA.</span>
+											<span class="px-2 py-1 rounded theme-cl theme-bg-light mr-2"><i class="lni lni-briefcase mr-1"></i><?php echo $postJobType;?></span>
+											<span><i class="lni lni-map-marker mr-1"></i><?php echo $postJobLocation;?>, Lagos</span>
+											<!-- <span class="px-2 py-1 rounded text-warning bg-light-warning ml-2"><i class="lni lni-star mr-1"></i>Featured</span> -->
+											<span class="rounded ml-2"><i class="lni lni-money-protection mr-1"></i>&#x20A6;<?php echo $postJobMinBud;?> - &#x20A6;<?php echo $postJobMaxBud;?></span>
 										</div>
 									</div>
 								</div>
@@ -74,11 +131,10 @@ include_once('include/client-head.php');
 
 									<div class="jbd-details mb-4">
 										<h5 class="ft-medium fs-md">Job description</h5>
-										<p>We are looking for a PHP Developer responsible for managing back-end services and the interchange of data between the server and the users. Your primary focus will be the development of all server-side logic, definition and maintenance of the central database</p>
-										<p>Across our network, we strive to provide rapid, performance-based, industry-focused and technology-enabled services, which reflect a shared knowledge of global and local industries and our experience of the Indian business environment.</p>
+										<p><?php echo $postJobDesc;?></p>
 									</div>
 									
-									<div class="jbd-details mb-3">
+									<!-- <div class="jbd-details mb-3">
 										<h5>Requirements:</h5>
 										<div class="position-relative row">
 											<div class="col-lg-12 col-md-12 col-12">
@@ -166,15 +222,15 @@ include_once('include/client-head.php');
 											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">Dynamod</span></li>
 											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">Database</span></li>
 										</ul>
-									</div>
+									</div> -->
 									
 								</div>
 								
 								<div class="jbd-02 mt-4">
 									<div class="jbd-02-flex d-flex align-items-center justify-content-between">
 										<div class="jbl_button mb-2">
-											<a href="dashboard-edit-job.php" class="btn btn-md btn-warning rounded fs-sm ft-medium mr-2">Edit Job</a>
-											<a href="#" class="btn btn-md btn-danger rounded text-light fs-sm ft-medium">Delete Job</a>
+											<a href="dashboard-edit-job.php?JobID=<?php echo $postJobID;?>&JobToken=<?php echo $postJobToken;?>" class="btn btn-md btn-warning rounded fs-sm ft-medium mr-2">Edit Job</a>
+											<a onclick="return confirm('Are you sure you want to delete this Job? \n This Action cannot be reversed!');" href='dashboard-delete-job.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>' class="btn btn-md btn-danger rounded text-light fs-sm ft-medium">Delete Job</a>
 										</div>
 									</div>
 								</div>

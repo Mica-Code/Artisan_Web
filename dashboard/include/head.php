@@ -22,7 +22,43 @@ $about = $row['about'];
 $profile_pic = $row['profile_pic'];
 
 
+//Getting Number of Applied Jobs
+$qry = "SELECT * from appjob WHERE appArtisanID = $session_id";
+												
+$rest = mysqli_query($dbc, $qry);
+$n_row = mysqli_num_rows($rest);
 
+//Getting number of Job alerts
+$qry2 = "SELECT * from postjob WHERE postJobProfession = '$handwork'";
+													
+$rest2 = mysqli_query($dbc, $qry2);
+$n_row2 = mysqli_num_rows($rest2);
+
+
+
+//Getting all data from the Post Job Table
+// $query = "SELECT * from postjob WHERE postJobLocation = $location ";
+
+// $result = mysqli_query($dbc, $query);
+// $row = mysqli_fetch_array($result);
+
+// if ($row == 0){
+// 	$justsave = "Do Nothing";
+// }
+// else{
+// 	$postJobTitle = $row['postJobTitle'];
+// 	$postJobDesc = $row['postJobDesc'];
+// 	$postJobProfession = $row['postJobProfession'];
+// 	$postJobLevel = $row['postJobLevel'];
+// 	$postJobType = $row['postJobType'];
+// 	$postJobGender = $row['postJobGender'];
+// 	$postJobDeadline = $row['postJobDeadline'];
+// 	$postJobLocation = $row['postJobLocation'];
+// 	$postJobAddress = $row['postJobAddress'];
+// 	$postJobDate = $row['postJobDate'];
+// 	$postJobStatus = $row['postJobStatus'];
+// 	$postJobToken = $row['postJobToken'];	
+// }
 
 
 

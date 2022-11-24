@@ -39,9 +39,9 @@ include_once('include/client-head.php');
 					<div class="dashboard-widg-bar d-block">
 						<div class="row">
 							<div class="col-xl-12 col-lg-12 col-md-12">
-								<div class="d-flex align-items-center p-3 alert alert-danger">
+								<!-- <div class="d-flex align-items-center p-3 alert alert-danger">
 									Your listings will be automatically removed after 30 days.
-								</div>
+								</div> -->
 								<div class="mb-4 tbl-lg rounded overflow-hidden">
 									<div class="table-responsive bg-white">
 										<table class="table">
@@ -123,7 +123,7 @@ include_once('include/client-head.php');
 													<td><a href="dashboard-manage-applications.html" class="gray rounded px-3 py-2 ft-medium">----</a></td>
 													<td>
 														<div class="dash-action">
-															<a href="dashboard-single-job.php" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
+															<a href="dashboard-client-single-job.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
 															<a href="dashboard-edit-job.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center"><i class="lni lni-pencil"></i></a>
 															<a onclick="return confirm('Are you sure you want to delete this Job? \n This Action cannot be reversed!');" href='dashboard-delete-job.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>' class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
 															

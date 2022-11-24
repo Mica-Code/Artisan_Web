@@ -6,7 +6,7 @@ $nav='<ul data-submenu-title="Main Navigation">
 <!-- S<li><a href="dashboard-manage-resume.php"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li> -->
 <li><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
 <li><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
-<li class="active"><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs<span class="count-tag bg-warning">4</span></a></li>
+<li class="active"><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs</li>
 <!-- <li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li> -->
 <!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
 <li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
@@ -46,78 +46,79 @@ include_once('include/head.php');
 											<thead class="thead-dark">
 												<tr>
 												  <th scope="col">Title</th>
-												  <th scope="col">Designation</th>
+												  <th scope="col">Experience Level</th>
 												  <th scope="col">Posted Date</th>
 												  <th scope="col">Action</th>
 												</tr>
 											</thead>
 											<tbody>
+												<?php
+												
+													//Getting all data from the Post Job Table
+													$query = "SELECT * from postjob WHERE postJobProfession = '$handwork'";
+													
+													$result = mysqli_query($dbc, $query);
+													$num_row = mysqli_num_rows($result);
+													// echo "<script>alert('".$num_row."')</script>";
+													if($num_row > 0){
+														while($row = mysqli_fetch_array($result)){
+															$postJobID = $row['postJobID'];
+															$postJobTitle = $row['postJobTitle'];
+															$postJobDesc = $row['postJobDesc'];
+															$postJobProfession = $row['postJobProfession'];
+															$postJobLevel = $row['postJobLevel'];
+															$postJobType = $row['postJobType'];
+															$postJobGender = $row['postJobGender'];
+															$postJobDeadline = $row['postJobDeadline'];
+															$postJobLocation = $row['postJobLocation'];
+															$postJobAddress = $row['postJobAddress'];
+															$postJobDate = $row['postJobDate'];
+															$postJobStatus = $row['postJobStatus'];
+															$postJobToken = $row['postJobToken'];	
+													?>
 												<tr>
-													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">Senior Web Developer</h4><div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>San Francisco</span></div></div></td>
-													<td>Manager</td>
-													<td>10 Sep 2021</td>
+													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm"><?php echo $postJobTitle;?><span class='medium theme-cl rounded text-success bg-light-success ml-1 py-1 px-2'><?php echo $postJobType;?></span></h4><div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><?php echo $postJobLocation;?>, Lagos</div></div></td>
+													<td><?php echo $postJobLevel;?></td>
+													<td><?php 
+													$phpdate2 = strtotime( $postJobDate );
+													$mysqldate2 = date( 'j M Y', $phpdate2);
+													echo $mysqldate2;?>
 													<td>
 														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+															<a href="dashboard-job-detail.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
+															<?php
+															 $q = "SELECT * from appjob WHERE appPostJobID=$postJobID AND appArtisanID=$session_id";
+															 $r = mysqli_query($dbc, $q);
+															 $no_row = mysqli_num_rows($r);
+
+															 if($no_row >  0){
+															?>
+															<a onclick="return confirm('You are about to cancel you application \nfor this Job.');" href="dashboard-delete-apply-job.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1" class="tooltip"><i class="lni lni-cross-circle"></i></a>
+															<?php
+															}
+															else{?>
+															<a onclick="return confirm('You are about to apply for this Job, \nYour Resume will be Provided to the Employer. \nIt is adviced to keep your resume up to date \nto increase your chances');" href="dashboard-apply-job.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center ml-1" class="tooltip"><i class="lni lni-checkmark"></i></a>
+															<?php
+															}
+															?>
 														</div>
 													</td>
 												</tr>
-												<tr>
-													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">Experienced UI/UX Product Designer</h4><div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>Denver, USA</span></div></div></td>
-													<td>Team Leader</td>
-													<td>18 Sep 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">Web developer - Front-End & PHP developer</h4><div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>California</span></div></div></td>
-													<td>Jr. Manager</td>
-													<td>07 Sep 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">WordPress Developer & Database Management System</h4><div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>Melbourn</span></div></div></td>
-													<td>Manager</td>
-													<td>21 Sep 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">Senior Web Developer</h4><div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>Liverpool</span></div></div></td>
-													<td>Human Resource</td>
-													<td>10 Oct 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm">Experienced UI/UX Product Designer</h4><div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><span>Liverpool</span></div></div></td>
-													<td>Sr, Human Resource</td>
-													<td>15 Oct 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
+
+												<?php
+											}}
+											else{
+											?>
+											<tr>
+												<td></td>
+												<td></td>
+												<td>No Request for your Profession Yet </td>
+												<td></td>
+											</tr>
+
+											<?php
+											}
+											?>
 											</tbody>
 										</table>
 									</div>

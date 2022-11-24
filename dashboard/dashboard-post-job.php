@@ -521,7 +521,7 @@ if(isset($_POST['postJob'])){
 
                           <div class="col-xl-6 col-lg-6 col-md-6">
                             <div class="form-group">
-                              <label class="text-dark ft-medium">Minimum Budget</label>
+                              <label class="text-dark ft-medium">Maximum Budget</label>
                               <div class="input-group">
                                 <span class="input-group-addon">
                                 <span class="arrow"></span>

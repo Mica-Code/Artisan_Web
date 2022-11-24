@@ -10,15 +10,15 @@ if (empty($fullName)){
     $error[] = "You forgot to enter your Full Name";
 }
 
-$username = validate_input_text($_POST['username']);
-if (empty($username)){
-    $error[] = "You forgot to enter your Username";
-}
+// $username = validate_input_text($_POST['username']);
+// if (empty($username)){
+//     $error[] = "You forgot to enter your Username";
+// }
 
-$email = validate_input_email($_POST['email']);
-if (empty($email)){
-    $error[] = "You forgot to enter your Email";
-}
+// $email = validate_input_email($_POST['email']);
+// if (empty($email)){
+//     $error[] = "You forgot to enter your Email";
+// }
 
 $phone = validate_input_text($_POST['phone']);
 if (empty($phone)){
@@ -30,9 +30,9 @@ if (empty($location)){
     $error[] = "You forgot to enter your Location";
 }
 
-$age = validate_input_text($_POST['age']);
-if (empty($age)){
-    $error[] = "You forgot to enter your Age";
+$dob = validate_input_text($_POST['dob']);
+if (empty($dob)){
+    $error[] = "You forgot to enter your Date of Birth";
 }
 
 $address = validate_input_text($_POST['address']);
@@ -47,22 +47,22 @@ if (empty($about)){
 
 if(empty($error)){
     
-    require ('../includes/mydatabase2.php');
-    $query = "SELECT email from `art_reg_tbl` WHERE email='$email'";
-    $run = mysqli_query($dbc, $query);
+    // require ('../includes/mydatabase2.php');
+    // $query = "SELECT email from `art_reg_tbl` WHERE email='$email'";
+    // $run = mysqli_query($dbc, $query);
 
-    while ($row = mysqli_fetch_array($run)) {
+    // while ($row = mysqli_fetch_array($run)) {
 
-        $demail = $row['email'];
-        if ($demail == $email) {
-            # code...
-        //    echo '<script>alert("Email Already existing")</script>';
-           $error[] = "Email Already Exists";
-           goto a;
-        }
-    }
-    
-    $query = "UPDATE art_reg_tbl SET fullname='$fullName', username='$username', email='$email', phone='$phone', location='$location', age='$age', address='$address', about='$about' WHERE userID=$session_id" or die(mysqli_error($dbc));;
+    //     $demail = $row['email'];
+    //     if ($demail == $email) {
+    //         # code...
+    //     //    echo '<script>alert("Email Already existing")</script>';
+    //        $error[] = "Email Already Exists";
+    //        goto a;
+    //     }
+    // }
+
+    $query = "UPDATE art_reg_tbl SET fullname='$fullName', phone='$phone', location='$location', dob='$dob', address='$address', about='$about' WHERE userID=$session_id" or die(mysqli_error($dbc));;
     $result = mysqli_query($dbc, $query);
     if($result){
 

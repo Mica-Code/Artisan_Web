@@ -6,7 +6,7 @@ $nav='<ul data-submenu-title="Main Navigation">
 <!-- S<li><a href="dashboard-manage-resume.php"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li> -->
 <li><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
 <li><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
-<li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs<span class="count-tag bg-warning">4</span></a></li>
+<li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs</li>
 <!-- <li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li> -->
 <!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
 <li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
@@ -38,30 +38,30 @@ include_once('include/head.php');
 					<div class="dashboard-widg-bar d-block">
 						<div class="row">
 							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-								<div class="dash-widgets py-5 px-4 bg-info rounded">
-									<h2 class="ft-medium mb-1 fs-xl text-light">46</h2>
+								<div class="dash-widgets py-5 px-4 rounded" style="background-color:#7460ee;">
+									<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $n_row;?></h2>
 									<p class="p-0 m-0 text-light fs-md">Applied Jobs</p>
 									<i class="lni lni-empty-file"></i>
 								</div>
 							</div>
 							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
 								<div class="dash-widgets py-5 px-4 bg-dark rounded">
-									<h2 class="ft-medium mb-1 fs-xl text-light">87</h2>
+									<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $n_row+$n_row2;?></h2>
 									<p class="p-0 m-0 text-light fs-md">Notifications</p>
 									<i class="lni lni-users"></i>
 								</div>
 							</div>
 							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
 								<div class="dash-widgets py-5 px-4 bg-warning rounded">
-									<h2 class="ft-medium mb-1 fs-xl text-light">312</h2>
+									<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $n_row2;?></h2>
 									<p class="p-0 m-0 text-light fs-md">Alert Jobs</p>
 									<i class="lni lni-bar-chart"></i>
 								</div>
 							</div>
 							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-								<div class="dash-widgets py-5 px-4 bg-purple rounded">
+								<div class="dash-widgets py-5 px-4 rounded" style="background-color:#1ac790;">
 									<h2 class="ft-medium mb-1 fs-xl text-light">32</h2>
-									<p class="p-0 m-0 text-light fs-md">Bookmark jobs</p>
+									<p class="p-0 m-0 text-light fs-md">Completed jobs</p>
 									<i class="lni lni-heart"></i>
 								</div>
 							</div>

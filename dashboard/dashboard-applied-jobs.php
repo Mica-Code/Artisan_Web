@@ -6,7 +6,7 @@ $nav='<ul data-submenu-title="Main Navigation">
 <!-- S<li><a href="dashboard-manage-resume.php"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li> -->
 <li><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
 <li class="active"><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
-<li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs<span class="count-tag bg-warning">4</span></a></li>
+<li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs</li>
 <!-- <li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li> -->
 <!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
 <li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
@@ -19,6 +19,10 @@ $nav='<ul data-submenu-title="Main Navigation">
 </ul>';
 
 include_once('include/head.php');
+
+
+
+// echo "<script>alert('".$appJobCount."')</script>";
 ?>			
 				<div class="dashboard-content">
 					<div class="dashboard-tlbar d-block mb-5">
@@ -42,10 +46,10 @@ include_once('include/head.php');
 								<div class="cl-justify">
 									
 									<div class="cl-justify-first">
-										<p class="m-0 p-0 ft-sm">You have applied <span class="text-dark ft-medium">26</span> jobs</p>
+										<p class="m-0 p-0 ft-sm">You have applied <span class="text-dark ft-medium"><?php echo $n_row;?></span> jobs</p>
 									</div>
 									
-									<div class="cl-justify-last">
+									<!-- <div class="cl-justify-last">
 										<div class="d-flex align-items-center justify-content-left">
 											<div class="dlc-list">
 												<select class="form-control sm rounded">
@@ -68,7 +72,7 @@ include_once('include/head.php');
 												</select>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									
 								</div>
 							</div>
@@ -85,138 +89,93 @@ include_once('include/head.php');
 												</tr>
 											</thead>
 											<tbody>
+											<?php
+												
+												//Getting all data from the Post Job Table
+												$query = "SELECT * from appjob WHERE appArtisanID = $session_id";
+												
+												$result = mysqli_query($dbc, $query);
+												$num_row = mysqli_num_rows($result);
+												if($num_row > 0){
+													// echo "<script>alert('Query executed and no of row is".$num_row."')</script>";
+													while($row = mysqli_fetch_array($result)){
+
+														$appJobID = $row['appJobID'];					
+														$appPostJobID = $row['appPostJobID'];
+														$appClientID = $row['appClientID'];
+														$appArtisanID = $row['appArtisanID'];
+														$appStatus = $row['appStatus'];
+														$appJobDate = $row['appJobDate'];
+													
+
+														$query2 = "SELECT * from postjob WHERE postJobID = $appPostJobID";
+														$result2 = mysqli_query($dbc, $query2);
+														$row = mysqli_fetch_array($result2);
+
+
+														$postJobTitle = $row['postJobTitle'];
+														$postJobType = $row['postJobType'];
+														$postJobLocation = $row['postJobLocation'];		
+														$postJobToken =	$row['postJobToken'];					
+												?>
 												<tr>
 													<td>
 														<div class="cats-box rounded bg-white d-flex align-items-center">
 															<div class="text-center"><img src="assets/img/c-1.png" class="img-fluid" width="55" alt=""></div>
 															<div class="cats-box-caption px-2">
-																<h4 class="fs-md mb-0 ft-medium">Fresher UI/UX Designer (3 Year Exp.)</h4>
+																<h4 class="fs-md mb-0 ft-medium"><?php echo $postJobTitle;?></h4>
 																<div class="d-block mb-2 position-relative">
-																	<span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i>Liverpool, London</span>
-																	<span class="muted medium ml-2 theme-cl"><i class="lni lni-briefcase mr-1"></i>Full Time</span>
+																	<span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i><?php echo $postJobLocation;?>, Lagos</span>
+																	<span class="muted medium ml-2 theme-cl"><i class="lni lni-briefcase mr-1"></i><?php echo $postJobType;?></span>
 																</div>
 															</div>
 														</div>
 													</td>
-													<td><span class="text-info">Active</span></td>
-													<td>10 Sep 2021</td>
+													<td>
+
+													<?php
+														if($appStatus == 'Pending'){
+															echo '<span style="color:#f3c621">'.$appStatus.'</span>';
+														}
+														elseif($appStatus == 'Active'){
+															echo '<span style="color:#2158f3">'.$appStatus.'</span>';
+														}
+														elseif($appStatus == 'Completed'){
+															echo '<span style="color:#21f327">'.$appStatus.'</span>';
+														}
+														else{
+															echo '<span style="color:#f32121">'.$appStatus.'</span>';
+														}
+													?>
+										
+
+													</td>
+													<td>
+													<?php 
+													$phpdate2 = strtotime( $appJobDate );
+													$mysqldate2 = date( 'j M Y', $phpdate2);
+													echo $mysqldate2;?>
+													</td>
 													<td>
 														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+															<a href="dashboard-job-detail.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
+															<a onclick="return confirm('You are about to cancel you application \nfor this Job.');" href="dashboard-delete-apply-job.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
 														</div>
 													</td>
 												</tr>
-												<tr>
-													<td>
-														<div class="cats-box rounded bg-white d-flex align-items-center">
-															<div class="text-center"><img src="assets/img/c-6.png" class="img-fluid" width="55" alt=""></div>
-															<div class="cats-box-caption px-2">
-																<h4 class="fs-md mb-0 ft-medium">Advance Magento Developer</h4>
-																<div class="d-block mb-2 position-relative">
-																	<span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i>Liverpool, London</span>
-																	<span class="muted medium ml-2 text-warning"><i class="lni lni-briefcase mr-1"></i>Part Time</span>
-																</div>
-															</div>
-														</div>
-													</td>
-													<td><span class="text-info">Active</span></td>
-													<td>18 Sep 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<div class="cats-box rounded bg-white d-flex align-items-center">
-															<div class="text-center"><img src="assets/img/c-5.png" class="img-fluid" width="55" alt=""></div>
-															<div class="cats-box-caption px-2">
-																<h4 class="fs-md mb-0 ft-medium">Senior IOS App Developer</h4>
-																<div class="d-block mb-2 position-relative">
-																	<span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i>Liverpool, London</span>
-																	<span class="muted medium ml-2 theme-cl"><i class="lni lni-briefcase mr-1"></i>Full Time</span>
-																</div>
-															</div>
-														</div>
-													</td>
-													<td><span class="text-info">Active</span></td>
-													<td>07 Sep 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<div class="cats-box rounded bg-white d-flex align-items-center">
-															<div class="text-center"><img src="assets/img/c-7.png" class="img-fluid" width="55" alt=""></div>
-															<div class="cats-box-caption px-2">
-																<h4 class="fs-md mb-0 ft-medium">Senior Product Designer</h4>
-																<div class="d-block mb-2 position-relative">
-																	<span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i>Liverpool, London</span>
-																	<span class="muted medium ml-2 text-warning"><i class="lni lni-briefcase mr-1"></i>Part Time</span>
-																</div>
-															</div>
-														</div>
-													</td>
-													<td><span class="text-info">Active</span></td>
-													<td>21 Sep 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<div class="cats-box rounded bg-white d-flex align-items-center">
-															<div class="text-center"><img src="assets/img/c-8.png" class="img-fluid" width="55" alt=""></div>
-															<div class="cats-box-caption px-2">
-																<h4 class="fs-md mb-0 ft-medium">Basic WordPress Developer</h4>
-																<div class="d-block mb-2 position-relative">
-																	<span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i>Liverpool, London</span>
-																	<span class="muted medium ml-2 theme-cl"><i class="lni lni-briefcase mr-1"></i>Full Time</span>
-																</div>
-															</div>
-														</div>
-													</td>
-													<td><span class="text-info">Active</span></td>
-													<td>10 Oct 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<div class="cats-box rounded bg-white d-flex align-items-center">
-															<div class="text-center"><img src="assets/img/c-9.png" class="img-fluid" width="55" alt=""></div>
-															<div class="cats-box-caption px-2">
-																<h4 class="fs-md mb-0 ft-medium">Technical Content Writer</h4>
-																<div class="d-block mb-2 position-relative">
-																	<span class="text-muted medium"><i class="lni lni-map-marker mr-1"></i>Liverpool, London</span>
-																	<span class="muted medium ml-2 text-danger"><i class="lni lni-briefcase mr-1"></i>Internship</span>
-																</div>
-															</div>
-														</div>
-													</td>
-													<td><span class="text-info">Active</span></td>
-													<td>15 Oct 2021</td>
-													<td>
-														<div class="dash-action">
-															<a href="javascript:void(0);" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a href="javascript:void(0);" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
-														</div>
-													</td>
-												</tr>
+												<?php
+												}}else{
+													?>
+													<tr>
+														<td></td>
+														<td></td>
+														<td>You have not Applied for any job</td>
+														<td></td>
+													</tr>
+		
+													<?php
+													}
+													?>
 											</tbody>
 										</table>
 									</div>
@@ -224,7 +183,7 @@ include_once('include/head.php');
 							</div>
 						</div>
 						
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<ul class="pagination">
 									<li class="page-item">
@@ -246,7 +205,7 @@ include_once('include/head.php');
 									</li>
 								</ul>
 							</div>
-						</div>
+						</div> -->
 							
 					</div>
 					

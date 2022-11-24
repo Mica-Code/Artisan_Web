@@ -87,7 +87,7 @@ if(isset($_POST['save'])){
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Username</label>
-															<input type="text" name="username" class="form-control rounded" value="<?php echo $uname;?>">
+															<input type="text" name="username" class="form-control rounded" value="<?php echo $uname;?>" disabled>
 														</div>
 													</div>
 													<div class="col-xl-6 col-lg-6">
@@ -101,7 +101,7 @@ if(isset($_POST['save'])){
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Email</label>
-															<input type="email"name="email" class="form-control rounded" value="<?php echo $email;?>">
+															<input type="email"name="email" class="form-control rounded" value="<?php echo $email;?>" disabled>
 														</div>
 													</div>
 													
@@ -136,21 +136,14 @@ if(isset($_POST['save'])){
 															</select>
 														</div>	
 													</div>
-													
+																										
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
-															<label class="text-dark ft-medium">Age</label>
-															<select class="custom-select rounded" name="age">
-																<option value="">--- Age ---</option>
-															<option>20-25 Years</option>
-															<option>26-30 Years</option>
-															<option>31-35 Years</option>
-															<option>36-40 Years</option>
-															<option>41-45 Years</option>
-															<option>45 Years and Above</option>
-															</select>
+															<label class="text-dark ft-medium">Date of Birth</label>
+															<input type="date" name="dob" class="form-control rounded" value="<?php if(isset($dob) && $dob != ""){echo $dob;} else {echo "";} ?>" <?php if(isset($dob) && $dob != ""){echo "disabled";} else {echo "";} ?>>
 														</div>
 													</div>
+
 													<div class="col-xl-6 col-lg-6 col-md-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Full Address</label>
