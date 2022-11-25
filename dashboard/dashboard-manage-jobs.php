@@ -13,7 +13,7 @@ $nav='<ul data-submenu-title="Main Navigation">
 <ul data-submenu-title="My Accounts">
 <li><a href="dashboard-client-profile.php"><i class="lni lni-user mr-2"></i>My Profile </a></li>
 <li><a href="dashboard-change-client-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
-<li><a href="javascript:void(0);"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
+<li><a onclick= "return confirm(\'You are about to Delete your account. \nData(s) related to you will be cleared from the system. \nThis action is irreversible.\')" href="dashboard-delete-acct.php"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
 <li><a href="logout.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
 </ul>';
 
@@ -58,7 +58,6 @@ include_once('include/client-head.php');
 											<tbody>
 
 											<?php
-											$count = 0;
 											
 											$query = "SELECT * from postjob WHERE userID = $session_id ";
 
@@ -120,7 +119,21 @@ include_once('include/client-head.php');
 													$mysqldate2 = date( 'j M Y', $phpdate2);
 													echo $mysqldate2;?></td>
 
-													<td><a href="dashboard-manage-applications.html" class="gray rounded px-3 py-2 ft-medium">----</a></td>
+
+													<?php 
+
+													$no_app = "SELECT * from appjob WHERE appPostJobID=$postJobID";
+													$exe = mysqli_query($dbc, $no_app);
+													$no_r = mysqli_num_rows($exe);
+
+													if ($no_r > 0){
+													$no_app = "SELECT * from appjob WHERE appPostJobID=$postJobID";
+														echo '<td><a href="dashboard-manage-applications.php?mainJobID='.$postJobID.'" class="theme-bg text-light rounded px-3 py-2 ft-medium">Total '.$no_r.'</a></td>';
+													}
+													else{
+														echo '<td><a href="" class="gray rounded px-3 py-2 ft-medium">----</a></td>';
+													}
+													?>
 													<td>
 														<div class="dash-action">
 															<a href="dashboard-client-single-job.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
@@ -132,7 +145,6 @@ include_once('include/client-head.php');
 												</tr>
 
 												<?php
-												$count++;
 												}
 												?>
 												<!-- <tr>

@@ -133,6 +133,25 @@ if(isset($_POST['editJob'])){
 										<h5 class="ft-medium fs-md">Job description</h5>
 										<p><?php echo $postJobDesc;?></p>
 									</div>
+
+									<div class="jbd-details mb-4">
+										<h5 class="ft-medium fs-md">Other Information</h5>
+										<div class="other-details">
+											<div class="details ft-medium"><label class="text-muted">Profession Needed</label><span class="text-dark"><?php echo $postJobProfession;?></span></div>
+											<div class="details ft-medium"><label class="text-muted">Experience</label><span class="text-dark"><?php echo $postJobLevel;?></span></div>
+											<div class="details ft-medium"><label class="text-muted">Employment Type</label><span class="text-dark"><?php echo $postJobType;?></span></div>
+											<div class="details ft-medium"><label class="text-muted">Gender</label><span class="text-dark"><?php echo $postJobGender;?></span></div>
+											<div class="details ft-medium"><label class="text-muted">Posted Date</label><span class="text-dark"><?php 
+													$phpdate = strtotime( $postJobDate );
+													$mysqldate = date( 'j M Y', $phpdate);
+													echo $mysqldate;?></span></div>
+											<div class="details ft-medium"><label class="text-muted">Expiration Date</label><span class="text-dark"><?php 
+													$phpdate = strtotime( $postJobDeadline );
+													$mysqldate = date( 'j M Y', $phpdate);
+													echo $mysqldate;?></span></div>
+											<div class="details ft-medium"><label class="text-muted">Address</label><span class="text-dark"><?php echo $postJobAddress;?></span></div>
+										</div>
+									</div>
 									
 									<!-- <div class="jbd-details mb-3">
 										<h5>Requirements:</h5>

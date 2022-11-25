@@ -6,7 +6,7 @@ $nav='<ul data-submenu-title="Main Navigation">
 <!-- S<li><a href="dashboard-manage-resume.php"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li> -->
 <li><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
 <li><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
-<li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs<span class="count-tag bg-warning">4</span></a></li>
+<li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs</li>
 <!-- <li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li> -->
 <!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
 <li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
@@ -14,10 +14,9 @@ $nav='<ul data-submenu-title="Main Navigation">
 <ul data-submenu-title="My Accounts">
 <li><a href="dashboard-my-profile.php"><i class="lni lni-user mr-2"></i>Edit Profile </a></li>
 <li class="active"><a href="dashboard-change-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
-<li><a href="javascript:void(0);"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
+<li><a onclick= "return confirm(\'You are about to Delete your account. \nData(s) related to you will be cleared from the system. \nThis action is irreversible.\')" href="dashboard-delete-acct.php"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
 <li><a href="logout.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
 </ul>';
-
 
 include_once('include/head.php');
 

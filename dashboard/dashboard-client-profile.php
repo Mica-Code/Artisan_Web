@@ -13,7 +13,7 @@ $mob_nav=$nav='<ul data-submenu-title="Main Navigation">
 <ul data-submenu-title="My Accounts">
 <li class="active"><a href="dashboard-client-profile.php"><i class="lni lni-user mr-2"></i>Edit Profile </a></li>
 <li><a href="dashboard-change-client-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
-<li><a href="javascript:void(0);"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
+<li><a onclick= "return confirm(\'You are about to Delete your account. \nData(s) related to you will be cleared from the system. \nThis action is irreversible.\')" href="dashboard-delete-acct.php"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
 <li><a href="logout.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
 </ul>';
 
