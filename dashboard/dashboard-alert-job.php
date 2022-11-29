@@ -6,7 +6,7 @@ $nav='<ul data-submenu-title="Main Navigation">
 <!-- S<li><a href="dashboard-manage-resume.php"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li> -->
 <li><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
 <li><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
-<li class="active"><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs</li>
+<li class="active"><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs</a></li>
 <!-- <li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li> -->
 <!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
 <li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
@@ -52,6 +52,8 @@ include_once('include/head.php');
 												</tr>
 											</thead>
 											<tbody>
+
+
 												<?php
 												
 													//Getting all data from the Post Job Table
@@ -75,6 +77,13 @@ include_once('include/head.php');
 															$postJobDate = $row['postJobDate'];
 															$postJobStatus = $row['postJobStatus'];
 															$postJobToken = $row['postJobToken'];	
+
+															//Checking if the Job is already active
+															$if_act_com = "SELECT * from appjob WHERE (appPostJobID = $postJobID AND appStatus = 'Active') OR (appPostJobID = $postJobID AND appStatus = 'Completed')";
+															$run = mysqli_query($dbc, $if_act_com);
+															$num_row2 = mysqli_num_rows($run);
+
+															if($num_row2 < 1){
 													?>
 												<tr>
 													<td><div class="dash-title"><h4 class="mb-0 ft-medium fs-sm"><?php echo $postJobTitle;?><span class='medium theme-cl rounded text-success bg-light-success ml-1 py-1 px-2'><?php echo $postJobType;?></span></h4><div class="jbl_location"><i class="lni lni-map-marker mr-1"></i><?php echo $postJobLocation;?>, Lagos</div></div></td>
@@ -106,9 +115,10 @@ include_once('include/head.php');
 												</tr>
 
 												<?php
-											}}
+														}}}
 											else{
 											?>
+											<?php a:?>
 											<tr>
 												<td></td>
 												<td></td>

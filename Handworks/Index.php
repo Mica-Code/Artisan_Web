@@ -1153,7 +1153,7 @@
                                         </div>
 
                                         <div class="emply-list-info">
-                                            <div class="emply-pstn btn btn-success" style="border-radius: 15px;background-color:#728F02; border-color:white">
+                                            <div class="emply-pstn btn btn-success" style="border-radius: 15px;background-color:#28B661; border-color:white">
                                             <!-- <a href="Detail/Oluebubecollins.htm"> -->
                                             <a href="">
                                                 <i class="las la-phone-volume"></i> Hire me</a></div>
@@ -1163,7 +1163,7 @@
                                                 <!-- <a href="Detail/Oluebubecollins.htm"><b>Oluebube Collins</b></a> -->
                                             </h3>
 
-                                            <span style="font-size:small; color:#d42525"><b>Electrical</b></span>
+                                            <span style="font-size:small; color:#28B661"><b>Electrical</b></span>
 
                                             <h6><i class="la la-map-marker"></i>Lagos State, Lagos</h6>
 

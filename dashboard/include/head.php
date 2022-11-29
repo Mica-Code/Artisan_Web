@@ -29,13 +29,13 @@ $rest = mysqli_query($dbc, $qry);
 $n_row = mysqli_num_rows($rest);
 
 //Getting number of Job alerts
-$qry2 = "SELECT * from postjob WHERE postJobProfession = '$handwork'";
+$qry2 = "SELECT * from postjob WHERE (postJobProfession = '$handwork' AND postJobStatus = 'Pending')";
 													
 $rest2 = mysqli_query($dbc, $qry2);
 $n_row2 = mysqli_num_rows($rest2);
 
 
-
+#28B661
 //Getting all data from the Post Job Table
 // $query = "SELECT * from postjob WHERE postJobLocation = $location ";
 
