@@ -109,31 +109,30 @@ if(isset($_POST['save'])){
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 														<label class="text-dark ft-medium">Select your Location</label>
-															<select class="form-control rounded" id="location" name="location">
-																<optgroup label="Your Location">
-																	<option value="">--- Select Location ---</option>
-																	<option value="Agege">Agege</option>
-																	<option value="Ajeromi-Ifelodun">Ajeromi-Ifelodun</option>
-																	<option value="Alimosho">Alimosho</option>
-																	<option value="Amuwo-Odofin">Amuwo-Odofin</option>
-																	<option value="Apapa">Apapa</option>
-																	<option value="Badagry">Badagry</option>
-																	<option value="Epe">Epe</option>
-																	<option value="Eti-Osa">Eti-Osa</option>
-																	<option value="Ibeju/Lekki">Ibeju/Lekki</option>
-																	<option value="Ifako-Ijaye">Ifako-Ijaye</option>
-																	<option value="Ikeja">Ikeja</option>
-																	<option value="Ikorodu">Ikorodu</option>
-																	<option value="Kosofe">Kosofe</option>
-																	<option value="Lagos Island">Lagos Island</option>
-																	<option value="Lagos Mainland">Lagos Mainland</option>
-																	<option value="Mushin">Mushin</option>
-																	<option value="Ojo">Ojo</option>
-																	<option value="Oshodi-Isolo">Oshodi-Isolo</option>
-																	<option value="Shomolu">Shomolu</option>
-																	<option value="Surulere">Surulere</option>
-																</optgroup>
-															</select>
+
+														
+
+														<?php
+
+$locations = array('', 'Agege', 'Ajeromi-Ifelodun', 'Alimosho', 'Amuwo-Odofin', 'Apapa', 'Badagry', 'Epe', 'Eti-Osa', 'Ibeju/Lekki', 'Ifako-Ijaye', 'Ikeja', 'Ikorodu', 'Kosofe',
+'Lagos-Island', 'Lagos-Mainland', 'Mushin', 'Ojo', 'Oshodi-Isolo', 'Shomolu', 'Surulere');
+
+?>
+                                                <select class="form-control rounded" id="location" name="location">
+                                                <?php
+
+foreach($locations as $location2){
+    if($location2 == $location){
+        echo "<option value=".$location2." selected='selected'>".$location2."</option>";
+    }
+    else{
+        echo "<option value=".$location2.">".$location2."</option>";
+    }
+    
+}
+
+?>
+</select>
 														</div>	
 													</div>
 																										
@@ -143,6 +142,71 @@ if(isset($_POST['save'])){
 															<input type="date" name="dob" class="form-control rounded" value="<?php if(isset($dob) && $dob != ""){echo $dob;} else {echo "";} ?>" <?php if(isset($dob) && $dob != ""){echo "disabled";} else {echo "";} ?>>
 														</div>
 													</div>
+
+
+
+
+													<div class="col-xl-6 col-lg-6">
+														<div class="form-group">
+														<label class="text-dark ft-medium">Experience Level</label>
+
+														
+
+														<?php
+
+$experiences = array('', 'Beginner', 'Intermediate', 'Expert');
+
+?>
+                                                <select class="form-control rounded" id="experience" name="experience">
+                                                <?php
+
+foreach($experiences as $experience2){
+    if($experience2 == $experience){
+        echo "<option value=".$experience2." selected='selected'>".$experience2."</option>";
+    }
+    else{
+        echo "<option value=".$experience2.">".$experience2."</option>";
+    }
+    
+}
+
+?>
+</select>
+														</div>	
+													</div>
+
+
+													<div class="col-xl-6 col-lg-6">
+														<div class="form-group">
+														<label class="text-dark ft-medium">Job Type</label>
+
+														
+
+														<?php
+
+$jobtypes = array('', 'Full-Time', 'Part-Time', 'Contract', 'Intern');
+
+?>
+                                                <select class="form-control rounded" id="jobtype" name="jobtype">
+                                                <?php
+
+foreach($jobtypes as $jobtype2){
+    if($jobtype2 == $jobtype){
+        echo "<option value=".$jobtype2." selected='selected'>".$jobtype2."</option>";
+    }
+    else{
+        echo "<option value=".$jobtype2.">".$jobtype2."</option>";
+    }
+    
+}
+
+?>
+</select>
+														</div>	
+													</div>
+
+
+
 
 													<div class="col-xl-6 col-lg-6 col-md-6">
 														<div class="form-group">
@@ -158,7 +222,13 @@ if(isset($_POST['save'])){
 													</div>
 													<div class="col-xl-12 col-lg-12">
 														<div class="form-group">
-															<label class="text-dark ft-medium">About Info</label>
+															<label class="text-dark ft-medium">Skill Description</label>
+															<textarea class="form-control with-light" name="skill_desc"><?php echo $skill_desc;?></textarea>
+														</div>
+													</div>
+													<div class="col-xl-12 col-lg-12">
+														<div class="form-group">
+															<label class="text-dark ft-medium">About Yourself</label>
 															<textarea class="form-control with-light" name="about"><?php echo $about;?></textarea>
 														</div>
 													</div>

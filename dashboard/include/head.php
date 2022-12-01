@@ -19,6 +19,8 @@ $address = $row['address'];
 $skill_desc = $row['skill_desc'];
 $dob = $row['dob'];
 $about = $row['about'];
+$experience = $row['experience'];
+$jobtype = $row['jobType'];
 $profile_pic = $row['profile_pic'];
 
 

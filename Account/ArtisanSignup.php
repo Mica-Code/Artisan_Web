@@ -117,31 +117,27 @@ if (isset($_POST['submit'])){
                               <div class="col-lg-6">
                                 <span class="pf-title">Select L.G.A (Lagos)</span>
                                 <div class="pf-field">
-                                  <select class="chosen" data-val="true" data-val-required="Location is required" id="location" name="location" value="<?php if (isset($_POST['area'])) echo $_POST['area'];  ?>">
-                                    <optgroup label="Your Location">
-                                    <option value="">Select your Location</option>
-                                    <option value="Agege">Agege</option>
-                                    <option value="Ajeromi-Ifelodun">Ajeromi-Ifelodun</option>
-                                    <option value="Alimosho">Alimosho</option>
-                                    <option value="Amuwo-Odofin">Amuwo-Odofin</option>
-                                    <option value="Apapa">Apapa</option>
-                                    <option value="Badagry">Badagry</option>
-                                    <option value="Epe">Epe</option>
-                                    <option value="Eti-Osa">Eti-Osa</option>
-                                    <option value="Ibeju/Lekki">Ibeju/Lekki</option>
-                                    <option value="Ifako-Ijaye">Ifako-Ijaye</option>
-                                    <option value="Ikeja">Ikeja</option>
-                                    <option value="Ikorodu">Ikorodu</option>
-                                    <option value="Kosofe">Kosofe</option>
-                                    <option value="Lagos Island">Lagos Island</option>
-                                    <option value="Lagos Mainland">Lagos Mainland</option>
-                                    <option value="Mushin">Mushin</option>
-                                    <option value="Ojo">Ojo</option>
-                                    <option value="Oshodi-Isolo">Oshodi-Isolo</option>
-                                    <option value="Shomolu">Shomolu</option>
-                                    <option value="Surulere">Surulere</option>
-                                    </optgroup>
-                                  </select>
+                                <?php
+
+$locations = array('', 'Agege', 'Ajeromi-Ifelodun', 'Alimosho', 'Amuwo-Odofin', 'Apapa', 'Badagry', 'Epe', 'Eti-Osa', 'Ibeju/Lekki', 'Ifako-Ijaye', 'Ikeja', 'Ikorodu', 'Kosofe',
+'Lagos-Island', 'Lagos-Mainland', 'Mushin', 'Ojo', 'Oshodi-Isolo', 'Shomolu', 'Surulere');
+
+?>
+                                                <select class="chosen" id="location" name="location">
+                                                <?php
+
+foreach($locations as $location){
+    if(isset($_POST['location'])){
+        echo "<option value=".$location." selected='selected'>".$location."</option>";
+    }
+    else{
+        echo "<option value=".$location.">".$location."</option>";
+    }
+    
+}
+
+?>
+</select>
                                 </div>
                               </div>
   
@@ -155,7 +151,8 @@ if (isset($_POST['submit'])){
                                     id="age"
                                     value="<?php if (isset($_POST['age'])) echo $_POST['age'];  ?>"
                                   >
-                                    <option>20-25 Years</option>
+                                  <option></option>
+                                  <option>20-25 Years</option>
                                     <option>26-30 Years</option>
                                     <option>31-35 Years</option>
                                     <option>36-40 Years</option>
@@ -168,256 +165,94 @@ if (isset($_POST['submit'])){
                               <div class="col-lg-12">
                                 <span class="pf-title">Handwork</span>
                                 <div class="pf-field">
-                                  <select class="chosen" data-val="true" data-val-required="handwork is required" id="handwork" name="handwork" value="<?php if (isset($_POST['handwork'])) echo $_POST['handwork'];  ?>">
-                                    <option value="">Select handwork</option>
-                                    <option value="AC Installation and Repair">
-                                      AC Installation and Repair
-                                    </option>
-                                    <option value="Aluminium Windows">
-                                      Aluminium Windows
-                                    </option>
-                                    <option value="Appliance Maintenance">
-                                      Appliance Maintenance
-                                    </option>
-                                    <option value="Architectural Design">
-                                      Architectural Design
-                                    </option>
-                                    <option value="Artist">Artist</option>
-                                    <option value="Auto Mechanic">
-                                      Auto Mechanic
-                                    </option>
-                                    <option value="Bathroom Renovation">
-                                      Bathroom Renovation
-                                    </option>
-                                    <option value="Bricklayer and Mason">
-                                      Bricklayer and Mason
-                                    </option>
-                                    <option value="CableTV and CCTV Installer">
-                                      CableTV and CCTV Installer
-                                    </option>
-                                    <option value="CableTV Installation">
-                                      CableTV Installation
-                                    </option>
-                                    <option value="Car Rewire and Car tracker">
-                                      Car Rewire and Car tracker
-                                    </option>
-                                    <option value="Car Upholstery">
-                                      Car Upholstery
-                                    </option>
-                                    <option value="Car Wash">Car Wash</option>
-                                    <option value="Carpentry">Carpentry</option>
-                                    <option value="Catering">Catering</option>
-                                    <option
-                                      value="CCTV / Biometric Access Control"
-                                    >
-                                      CCTV / Biometric Access Control
-                                    </option>
-                                    <option value="Ceiliing Repair">
-                                      Ceiliing Repair
-                                    </option>
-                                    <option value="Ceramic and tiling">
-                                      Ceramic and tiling
-                                    </option>
-                                    <option value="Cleaning">Cleaning</option>
-                                    <option value="Cobbler">Cobbler</option>
-                                    <option value="Cosmetologists">
-                                      Cosmetologists
-                                    </option>
-                                    <option value="Craftman">Craftman</option>
-                                    <option value="Curtain Hanging">
-                                      Curtain Hanging
-                                    </option>
-                                    <option value="Deck Building">
-                                      Deck Building
-                                    </option>
-                                    <option value="Digital Marketing">
-                                      Digital Marketing
-                                    </option>
-                                    <option value="Door Installation And Repair">
-                                      Door Installation And Repair
-                                    </option>
-                                    <option value="Driver/Rider">
-                                      Driver/Rider
-                                    </option>
-                                    <option value="Electrical">Electrical</option>
-                                    <option value="Electronic Technician">
-                                      Electronic Technician
-                                    </option>
-                                    <option value="Event Planner">
-                                      Event Planner
-                                    </option>
-                                    <option value="Event Usher">
-                                      Event Usher
-                                    </option>
-                                    <option value="Factory Worker">
-                                      Factory Worker
-                                    </option>
-                                    <option value="Farm worker">
-                                      Farm worker
-                                    </option>
-                                    <option value="Fascinators">
-                                      Fascinators
-                                    </option>
-                                    <option
-                                      value="Flooring installation and Repair"
-                                    >
-                                      Flooring installation and Repair
-                                    </option>
-                                    <option value="Framing">Framing</option>
-                                    <option value="Furniture Refinishing">
-                                      Furniture Refinishing
-                                    </option>
-                                    <option value="Gadgets Repairs">
-                                      Gadgets Repairs
-                                    </option>
-                                    <option value="Gardening">Gardening</option>
-                                    <option value="Gas Man">Gas Man</option>
-                                    <option value="Hair Stylist">
-                                      Hair Stylist
-                                    </option>
-                                    <option value="Heating Systems">
-                                      Heating Systems
-                                    </option>
-                                    <option value="Heavy Duty Machines">
-                                      Heavy Duty Machines
-                                    </option>
-                                    <option value="Horticulturist">
-                                      Horticulturist
-                                    </option>
-                                    <option value="Hot Tubs and Spa">
-                                      Hot Tubs and Spa
-                                    </option>
-                                    <option value="House Renovation">
-                                      House Renovation
-                                    </option>
-                                    <option value="Housekeeping">
-                                      Housekeeping
-                                    </option>
-                                    <option value="Insulation Installation">
-                                      Insulation Installation
-                                    </option>
-                                    <option value="Interior Decoration">
-                                      Interior Decoration
-                                    </option>
-                                    <option value="Inverter Technician">
-                                      Inverter Technician
-                                    </option>
-                                    <option value="Janitorial Services">
-                                      Janitorial Services
-                                    </option>
-                                    <option value="Landscaping">
-                                      Landscaping
-                                    </option>
-                                    <option value="Laundry Service">
-                                      Laundry Service
-                                    </option>
-                                    <option value="Makeup Artist">
-                                      Makeup Artist
-                                    </option>
-                                    <option value="Manicure and Pedicure">
-                                      Manicure and Pedicure
-                                    </option>
-                                    <option value="Mini Generators">
-                                      Mini Generators
-                                    </option>
-                                    <option value="Motor mechanic">
-                                      Motor mechanic
-                                    </option>
-                                    <option value="Musical studio">
-                                      Musical studio
-                                    </option>
-                                    <option value="Networking and Access Control">
-                                      Networking and Access Control
-                                    </option>
-                                    <option value="Painting">Painting</option>
-                                    <option value="Panel Beater">
-                                      Panel Beater
-                                    </option>
-                                    <option value="Patio Stone Installation">
-                                      Patio Stone Installation
-                                    </option>
-                                    <option value="Pest Control">
-                                      Pest Control
-                                    </option>
-                                    <option value="Photography">
-                                      Photography
-                                    </option>
-                                    <option value="Plumbing">Plumbing</option>
-                                    <option value="POP Ceiling Services">
-                                      POP Ceiling Services
-                                    </option>
-                                    <option value="Porches">Porches</option>
-                                    <option value="Property Valuers">
-                                      Property Valuers
-                                    </option>
-                                    <option value="Refrigerator Technician">
-                                      Refrigerator Technician
-                                    </option>
-                                    <option value="Roofing">Roofing</option>
-                                    <option value="Septic Systems">
-                                      Septic Systems
-                                    </option>
-                                    <option value="Solar and Inverter Technician">
-                                      Solar and Inverter Technician
-                                    </option>
-                                    <option value="Solar Panels">
-                                      Solar Panels
-                                    </option>
-                                    <option
-                                      value="Soundproof and Mini Generators"
-                                    >
-                                      Soundproof and Mini Generators
-                                    </option>
-                                    <option value="Soundproof Generators">
-                                      Soundproof Generators
-                                    </option>
-                                    <option value="Soundproofing">
-                                      Soundproofing
-                                    </option>
-                                    <option value="Sprinkler System">
-                                      Sprinkler System
-                                    </option>
-                                    <option value="Stain Removal">
-                                      Stain Removal
-                                    </option>
-                                    <option value="Surveyor">Surveyor</option>
-                                    <option value="Swimming Pool Maintenance">
-                                      Swimming Pool Maintenance
-                                    </option>
-                                    <option value="System Technician">
-                                      System Technician
-                                    </option>
-                                    <option value="Tailoring">Tailoring</option>
-                                    <option value="Tiling">Tiling</option>
-                                    <option value="Video and Graphics">
-                                      Video and Graphics
-                                    </option>
-                                    <option value="vulcanizer">vulcanizer</option>
-                                    <option value="Wall Building">
-                                      Wall Building
-                                    </option>
-                                    <option value="Wallpapering">
-                                      Wallpapering
-                                    </option>
-                                    <option value="Waste and Junk Removal">
-                                      Waste and Junk Removal
-                                    </option>
-                                    <option value="Water Purification">
-                                      Water Purification
-                                    </option>
-                                    <option value="Water Softening">
-                                      Water Softening
-                                    </option>
-                                    <option value="Web Designer">
-                                      Web Designer
-                                    </option>
-                                    <option value="Welder">Welder</option>
-                                    <option value="Window Installation">
-                                      Window Installation
-                                    </option>
-                                  </select>
+                                <?php
+
+$handworks = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance-Maintenance', 'Architectural-Design',
+'Artist', 'Auto-Mechanic', 'Bathroom-Renovation', 'Bricklayer/Mason', 'CableTV/CCTV-Installer', 'CableTV-Installation', 'Car-Rewire/Car-tracker', 'Car-Upholstery',
+'Car-Wash', 'Carpentry', 'Catering', 'CCTV/Biometric-Access-Control', 'Ceiliing-Repair', 'Ceramic/Tiling', 'Cleaning', 'Cobbler', 'Cosmetologists',
+'Craftman', 'Curtain-Hanging', 'Deck-Building', 'Digital-Marketing', 'Door-Installation/Repair', 'Driver/Rider', 'Electrical', 'Electronic-Technician',
+'Event-Planner', 'Event-Usher', 'Factory-Worker', 'Farm-worker', 'Fascinators', 'Flooring-installation/Repair', 'Framing', 'Furniture-Refinishing', 'Gadgets-Repairs',
+'Gardening', 'Gas-Man', 'Hair-Stylist', 'Heating-Systems', 'Heavy-Duty Machines', 'Horticulturist', 'Hot-Tubs/Spa', 'House-Renovation', 'Housekeeping', 'Insulation-Installation',
+'Interior-Decoration', 'Inverter-Technician', 'Janitorial-Services', 'Landscaping', 'Laundry-Service', 'Makeup-Artist', 'Manicure/Pedicure', 'Mini-Generators',
+'Motor-mechanic', 'Musical-studio', 'Networking/Access-Control', 'Painting', 'Panel-Beater', 'Patio-Stone-Installation', 'Pest-Control', 'Photography', 'Plumbing',
+'POP Ceiling-Services', 'Porches', 'Property-Valuers', 'Refrigerator-Technician', 'Roofing', 'Septic-Systems', 'Solar/Inverter-Technician', 'Solar-Panels',
+'Soundproof/Mini-Generators', 'Soundproof-Generators', 'Soundproofing', 'Sprinkler-System', 'Stain-Removal', 'Surveyor', 'Swimming-Pool-Maintenance', 'System-Technici-an',
+'Tailoring', 'Tiling', 'Video/Graphics', 'vulcanizer', 'Wall-Building', 'Wallpapering', 'Waste/Junk-Removal', 'Water-Purification', 'Water-Softening', 'Web-Designer',
+'Welder', 'Window-Installation');
+
+?>
+<select class="chosen" id="handwork" name="handwork">
+<?php
+
+foreach($handworks as $handwork){
+    if(isset($_POST['handwork'])){
+        echo "<option value=".$handwork." selected='selected'>".$handwork."</option>";
+    }
+    else{
+        echo "<option value=".$handwork.">".$handwork."</option>";
+    }
+
+}
+
+?>
+</select>
                                 </div>
                               </div>
+
+
+
+                              <div class="col-lg-6">
+                                <span class="pf-title">Experience Level</span>
+                                <div class="pf-field">
+                                <?php
+
+$experiences = array('', 'Beginner', 'Intermediate', 'Expert');
+
+?>
+                                                <select class="chosen" id="experience" name="experience">
+                                                <?php
+
+foreach($experiences as $experience){
+    if(isset($_POST['experience'])){
+        echo "<option value=".$experience." selected='selected'>".$experience."</option>";
+    }
+    else{
+        echo "<option value=".$experience.">".$experience."</option>";
+    }
+    
+}
+
+?>
+</select>
+                                </div>
+                              </div>
+  
+                              <div class="col-lg-6">
+                                <span class="pf-title">Job Type</span>
+                                <div class="pf-field">
+                                <?php
+
+$jobtypes = array('', 'Full-Time', 'Part-Time', 'Contract', 'Intern');
+
+?>
+                                                <select class="chosen" id="jobtype" name="jobtype">
+                                                <?php
+
+foreach($jobtypes as $jobtype){
+    if(isset($_POST['jobtype'])){
+        echo "<option value=".$jobtype." selected='selected'>".$jobtype."</option>";
+    }
+    else{
+        echo "<option value=".$jobtype.">".$jobtype."</option>";
+    }
+    
+}
+
+?>
+</select>
+                                </div>
+                              </div>
+
 
                               <div class="col-lg-12">
                                 <span class="pf-title">Email</span>

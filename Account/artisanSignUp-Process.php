@@ -50,6 +50,16 @@ if (empty($handwork)){
     $error[] = "You have to have a Handwork";
 }
 
+$experience = validate_input_text($_POST['experience']);
+if (empty($experience)){
+    $error[] = "You have to select your Experience Level";
+}
+
+$jobtype = validate_input_text($_POST['jobtype']);
+if (empty($jobtype)){
+    $error[] = "You have to select Job Type";
+}
+
 $address = validate_input_text($_POST['address']);
 if (empty($address)){
     $error[] = "You forgot to enter your Address";
@@ -80,7 +90,7 @@ $userToken = sha1(uniqid(rand(),true));
 
 //uploading the picture
 
-$files = $_FILES['profileUpload'];
+$files = $_FILES['profile_pic'];
 $profileImage = upload_profile('assets/profile/', $files);
 
 
@@ -135,8 +145,8 @@ if(empty($error)){
         }
     }
 
-    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, age, handwork, address, skill_desc, location, profile_pic, userToken, reg_date) 
-    values ('$fullname', '$username', '$email', '".md5($password)."', '$phone', 'artisan', '$age', '$handwork', '$address', '$skill_desc', '$location', '$profileImage', '$userToken', now())" or die(mysqli_error($dbc));
+    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, age, handwork, experience, jobType, address, skill_desc, location, profile_pic, userToken, reg_date) 
+    values ('$fullname', '$username', '$email', '".md5($password)."', '$phone', 'artisan', '$age', '$handwork', '$experience', '$jobtype', '$address', '$skill_desc', '$location', '$profileImage', '$userToken', now())" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){

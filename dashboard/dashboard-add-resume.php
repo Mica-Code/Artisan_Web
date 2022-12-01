@@ -20,6 +20,48 @@ $nav='<ul data-submenu-title="Main Navigation">
 
 include_once('include/head.php');
 ?>			
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+		// var html = '<div class="col-xl-12 col-lg-12 addedu">\
+		// <div class="gray rounded p-3 mb-3 position-relative">\
+		// <button class="aps-clone"><i class="fas fa-times"></i></button>\
+		// 		<div class="form-group">\
+		// 			<label class="text-dark ft-medium">School Name</label>\
+		// 			<input type="text" name="schname[]" class="form-control rounded" placeholder="School Name">\
+		// 		</div>\
+		// 		<div class="form-group">\
+		// 			<label class="text-dark ft-medium">Qualification</label>\
+		// 			<input type="text" name="schqtitle[]" class="form-control rounded" placeholder="Qualification Title">\
+		// 		</div>\
+		// 		<div class="form-row">\
+		// 			<div class="col-6">\
+		// 				<div class="form-group">\
+		// 					<label class="text-dark ft-medium">Start Date</label>\
+		// 					<input type="date" name="schstartdate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
+		// 				</div>\
+		// 			</div>\
+		// 			<div class="col-6">\
+		// 				<div class="form-group">\
+		// 					<label class="text-dark ft-medium">End Date</label>\
+		// 					<input type="date" name="schenddate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
+		// 				</div>\
+		// 			</div>\
+		// 		</div>\
+		// 	</div>\
+		// </div>';
+
+		var html = <label class="text-dark ft-medium">School box name</label>;
+		var x = 1;
+
+		document.querySelector('#addEduBtn').addEventListener('click', ()=>{
+			document.querySelector('#eduform').append(html);
+		})
+});
+</script>
+
+
 				<div class="dashboard-content">
 					<div class="dashboard-tlbar d-block mb-5">
 						<div class="row">
@@ -37,7 +79,7 @@ include_once('include/head.php');
 					</div>
 					
 					<div class="dashboard-widg-bar d-block">
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-xl-12 col-lg-12 col-md-12">
 								<div class="_dashboard_content bg-white rounded mb-4">
 									<div class="_dashboard_content_header br-bottom py-3 px-3">
@@ -98,7 +140,7 @@ include_once('include/head.php');
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						
 						<!-- Add Education -->
 						<div class="row">
@@ -106,51 +148,57 @@ include_once('include/head.php');
 								<div class="_dashboard_content bg-white rounded mb-4">
 									<div class="_dashboard_content_header br-bottom py-3 px-3">
 										<div class="_dashboard__header_flex">
-											<h4 class="mb-0 ft-medium fs-md"><i class="fas fa-graduation-cap mr-1 theme-cl fs-sm"></i>Education Details</h4>	
+											<h4 class="mb-0 ft-medium fs-md" id="clickme"><i class="fas fa-graduation-cap mr-1 theme-cl fs-sm"></i>Education Details</h4>	
 										</div>
 									</div>
 									
 									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">
-											<div class="col-xl-12 col-lg-12">
+										<form class="row" id="eduform">
+
+											<div class="col-xl-12 col-lg-12 addedu">
 												<div class="gray rounded p-3 mb-3 position-relative">
-													<button class="aps-clone"><i class="fas fa-times"></i></button>
+													<!-- <button class="aps-clone"><i class="fas fa-times"></i></button> -->
 													<div class="form-group">
 														<label class="text-dark ft-medium">School Name</label>
-														<input type="text" class="form-control rounded" placeholder="School Name">
+														<input type="text" name="schname[]" class="form-control rounded" placeholder="School Name">
 													</div>
 													<div class="form-group">
 														<label class="text-dark ft-medium">Qualification</label>
-														<input type="text" class="form-control rounded" placeholder="Qualification Title">
+														<input type="text" name="schqtitle[]" class="form-control rounded" placeholder="Qualification Title">
 													</div>
 													<div class="form-row">
 														<div class="col-6">
 															<div class="form-group">
 																<label class="text-dark ft-medium">Start Date</label>
-																<input type="date" class="form-control rounded" placeholder="dd-mm-yyyy">
+																<input type="date" name="schstartdate[]" class="form-control rounded" placeholder="dd-mm-yyyy">
 															</div>
 														</div>
 														<div class="col-6">
 															<div class="form-group">
 																<label class="text-dark ft-medium">End Date</label>
-																<input type="date" class="form-control rounded" placeholder="dd-mm-yyyy">
+																<input type="date" name="schenddate[]" class="form-control rounded" placeholder="dd-mm-yyyy">
 															</div>
 														</div>
 													</div>
-													<div class="form-group">
-														<label class="text-dark ft-medium">Note</label>
-														<textarea class="form-control ht-80" placeholder="Note Optional"></textarea>
-													</div>
+													
 												</div>
 											</div>
-											<div class="col-xl-12 col-lg-12">
+
+											<!-- <div class="col-xl-12 col-lg-12">
 												<div class="form-group">
-													<button type="submit" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Education</button>
+													<button name="addEduBtn" id="addEduBtn" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Education</button>
 												</div>
-											</div>
+											</div> -->
 											
 										</form>
+										<button name="addEduBtn" id="addEduBtn" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Education</button>
 									</div>
+
+
+					
+
+
+
 								</div>
 							</div>	
 						</div>	

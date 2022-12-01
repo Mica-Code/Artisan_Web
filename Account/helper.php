@@ -44,7 +44,7 @@ function upload_profile($path, $file){
     }
 
     // return default image
-    return $path . $default;
+    return $path . $file;
 }
 
 
