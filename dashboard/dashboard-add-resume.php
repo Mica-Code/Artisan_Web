@@ -19,46 +19,134 @@ $nav='<ul data-submenu-title="Main Navigation">
 </ul>';
 
 include_once('include/head.php');
+
+if(isset($_POST['submit'])){
+	require('dashboard-add-resume-process.php');
+}
 ?>			
 
 <script>
+	$(document).ready(() => {		
+		
+		var edu = '<div class="col-xl-12 col-lg-12" id="addEduSec">\
+		<div class="gray rounded p-3 mb-3 position-relative">\
+		<button type="button" class="aps-clone" id="removeEdu"><i class="fas fa-times"></i></button>\
+				<div class="form-group">\
+					<label class="text-dark ft-medium">School Name</label>\
+					<input type="text" name="schname[]" class="form-control rounded" placeholder="School Name">\
+				</div>\
+				<div class="form-group">\
+					<label class="text-dark ft-medium">Qualification</label>\
+					<input type="text" name="schqtitle[]" class="form-control rounded" placeholder="Qualification Title">\
+				</div>\
+				<div class="form-row">\
+					<div class="col-6">\
+						<div class="form-group">\
+							<label class="text-dark ft-medium">Start Date</label>\
+							<input type="date" name="schstartdate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
+						</div>\
+					</div>\
+					<div class="col-6">\
+						<div class="form-group">\
+							<label class="text-dark ft-medium">End Date</label>\
+							<input type="date" name="schenddate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
+						</div>\
+					</div>\
+				</div>\
+			</div>\
+		</div>';
 
-document.addEventListener("DOMContentLoaded", () => {
-		// var html = '<div class="col-xl-12 col-lg-12 addedu">\
-		// <div class="gray rounded p-3 mb-3 position-relative">\
-		// <button class="aps-clone"><i class="fas fa-times"></i></button>\
-		// 		<div class="form-group">\
-		// 			<label class="text-dark ft-medium">School Name</label>\
-		// 			<input type="text" name="schname[]" class="form-control rounded" placeholder="School Name">\
-		// 		</div>\
-		// 		<div class="form-group">\
-		// 			<label class="text-dark ft-medium">Qualification</label>\
-		// 			<input type="text" name="schqtitle[]" class="form-control rounded" placeholder="Qualification Title">\
-		// 		</div>\
-		// 		<div class="form-row">\
-		// 			<div class="col-6">\
-		// 				<div class="form-group">\
-		// 					<label class="text-dark ft-medium">Start Date</label>\
-		// 					<input type="date" name="schstartdate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
-		// 				</div>\
-		// 			</div>\
-		// 			<div class="col-6">\
-		// 				<div class="form-group">\
-		// 					<label class="text-dark ft-medium">End Date</label>\
-		// 					<input type="date" name="schenddate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
-		// 				</div>\
-		// 			</div>\
-		// 		</div>\
-		// 	</div>\
-		// </div>';
 
-		var html = <label class="text-dark ft-medium">School box name</label>;
-		var x = 1;
+		var exp = '<div class="col-xl-12 col-lg-12" id="addExpSec">\
+					<div class="gray rounded p-3 mb-3 position-relative">\
+						<button type="button" class="aps-clone" id="removeExp"><i class="fas fa-times"></i></button>\
+						<div class="form-group">\
+							<label class="text-dark ft-medium">Employer</label>\
+							<input type="text" name="employername[]" class="form-control rounded" placeholder="Employer Name">\
+						</div>\
+						<div class="form-group">\
+							<label class="text-dark ft-medium">Job Title</label>\
+							<input type="text" name="jobtitle[]" class="form-control rounded" placeholder="Designation Title">\
+						</div>\
+						<div class="form-row">\
+							<div class="col-6">\
+								<div class="form-group">\
+									<label class="text-dark ft-medium">Start Date</label>\
+									<input type="date" name="jobstartdate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
+								</div>\
+							</div>\
+							<div class="col-6">\
+								<div class="form-group">\
+									<label class="text-dark ft-medium">End Date</label>\
+									<input type="date" name="jobenddate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
+								</div>\
+							</div>\
+						</div>\
+						<div class="form-group">\
+							<label class="text-dark ft-medium">Note</label>\
+							<textarea class="form-control ht-80" name="jobnote[]" placeholder="Little Details about your role"></textarea>\
+						</div>\
+					</div>\
+				</div>';
 
-		document.querySelector('#addEduBtn').addEventListener('click', ()=>{
-			document.querySelector('#eduform').append(html);
-		})
-});
+			var skill = '<div class="col-xl-12 col-lg-12" id="addSkillSec">\
+							<div class="gray rounded p-3 mb-3 position-relative">\
+								<button  type="button" class="aps-clone" id="removeSkill"><i class="fas fa-times"></i></button>\
+								<div class="form-group">\
+									<label class="text-dark ft-medium">Skills Name</label>\
+									<input type="text" name="skillname[]" class="form-control rounded" placeholder="Skills Name">\
+								</div>\
+								<div class="form-group">\
+									<label class="text-dark ft-medium">Percentage</label>\
+									<input type="text" name="skillper[]" class="form-control rounded" placeholder="e.x. 80%">\
+								</div>\
+							</div>\
+						</div>';
+
+
+
+		var maxedu = 3, maxexp = 3, maxskill = 5;
+		var satedu = 1,  satexp = 1, satskill = 1;
+
+		//Adding Education, Experience and Skill
+		$('#addEduBtn').on('click', ()=>{
+			if(satedu < maxedu){
+				$(edu).insertAfter('#addEduSec');
+				satedu++;
+			}
+		});
+
+		$('#addExpBtn').on('click', ()=>{
+			if(satexp < maxexp){
+				$(exp).insertAfter('#addExpSec');
+				satexp++;
+			}
+			
+		});
+		$('#addSkillBtn').on('click', ()=>{
+			if(satskill < maxskill){
+				$(skill).insertAfter('#addSkillSec');
+				satskill++;
+			}
+			
+		});
+
+
+		//Removing Education, Experience and Skill
+		$('#eduform').on('click', '#removeEdu', ()=>{
+			$('#addEduSec').first().remove();
+			satedu--;
+			
+		});
+		$('#expform').on('click', '#removeExp', ()=>{
+			$('#addExpSec').first().remove();
+			satexp--;
+		});
+		$('#skillform').on('click', '#removeSkill', ()=>{
+			$('#addSkillSec').first().remove();
+			satskill--;
+		});
+	});
 </script>
 
 
@@ -155,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
 									<div class="_dashboard_content_body py-3 px-3">
 										<form class="row" id="eduform">
 
-											<div class="col-xl-12 col-lg-12 addedu">
+											<div class="col-xl-12 col-lg-12" id="addEduSec">
 												<div class="gray rounded p-3 mb-3 position-relative">
 													<!-- <button class="aps-clone"><i class="fas fa-times"></i></button> -->
 													<div class="form-group">
@@ -184,11 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
 												</div>
 											</div>
 
-											<!-- <div class="col-xl-12 col-lg-12">
-												<div class="form-group">
-													<button name="addEduBtn" id="addEduBtn" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Education</button>
-												</div>
-											</div> -->
+											<span></span>
 											
 										</form>
 										<button name="addEduBtn" id="addEduBtn" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Education</button>
@@ -202,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
 								</div>
 							</div>	
 						</div>	
-						
+						<hr style="background-color:darkgray; margin-top:0px;">
 						<!-- Add Experience -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12">
@@ -214,49 +298,49 @@ document.addEventListener("DOMContentLoaded", () => {
 									</div>
 									
 									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">
-											<div class="col-xl-12 col-lg-12">
+										<form class="row" id="expform">
+											<div class="col-xl-12 col-lg-12" id="addExpSec">
 												<div class="gray rounded p-3 mb-3 position-relative">
-													<button class="aps-clone"><i class="fas fa-times"></i></button>
+													<!-- <button class="aps-clone"><i class="fas fa-times"></i></button> -->
 													<div class="form-group">
 														<label class="text-dark ft-medium">Employer</label>
-														<input type="text" class="form-control rounded" placeholder="Employer Name">
+														<input type="text" name="employername[]" class="form-control rounded" placeholder="Employer Name">
 													</div>
 													<div class="form-group">
 														<label class="text-dark ft-medium">Job Title</label>
-														<input type="text" class="form-control rounded" placeholder="Designation Title">
+														<input type="text" name="jobtitle[]" class="form-control rounded" placeholder="Designation Title">
 													</div>
 													<div class="form-row">
 														<div class="col-6">
 															<div class="form-group">
 																<label class="text-dark ft-medium">Start Date</label>
-																<input type="date" class="form-control rounded" placeholder="dd-mm-yyyy">
+																<input type="date" name="jobstartdate[]" class="form-control rounded" placeholder="dd-mm-yyyy">
 															</div>
 														</div>
 														<div class="col-6">
 															<div class="form-group">
 																<label class="text-dark ft-medium">End Date</label>
-																<input type="date" class="form-control rounded" placeholder="dd-mm-yyyy">
+																<input type="date" name="jobenddate[]" class="form-control rounded" placeholder="dd-mm-yyyy">
 															</div>
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="text-dark ft-medium">Note</label>
-														<textarea class="form-control ht-80" placeholder="Note Optional"></textarea>
+														<textarea class="form-control ht-80" name="jobnote[]" placeholder="Little Details about your role"></textarea>
 													</div>
-												</div>
-											</div>
-											<div class="col-xl-12 col-lg-12">
-												<div class="form-group">
-													<button type="submit" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Experience</button>
 												</div>
 											</div>
 											
 										</form>
+
+										<button id="addExpBtn" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Experience</button>
+												
 									</div>
 								</div>
 							</div>	
 						</div>
+
+						<hr style="background-color:darkgray; margin-top:0px;">
 						
 						<!-- Add Skills -->
 						<div class="row">
@@ -269,36 +353,34 @@ document.addEventListener("DOMContentLoaded", () => {
 									</div>
 									
 									<div class="_dashboard_content_body py-3 px-3">
-										<form class="row">
-											<div class="col-xl-12 col-lg-12">
+										<form class="row" id="skillform">
+											<div class="col-xl-12 col-lg-12" id="addSkillSec">
 												<div class="gray rounded p-3 mb-3 position-relative">
-													<button class="aps-clone"><i class="fas fa-times"></i></button>
+													<!-- <button class="aps-clone"><i class="fas fa-times"></i></button> -->
 													<div class="form-group">
 														<label class="text-dark ft-medium">Skills Name</label>
-														<input type="text" class="form-control rounded" placeholder="Skills Name">
+														<input type="text" name="skillname[]" class="form-control rounded" placeholder="Skills Name">
 													</div>
 													<div class="form-group">
 														<label class="text-dark ft-medium">Percentage</label>
-														<input type="text" class="form-control rounded" placeholder="e.x. 80%">
+														<input type="text" name="skillper[]" class="form-control rounded" placeholder="e.x. 80%">
 													</div>
-												</div>
-											</div>
-											<div class="col-xl-12 col-lg-12">
-												<div class="form-group">
-													<button type="submit" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Skills</button>
 												</div>
 											</div>
 											
 										</form>
+
+										<button id="addSkillBtn" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Skills</button>
+												
 									</div>
 								</div>
 							</div>	
 						</div>
 						
-						<!-- Add Skills -->
+						<!-- Save All -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12">
-								<button type="submit" class="btn btn-md ft-medium text-light rounded theme-bg">Save & Preview</button>
+								<button type="submit" name="submit" class="btn btn-md ft-medium text-light rounded theme-bg">Save</button>
 							</div>	
 						</div>
 	

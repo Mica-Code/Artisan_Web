@@ -80,6 +80,7 @@ $n_row2 = mysqli_num_rows($rest2);
 		<link rel="icon" href="../Uploads/General/favicon.png" type="image/x-icon">
 		
     </head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	
     <body>
 	
