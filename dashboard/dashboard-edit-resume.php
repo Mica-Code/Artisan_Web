@@ -51,6 +51,26 @@ if (isset($_GET['rand']) && isset($_GET['getToken'])) {
             echo "<script>window.location='dashboard-add-resume.php'</script>";
         }
     }
+    elseif(($rand != '') && ($getToken != '') && ($type == 'exp')){
+        // echo "<script>alert('Editing Education');</script>";
+        $query = "SELECT * from experience where expID='$rand' AND expToken='$getToken'";
+        $execute = mysqli_query($dbc, $query);
+        $num_row=mysqli_num_rows($execute);
+        if($num_row > 0){
+            $row=mysqli_fetch_array($execute);
+
+			$expIDE = $row['expID'];
+            $expnameE = $row['expEmployerName'];
+            $expqtitleE = $row['expJobTitle'];
+            $expstartdateE = $row['expStartDate'];
+            $expenddateE = $row['expEndDate'];
+            $expdescE = $row['expJobDesc'];
+            $expTokenE = $row['expToken'];
+
+        }else{
+            echo "<script>window.location='dashboard-add-resume.php'</script>";
+        }
+    }
 }
 
 
@@ -63,7 +83,7 @@ if(isset($_POST['editEdu'])){
 	require('dashboard-add-edit-resume-process.php');
 }
 
-if(isset($_POST['submitExp'])){
+if(isset($_POST['editExp'])){
 	require('dashboard-add-edit-resume-process.php');
 }
 
@@ -89,10 +109,14 @@ if(isset($_POST['submitExp'])){
 							</div>
 						</div>
 					</div>
+
+                    <?php
+                    if ($type == 'edu'){
+                    ?>
 					
 					<div class="dashboard-widg-bar d-block">
 	
-                        <!-- Add Education -->
+                        <!-- Edit Education -->
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
                                 <div class="_dashboard_content bg-white rounded mb-4">
@@ -149,8 +173,88 @@ if(isset($_POST['submitExp'])){
 
                         </div>	
 
-                        <!-- End of Add Education -->
+                        <!-- End of Edit Education -->
                     </div>
+
+
+                    <?php
+                    }
+
+                    elseif($type == 'exp'){
+                    ?>
+
+                        <div class="additionals">
+
+                            <!-- edit Experience -->
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="_dashboard_content bg-white rounded mb-4">
+                                            <div class="_dashboard_content_header br-bottom py-3 px-3">
+                                                <div class="_dashboard__header_flex">
+                                                    <h4 class="mb-0 ft-medium fs-md"><i class="fas fa-graduation-cap mr-1 theme-cl fs-sm"></i>Experience Details</h4>	
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="_dashboard_content_body py-3 px-3">
+                                                <form class="row" id="expform" method="post">
+                                                    <div class="col-xl-12 col-lg-12" id="addExpSec">
+                                                        <div class="gray rounded p-3 mb-3 position-relative">
+                                                            <!-- <button class="aps-clone"><i class="fas fa-times"></i></button> -->
+                                                            <div class="form-group">
+                                                                <label class="text-dark ft-medium">Employer</label>
+                                                                <input type="text" name="employername" class="form-control rounded" value="<?php echo $expnameE;?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="text-dark ft-medium">Job Title</label>
+                                                                <input type="text" name="jobtitle" class="form-control rounded" value="<?php echo $expqtitleE;?>">
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="col-6">
+                                                                    <div class="form-group">
+                                                                        <label class="text-dark ft-medium">Start Date</label>
+                                                                        <input type="date" name="jobstartdate" class="form-control rounded" value="<?php echo $expstartdateE;?>">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="form-group">
+                                                                        <label class="text-dark ft-medium">End Date</label>
+                                                                        <input type="date" name="jobenddate" class="form-control rounded" value="<?php echo $expenddateE;?>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="text-dark ft-medium">Note</label>
+                                                                <textarea class="form-control ht-80" name="jobnote" ><?php echo $expdescE;?></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </form>
+
+                                            </div>
+
+
+
+                                            <!-- Save Experience-->
+                                            <div class="row" style="text-align:center; text-align:center;">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <input form="expform" type="submit" name="editExp" class="btn btn-md ft-medium text-light rounded theme-bg" style="margin-bottom: 20px;" value="Save Experience">
+                                                </div>	
+                                            </div>
+
+                                        
+                                        </div>
+                                    </div>	
+                                </div>
+
+                            <!-- End of Edit Experience -->
+
+                        </div>
+
+
+                        <?php
+                        }?>
+
 
 					<?php
 include_once('include/footer.php');
