@@ -1,10 +1,12 @@
 <?php
 
+
+
 $title = "Create Resume";
 $nav='<ul data-submenu-title="Main Navigation">
 <li><a href="index.php"><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
 <!-- S<li><a href="dashboard-manage-resume.php"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li> -->
-<li class="active"><a href="dashboard-add-resume.php#education"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
+<li class="active"><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
 <li><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
 <li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs</a></li>
 <!-- <li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li> -->
@@ -20,138 +22,17 @@ $nav='<ul data-submenu-title="Main Navigation">
 
 include_once('include/head.php');
 
+
 if(isset($_POST['submitEdu'])){
-	echo "<script>alert('clicked')</script>";
-	echo "<script>alert('Before process')</script>";
-	require('dashboard-add-resume-edu.php');
-	echo "<script>alert('After process')</script>";
+	require('dashboard-add-edit-resume-process.php');
 }
+
+if(isset($_POST['submitExp'])){
+	require('dashboard-add-edit-resume-process.php');
+}
+
+
 ?>			
-
-<script>
-	$(document).ready(() => {		
-		
-		var edu = '<div class="col-xl-12 col-lg-12" id="addEduSec">\
-		<div class="gray rounded p-3 mb-3 position-relative">\
-		<button type="button" class="aps-clone" id="removeEdu"><i class="fas fa-times"></i></button>\
-				<div class="form-group">\
-					<label class="text-dark ft-medium">School Name</label>\
-					<input type="text" name="schname[]" class="form-control rounded" placeholder="School Name">\
-				</div>\
-				<div class="form-group">\
-					<label class="text-dark ft-medium">Qualification</label>\
-					<input type="text" name="schqtitle[]" class="form-control rounded" placeholder="Qualification Title">\
-				</div>\
-				<div class="form-row">\
-					<div class="col-6">\
-						<div class="form-group">\
-							<label class="text-dark ft-medium">Start Date</label>\
-							<input type="date" name="schstartdate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
-						</div>\
-					</div>\
-					<div class="col-6">\
-						<div class="form-group">\
-							<label class="text-dark ft-medium">End Date</label>\
-							<input type="date" name="schenddate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
-						</div>\
-					</div>\
-				</div>\
-			</div>\
-		</div>';
-
-
-		var exp = '<div class="col-xl-12 col-lg-12" id="addExpSec">\
-					<div class="gray rounded p-3 mb-3 position-relative">\
-						<button type="button" class="aps-clone" id="removeExp"><i class="fas fa-times"></i></button>\
-						<div class="form-group">\
-							<label class="text-dark ft-medium">Employer</label>\
-							<input type="text" name="employername[]" class="form-control rounded" placeholder="Employer Name">\
-						</div>\
-						<div class="form-group">\
-							<label class="text-dark ft-medium">Job Title</label>\
-							<input type="text" name="jobtitle[]" class="form-control rounded" placeholder="Designation Title">\
-						</div>\
-						<div class="form-row">\
-							<div class="col-6">\
-								<div class="form-group">\
-									<label class="text-dark ft-medium">Start Date</label>\
-									<input type="date" name="jobstartdate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
-								</div>\
-							</div>\
-							<div class="col-6">\
-								<div class="form-group">\
-									<label class="text-dark ft-medium">End Date</label>\
-									<input type="date" name="jobenddate[]" class="form-control rounded" placeholder="dd-mm-yyyy">\
-								</div>\
-							</div>\
-						</div>\
-						<div class="form-group">\
-							<label class="text-dark ft-medium">Note</label>\
-							<textarea class="form-control ht-80" name="jobnote[]" placeholder="Little Details about your role"></textarea>\
-						</div>\
-					</div>\
-				</div>';
-
-			var skill = '<div class="col-xl-12 col-lg-12" id="addSkillSec">\
-							<div class="gray rounded p-3 mb-3 position-relative">\
-								<button  type="button" class="aps-clone" id="removeSkill"><i class="fas fa-times"></i></button>\
-								<div class="form-group">\
-									<label class="text-dark ft-medium">Skills Name</label>\
-									<input type="text" name="skillname[]" class="form-control rounded" placeholder="Skills Name">\
-								</div>\
-								<div class="form-group">\
-									<label class="text-dark ft-medium">Percentage</label>\
-									<input type="text" name="skillper[]" class="form-control rounded" placeholder="e.x. 80%">\
-								</div>\
-							</div>\
-						</div>';
-
-
-
-		var maxedu = 3, maxexp = 3, maxskill = 5;
-		var satedu = 1,  satexp = 1, satskill = 1;
-
-		//Adding Education, Experience and Skill
-		$('#addEduBtn').on('click', ()=>{
-			if(satedu < maxedu){
-				$("#eduform").append(edu);
-				satedu++;
-			}
-		});
-
-		$('#addExpBtn').on('click', ()=>{
-			if(satexp < maxexp){
-				$("#expform").append(exp);
-				satexp++;
-			}
-			
-		});
-		$('#addSkillBtn').on('click', ()=>{
-			if(satskill < maxskill){
-				$("#skillform").append(skill);
-				satskill++;
-			}
-			
-		});
-
-
-		//Removing Education, Experience and Skill
-		$('#eduform').on('click', '#removeEdu', ()=>{
-			$('#addEduSec').first().remove();
-			satedu--;
-			
-		});
-		$('#expform').on('click', '#removeExp', ()=>{
-			$('#addExpSec').first().remove();
-			satexp--;
-		});
-		$('#skillform').on('click', '#removeSkill', ()=>{
-			$('#addSkillSec').first().remove();
-			satskill--;
-		});
-	});
-</script>
-
 
 				<div class="dashboard-content">
 					<div class="dashboard-tlbar d-block mb-5">
@@ -275,23 +156,23 @@ if(isset($_POST['submitEdu'])){
 																			<div class="gray rounded p-3 mb-3 position-relative">
 																				<div class="form-group">
 																					<label class="text-dark ft-medium">School Name</label>
-																					<input type="text" name="schname[]" class="form-control rounded" placeholder="School Name">
+																					<input type="text" name="schname" class="form-control rounded" placeholder="School Name" value="<?php if(isset($schnameE)){ echo $schnameE;}?>">
 																				</div>
 																				<div class="form-group">
 																					<label class="text-dark ft-medium">Qualification</label>
-																					<input type="text" name="schqtitle[]" class="form-control rounded" placeholder="Qualification Title">
+																					<input type="text" name="schqtitle" class="form-control rounded" placeholder="Qualification Title" value="<?php if(isset($schqtitleE)){ echo $schqtitleE;}?>">
 																				</div>
 																				<div class="form-row">
 																					<div class="col-6">
 																						<div class="form-group">
 																							<label class="text-dark ft-medium">Start Date</label>
-																							<input type="date" name="schstartdate[]" class="form-control rounded" placeholder="dd-mm-yyyy">
+																							<input type="date" name="schstartdate" class="form-control rounded" placeholder="dd-mm-yyyy" value="<?php if(isset($schstartdateE)){ echo $schstartdateE;}?>">
 																						</div>
 																					</div>
 																					<div class="col-6">
 																						<div class="form-group">
 																							<label class="text-dark ft-medium">End Date</label>
-																							<input type="date" name="schenddate[]" class="form-control rounded" placeholder="dd-mm-yyyy">
+																							<input type="date" name="schenddate" class="form-control rounded" placeholder="dd-mm-yyyy" value="<?php if(isset($schenddateE)){ echo $schenddateE;}?>">
 																						</div>
 																					</div>
 																				</div>
@@ -300,10 +181,10 @@ if(isset($_POST['submitEdu'])){
 																		</div>
 
 																	</form>
-																	<button type="button" name="addEduBtn" id="addEduBtn" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Education</button>
+																	
 																</div>
 
-																<!-- Save -->
+																<!-- Save Education-->
 																<div class="row" style="text-align:center; text-align:center;">
 																	<div class="col-lg-12 col-md-12">
 																		<input form="eduform" type="submit" name="submitEdu" class="btn btn-md ft-medium text-light rounded theme-bg" style="margin-bottom: 20px;" value="Save Education">
@@ -315,9 +196,102 @@ if(isset($_POST['submitEdu'])){
 
 													</div>	
 
-													<!-- End Education -->
+													<!-- End of Add Education -->
 											</div>
-										</div>
+
+
+
+											<!-- Table To Display Already Saved Education -->
+											<div class="mb-4 tbl-lg rounded overflow-hidden">
+									<div class="table-responsive bg-white">
+										<table class="table">
+											<thead class="thead-dark">
+												<tr>
+												  <th scope="col">S/N</th>
+												  <th scope="col">School Name</th>
+												  <th scope="col">Qualification</th>
+												  <th scope="col">Start Date</th>
+												  <th scope="col">End Date</th>
+												  <th scope="col">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+
+											<?php
+
+											$sn = 1;
+											
+											$query = "SELECT * from education WHERE userID = $session_id ";
+
+											$result = mysqli_query($dbc, $query);
+
+											while($row = mysqli_fetch_array($result)){
+												$schID = $row['eduID'];
+												$schname = $row['eduSchoolName'];
+												$schqtitle = $row['eduQualification'];
+												$schstartdate = $row['eduStartDate'];
+												$schenddate = $row['eduEndDate'];
+												$schToken = $row['eduToken'];
+											?>
+												<tr>
+													<td><div class="dash-title">
+															<h4 class="mb-0 ft-medium fs-sm">
+																<?php echo $sn++;?>
+															</h4>
+														</div>
+													</td>
+
+													<td><div class="dash-filled">
+														<?php
+															echo $schname;
+														?>
+
+													</td>
+
+													<td>
+													<?php
+															echo $schqtitle;
+														?>
+													</td>
+
+													<td><?php 
+													$phpdate = strtotime( $schstartdate );
+													// $mysqldate = date( 'Y-m-d H:i:s', $phpdate );
+													// $mysqldate = date( '(D) j M Y <br> h:i A', $phpdate);
+													$mysqldate = date( 'j M Y', $phpdate);
+													echo $mysqldate;?></td>
+
+
+													<td><?php 
+													$phpdate2 = strtotime( $schenddate );
+													// $mysqldate = date( 'Y-m-d H:i:s', $phpdate );
+													// $mysqldate = date( '(D) j M Y <br> h:i A', $phpdate);
+													$mysqldate2 = date( 'j M Y', $phpdate2);
+													echo $mysqldate2;?></td>
+
+													<td>
+														<div class="dash-action">
+															<a href="dashboard-edit-resume.php?rand=<?php echo $schID; ?>&getToken=<?php echo $schToken;?>&type=edu" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center"><i class="lni lni-pencil"></i></a>
+															<a onclick="return confirm('Are you sure you want to delete this Education? \n This Action cannot be reversed!');" href='dashboard-del-resume.php?schID=<?php echo $schID; ?>&schToken=<?php echo $schToken;?>' class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+															
+														</div>
+													</td>
+												</tr>
+
+												<?php
+												}
+												?>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+							</div>
+
+							<!-- End of Education Tab -->
+
+
+										
 										
 										<!-- Additional Content -->
 										<div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience-tab" aria-expanded="false">
@@ -333,7 +307,7 @@ if(isset($_POST['submitEdu'])){
 																</div>
 																
 																<div class="_dashboard_content_body py-3 px-3">
-																	<form class="row" id="expform">
+																	<form class="row" id="expform" method="post">
 																		<div class="col-xl-12 col-lg-12" id="addExpSec">
 																			<div class="gray rounded p-3 mb-3 position-relative">
 																				<!-- <button class="aps-clone"><i class="fas fa-times"></i></button> -->
@@ -369,10 +343,19 @@ if(isset($_POST['submitEdu'])){
 																	</form>
 
 																	<button id="addExpBtn" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Experience</button>
-
-																	
-																			
+	
 																</div>
+
+
+
+																<!-- Save Experience-->
+																<div class="row" style="text-align:center; text-align:center;">
+																	<div class="col-lg-12 col-md-12">
+																		<input form="expform" type="submit" name="submitExp" class="btn btn-md ft-medium text-light rounded theme-bg" style="margin-bottom: 20px;" value="Save Experience">
+																	</div>	
+																</div>
+
+															
 															</div>
 														</div>	
 													</div>
