@@ -95,8 +95,10 @@ include_once('include/client-head.php');
 								$fullname = $row2['fullname'];
 								$location = $row2['location'];
 								$handwork = $row2['handwork'];
+								$jobTypeR = $row2['jobType'];
+								$experienceR = $row2['experience'];
 
-								?>
+								?> 
 									
 									<!-- Single List -->
 									<div class="dashed-list-wrap bg-white rounded mb-3">
@@ -108,13 +110,64 @@ include_once('include/client-head.php');
 												<div class="dashed-list-short-last">
 													<div class="cats-box-caption px-2">
 														<h4 class="fs-lg mb-0 ft-medium theme-cl"><?php echo $fullname;?></h4>
+														<br>
 														<div class="d-block mb-2 position-relative">
-															<span><i class="lni lni-map-marker mr-1"></i><?php echo $location;?>, Lagos</span>
-															<span class="ml-2"><i class="lni lni-briefcase mr-1"></i><?php echo $handwork;?></span>
+														<span class="text-muted mr-2"><i class="lni lni-map-marker mr-1"></i><?php echo $location?>, Lagos</span>
+														<span class="text-muted mr-2"><i class="lni lni-tag mr-1"></i><?php echo $handwork;?></span>
+														<span class="text-muted mr-2"><i class="lni lni-briefcase mr-1"></i><?php echo $jobTypeR;?></span>
+														<span class="text-muted mr-2"><i class="lni lni-graduation mr-1"></i><?php echo $experienceR;?></span>
+															<!-- <span><i class="lni lni-map-marker mr-1"></i><?php //echo $location;?>, Lagos</span>
+															<span class="ml-2"><i class="lni lni-briefcase mr-1"></i><?php //echo $handwork;?></span> -->
 														</div>
 														<div class="ico-content">
 															<ul>
-																<li><a href="javascript:void(0);" class="px-2 py-1 medium bg-light-success rounded text-success"><i class="lni lni-download mr-1"></i>Download CV</a></li>
+																<?php
+
+																	$bgcolor = ['theme-bg-light', 'bg-light-warning', 'bg-light-danger'];
+																	$fgcolor = ['theme-cl', 'text-warning', 'text-danger'];
+
+																	// $app_info = "SELECT * from art_reg_tbl WHERE userID=$appArtisanID";
+																	// $exec2 = mysqli_query($dbc, $app_info);
+																	// $row2 = mysqli_fetch_array($exec2);
+
+																	$skills = "SELECT * from skill WHERE userID=$appArtisanID";
+																	$exec4 = mysqli_query($dbc, $skills);
+
+																	$new_rand = 0;
+									
+																	if(mysqli_num_rows($exec4)>0){
+																		while($row = mysqli_fetch_array($exec4)){
+																			
+																			$skiName = $row['skiName'];	
+																			$random = rand(0,2);
+		
+																			if($new_rand == $random){
+																				if($random == 2){
+																					if($random != 1){
+																						$new_rand = 1;
+																					}
+																					else{
+																						$new_rand = 0;
+																					}
+																						
+																				}else{
+																					$new_rand = $random + 1;
+																				}
+																				
+																			}
+																			else{
+																				$new_rand = $random;
+																			}
+																			
+																			// echo "<script>alert('Random is ".$random." and New random is ".$new_rand."')</script>";
+																		
+																		
+																	?>
+																	<span class="mr-2 mb-2 d-inline-flex px-2 py-1 rounded <?php echo $fgcolor[$new_rand]?> <?php echo $bgcolor[$new_rand]?>"><?php echo $skiName;?></span>
+																
+																	<?php
+																	}}
+																	?>
 																<!-- <li><a href="#" data-toggle="modal" data-target="#message" class="px-2 py-1 medium bg-light-info rounded text-info"><i class="lni lni-envelope mr-1"></i>Message</a></li> -->
 															</ul>
 														</div>
@@ -123,7 +176,7 @@ include_once('include/client-head.php');
 											</div>
 											<div class="dashed-list-last">
 												<div class="text-left">
-												<a href="#" class="btn gray ft-medium apply-btn fs-sm rounded mr-1"><i class="lni lni-arrow-right-circle mr-1"></i>View More Information</a>
+												<a href="candidate-detail.php" class="btn gray ft-medium apply-btn fs-sm rounded mr-1"><i class="lni lni-arrow-right-circle mr-1"></i>View More Information</a>
 													<!-- <a href="#" data-toggle="modal" data-target="#edit" class="btn gray ft-medium apply-btn fs-sm rounded mr-1"><i class="lni lni-arrow-right-circle mr-1"></i>Edit</a>
 													<a href="#" data-toggle="modal" data-target="#note" class="btn gray ft-medium apply-btn fs-sm rounded mr-1"><i class="lni lni-add-files mr-1"></i>Note</a> -->
 													<!-- <a href="javascript:void(0);" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="lni lni-heart mr-1"></i>Save</a> -->
@@ -132,7 +185,7 @@ include_once('include/client-head.php');
 										</div>
 										<div class="dashed-list-footer p-3 br-top">
 											<div class="align-items-center d-flex justify-content-left mb-1 p-0">
-											<h6 class=" mb-0 ft-medium" style="color:#052a59"><?php echo $jobTitle;?></h6>
+											<h6 class=" mb-0 ft-medium" style="color:#052a59"><span>Job Title: </span><?php echo $jobTitle;?></h6>
 												<!-- <i class="fas fa-star filled"></i>
 												<i class="fas fa-star filled"></i>
 												<i class="fas fa-star filled"></i>
