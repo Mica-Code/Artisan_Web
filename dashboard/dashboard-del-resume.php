@@ -56,6 +56,29 @@ if (isset($_GET['rand']) && isset($_GET['getToken'])) {
         }
     }
 
+    elseif(($rand != '') && ($getToken != '') && ($type == 'ski')){
+        
+        $get_rows = "SELECT * from skill where skiID='$rand' AND skiToken='$getToken'";
+        $res = mysqli_query($dbc, $get_rows);
+        $num_row=mysqli_num_rows($res);
+
+        
+        // echo "<script>alert('Job ID is ".$jobId." and Job Token is ".$jobToken."')</script>";
+
+        if($num_row > 0){
+            $del_ski = "DELETE from skill WHERE skiID=$rand AND SkiToken='$getToken'";
+            $result = mysqli_query($dbc, $del_ski);
+            if($result){
+                echo "<script>alert('Delete Successful');</script>";
+                echo "<script>window.location='dashboard-add-resume.php'</script>";
+            }else{
+                echo "<script>alert('The query did not complete successfully');</script>";
+            }            
+        }else{
+            echo "<script>window.location='dashboard-add-resume.php'</script>";
+        }
+    }
+
     else{
         echo "<script>window.location='dashboard-add-resume.php'</script>";
     }

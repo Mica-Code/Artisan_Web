@@ -31,6 +31,9 @@ if(isset($_POST['submitExp'])){
 	require('dashboard-add-edit-resume-process.php');
 }
 
+if(isset($_POST['submitSkill'])){
+	require('dashboard-add-edit-resume-process.php');
+}
 
 ?>			
 
@@ -440,7 +443,7 @@ if(isset($_POST['submitExp'])){
 																<td>
 																	<div class="dash-action">
 																		<a href="dashboard-edit-resume.php?rand=<?php echo $expID; ?>&getToken=<?php echo $expToken;?>&type=exp" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center"><i class="lni lni-pencil"></i></a>
-																		<a onclick="return confirm('Are you sure you want to delete this Education? \n This Action cannot be reversed!');" href='dashboard-del-resume.php?rand=<?php echo $expID; ?>&getToken=<?php echo $expToken;?>&type=exp' class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+																		<a onclick="return confirm('Are you sure you want to delete this Experience? \n This Action cannot be reversed!');" href='dashboard-del-resume.php?rand=<?php echo $expID; ?>&getToken=<?php echo $expToken;?>&type=exp' class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
 																		
 																	</div>
 																</td>
@@ -459,10 +462,14 @@ if(isset($_POST['submitExp'])){
 										</div>
 
 										<!-- End of Exxperience Section -->
+
+
+
 										
-										<!-- Reviews Content -->
+										<!-- Skill Tab Section -->
 										<div class="tab-pane fade" id="skill" role="tabpanel" aria-labelledby="skill-tab" aria-expanded="false">
 											<div class="reviews_info">
+
 												<!-- Add Skills -->
 													<div class="row">
 														<div class="col-lg-12 col-md-12">
@@ -474,34 +481,115 @@ if(isset($_POST['submitExp'])){
 																</div>
 																
 																<div class="_dashboard_content_body py-3 px-3">
-																	<form class="row" id="skillform">
+																	<form class="row" id="skillform" method='post'>
 																		<div class="col-xl-12 col-lg-12" id="addSkillSec">
 																			<div class="gray rounded p-3 mb-3 position-relative">
 																				<!-- <button class="aps-clone"><i class="fas fa-times"></i></button> -->
 																				<div class="form-group">
 																					<label class="text-dark ft-medium">Skills Name</label>
-																					<input type="text" name="skillname[]" class="form-control rounded" placeholder="Skills Name">
+																					<input type="text" name="skillname" class="form-control rounded" placeholder="Skills Name">
 																				</div>
 																				<div class="form-group">
 																					<label class="text-dark ft-medium">Percentage</label>
-																					<input type="text" name="skillper[]" class="form-control rounded" placeholder="e.x. 80%">
+																					<input type="number" name="skillper" class="form-control rounded" placeholder="e.x. 80  (Only Numbers are allowed)">
 																				</div>
 																			</div>
 																		</div>
 																		
 																	</form>
-
-																	<button id="addSkillBtn" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="fas fa-plus mr-1"></i>Add Skills</button>
 																			
+																</div>
+																<!-- Save Skill-->
+																<div class="row" style="text-align:center; text-align:center;">
+																	<div class="col-lg-12 col-md-12">
+																		<input form="skillform" type="submit" name="submitSkill" class="btn btn-md ft-medium text-light rounded theme-bg" style="margin-bottom: 20px;" value="Save Skill">
+																	</div>	
 																</div>
 															</div>
 														</div>	
 													</div>
-												<!-- End Education -->
+												<!-- End of add skill -->
 
 											</div>
 											
+											<!-- Table To Display Already Saved Education -->
+											<div class="mb-4 tbl-lg rounded overflow-hidden">
+												<div class="table-responsive bg-white">
+													<table class="table">
+														<thead class="thead-dark">
+															<tr>
+															<th scope="col">S/N</th>
+															<th scope="col">Skill Name</th>
+															<th scope="col">Percentage (%)</th>
+															<th scope="col">Action</th>
+															</tr>
+														</thead>
+														<tbody>
+
+														<?php
+
+														$sn = 1;
+														
+														$query = "SELECT * from skill WHERE userID = $session_id ";
+
+														$result = mysqli_query($dbc, $query);
+
+														while($row = mysqli_fetch_array($result)){
+															$skillID = $row['skiID'];
+															$skillname = $row['skiName'];
+															$skillqtitle = $row['skiPercent'];
+															$skillToken = $row['skiToken'];
+															
+
+														?>
+															<tr>
+																<td><div class="dash-title">
+																		<h4 class="mb-0 ft-medium fs-sm">
+																			<?php echo $sn++;?>
+																		</h4>
+																	</div>
+																</td>
+
+																<td><div class="dash-filled">
+																	<?php
+																		echo $skillname;
+																	?>
+
+																</td>
+
+																<td>
+																<?php
+																		echo $skillqtitle;
+																	?>
+																</td>
+
+																<td>
+																	<div class="dash-action">
+																		<a href="dashboard-edit-resume.php?rand=<?php echo $skillID; ?>&getToken=<?php echo $skillToken;?>&type=ski" class="p-2 circle text-success bg-light-success d-inline-flex align-items-center justify-content-center"><i class="lni lni-pencil"></i></a>
+																		<a onclick="return confirm('Are you sure you want to delete this Skill? \n This Action cannot be reversed!');" href='dashboard-del-resume.php?rand=<?php echo $skillID; ?>&getToken=<?php echo $skillToken;?>&type=ski' class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+																		
+																	</div>
+																</td>
+															</tr>
+
+															<?php
+															}
+															?>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+
+
+
+
+
+
+
 										</div>
+
+										<!-- End of Skill Section -->
 								</div>
 
 							</div>

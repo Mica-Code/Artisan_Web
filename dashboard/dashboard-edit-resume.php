@@ -71,6 +71,24 @@ if (isset($_GET['rand']) && isset($_GET['getToken'])) {
             echo "<script>window.location='dashboard-add-resume.php'</script>";
         }
     }
+    elseif(($rand != '') && ($getToken != '') && ($type == 'ski')){
+        // echo "<script>alert('Editing Education');</script>";
+        $query = "SELECT * from skill where skiID='$rand' AND skiToken='$getToken'";
+        $execute = mysqli_query($dbc, $query);
+        $num_row=mysqli_num_rows($execute);
+        if($num_row > 0){
+            $row=mysqli_fetch_array($execute);
+
+			$skiIDE = $row['skiID'];
+            $skinameE = $row['skiName'];
+            $skipercentE = $row['skiPercent'];
+
+            $skiTokenE = $row['skiToken'];
+
+        }else{
+            echo "<script>window.location='dashboard-add-resume.php'</script>";
+        }
+    }
 }
 
 
@@ -87,6 +105,9 @@ if(isset($_POST['editExp'])){
 	require('dashboard-add-edit-resume-process.php');
 }
 
+if(isset($_POST['editSkill'])){
+	require('dashboard-add-edit-resume-process.php');
+}
 
 
 
@@ -253,8 +274,57 @@ if(isset($_POST['editExp'])){
 
 
                         <?php
-                        }?>
+                        }
+                        elseif($type == 'ski'){
+                            ?>
 
+                            <div class="reviews_info">
+
+                            <!-- Add Skills -->
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="_dashboard_content bg-white rounded mb-4">
+                                            <div class="_dashboard_content_header br-bottom py-3 px-3">
+                                                <div class="_dashboard__header_flex">
+                                                    <h4 class="mb-0 ft-medium fs-md"><i class="fas fa-graduation-cap mr-1 theme-cl fs-sm"></i>Skills Details</h4>	
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="_dashboard_content_body py-3 px-3">
+                                                <form class="row" id="skillform" method='post'>
+                                                    <div class="col-xl-12 col-lg-12" id="addSkillSec">
+                                                        <div class="gray rounded p-3 mb-3 position-relative">
+                                                            <!-- <button class="aps-clone"><i class="fas fa-times"></i></button> -->
+                                                            <div class="form-group">
+                                                                <label class="text-dark ft-medium">Skills Name</label>
+                                                                <input type="text" name="skillname" class="form-control rounded" value="<?php echo $skinameE?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="text-dark ft-medium">Percentage</label>
+                                                                <input type="number" name="skillper" class="form-control rounded" value="<?php echo $skipercentE?>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </form>
+                                                        
+                                            </div>
+                                            <!-- Save Skill-->
+                                            <div class="row" style="text-align:center; text-align:center;">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <input form="skillform" type="submit" name="editSkill" class="btn btn-md ft-medium text-light rounded theme-bg" style="margin-bottom: 20px;" value="Save Skill">
+                                                </div>	
+                                            </div>
+                                        </div>
+                                    </div>	
+                                </div>
+                            <!-- End of add skill -->
+
+                            </div>
+
+                        <?php
+                    }
+                    ?>
 
 					<?php
 include_once('include/footer.php');

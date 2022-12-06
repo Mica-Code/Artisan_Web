@@ -108,6 +108,53 @@ if(isset($_POST['editEdu'])){
         echo mysqli_error($dbc);
     }
 }
+elseif(isset($_POST['editSkill'])){
+
+    $skillname = $_POST['skillname'];
+    $skillpercent = $_POST['skillper'];
+
+    // echo "<script>alert('".$expname.", ".$expqtitle.", ".$expnote.", ".$session_id."')</script>";      
+
+    $query = "UPDATE skill SET skiName = '$skillname', skiPercent = '$skillpercent' WHERE skiToken='$skiTokenE'" or die(mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query);
+
+
+    if($result){
+
+        echo "<script>alert('Edit Successful')</script>";        
+        echo "<script>window.location='dashboard-add-resume.php'</script>";
+        exit();
+        
+    }else{
+        //print "Error while registration...!";
+        echo mysqli_error($dbc);
+    }
+}
+elseif(isset($_POST['submitSkill'])){
+
+    $skillname = $_POST['skillname'];
+    $skillpercent = $_POST['skillper'];
+
+    
+    $skillToken = sha1(uniqid(rand(),true));
+
+    // echo "<script>alert('".$expname.", ".$expqtitle.", ".$expnote.", ".$session_id."')</script>";      
+   
+    $query = "INSERT into skill (skiName, skiPercent, skiToken, userID) values ('".$skillname."', '".$skillpercent."', '$skillToken', '$session_id')" or die(mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query);
+
+
+    if($result){
+
+        echo "<script>alert('Upload Successful')</script>";        
+        echo "<script>window.location='dashboard-add-resume.php'</script>";
+        exit();
+        
+    }else{
+        //print "Error while registration...!";
+        echo mysqli_error($dbc);
+    }
+}
 
 ?>
 
