@@ -97,6 +97,8 @@ include_once('include/client-head.php');
 								$handwork = $row2['handwork'];
 								$jobTypeR = $row2['jobType'];
 								$experienceR = $row2['experience'];
+								$passToken = $row2['userToken'];
+								$pro_picI = $row2['profile_pic'];
 
 								?> 
 									
@@ -105,7 +107,7 @@ include_once('include/client-head.php');
 										<div class="dashed-list-full bg-white rounded p-3 mb-3">
 											<div class="dashed-list-short d-flex align-items-center">
 												<div class="dashed-list-short-first">
-													<div class="dashed-avater"><img src="assets/img/t-3.png" class="img-fluid circle" width="70" alt="" /></div>
+													<div class="dashed-avater"><img src="../Account/<?php echo $pro_picI?>" class="img-fluid circle" width="70" alt="" /></div>
 												</div>
 												<div class="dashed-list-short-last">
 													<div class="cats-box-caption px-2">
@@ -123,12 +125,8 @@ include_once('include/client-head.php');
 															<ul>
 																<?php
 
-																	$bgcolor = ['theme-bg-light', 'bg-light-warning', 'bg-light-danger'];
-																	$fgcolor = ['theme-cl', 'text-warning', 'text-danger'];
-
-																	// $app_info = "SELECT * from art_reg_tbl WHERE userID=$appArtisanID";
-																	// $exec2 = mysqli_query($dbc, $app_info);
-																	// $row2 = mysqli_fetch_array($exec2);
+																	$bgcolor = ['theme-bg-light', 'bg-light-warning', 'bg-light-danger', 'bg-light-info', 'bg-light-purple'];
+																	$fgcolor = ['theme-cl', 'text-warning', 'text-danger', 'text-info', 'text-purple'];
 
 																	$skills = "SELECT * from skill WHERE userID=$appArtisanID";
 																	$exec4 = mysqli_query($dbc, $skills);
@@ -139,15 +137,15 @@ include_once('include/client-head.php');
 																		while($row = mysqli_fetch_array($exec4)){
 																			
 																			$skiName = $row['skiName'];	
-																			$random = rand(0,2);
+																			$random = rand(0,4);
 		
 																			if($new_rand == $random){
-																				if($random == 2){
+																				if($random == 4){
 																					if($random != 1){
 																						$new_rand = 1;
 																					}
 																					else{
-																						$new_rand = 0;
+																						$new_rand = 3;
 																					}
 																						
 																				}else{
@@ -176,7 +174,7 @@ include_once('include/client-head.php');
 											</div>
 											<div class="dashed-list-last">
 												<div class="text-left">
-												<a href="candidate-detail.php" class="btn gray ft-medium apply-btn fs-sm rounded mr-1"><i class="lni lni-arrow-right-circle mr-1"></i>View More Information</a>
+												<a href="candidate-detail.php?rand=<?php echo $appArtisanID?>&token=<?php echo $passToken?>" class="btn gray ft-medium apply-btn fs-sm rounded mr-1"><i class="lni lni-arrow-right-circle mr-1"></i>View More Information</a>
 													<!-- <a href="#" data-toggle="modal" data-target="#edit" class="btn gray ft-medium apply-btn fs-sm rounded mr-1"><i class="lni lni-arrow-right-circle mr-1"></i>Edit</a>
 													<a href="#" data-toggle="modal" data-target="#note" class="btn gray ft-medium apply-btn fs-sm rounded mr-1"><i class="lni lni-add-files mr-1"></i>Note</a> -->
 													<!-- <a href="javascript:void(0);" class="btn gray ft-medium apply-btn fs-sm rounded"><i class="lni lni-heart mr-1"></i>Save</a> -->

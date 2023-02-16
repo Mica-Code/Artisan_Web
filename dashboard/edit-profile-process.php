@@ -60,10 +60,13 @@ if (empty($about)){
     $error[] = "A little about yourself";
 }
 
+$files = $_FILES['profile_pic'];
+$profileImage = upload_profile('../Account/assets/profile/', $files);
+ 
 if(empty($error)){
     
     require ('../includes/mydatabase2.php');
-    $query = "UPDATE art_reg_tbl SET fullname='$fullName', phone='$phone', location='$location', dob='$dob', experience='$experience', jobType='$jobtype', address='$address', skill_desc='$skill_desc', about='$about' WHERE userID=$session_id" or die(mysqli_error($dbc));;
+    $query = "UPDATE art_reg_tbl SET fullname='$fullName', phone='$phone', location='$location', dob='$dob', experience='$experience', jobType='$jobtype', address='$address', skill_desc='$skill_desc', about='$about', profile_pic='$profileImage' WHERE userID=$session_id" or die(mysqli_error($dbc));;
     $result = mysqli_query($dbc, $query);
     if($result){
 

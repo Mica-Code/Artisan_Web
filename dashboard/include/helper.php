@@ -44,10 +44,10 @@ function upload_profile($path, $file){
     }
 
     // return default image
-    return $path . $default;
+    return $path . $file;
 }
 
-
+ 
 // get user info
 function get_user_info($con, $userID){
     $query = "SELECT firstName, lastName, email, profileImage FROM user WHERE userID=?";

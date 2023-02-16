@@ -56,11 +56,17 @@ if(isset($_POST['save'])){
 									
 									<div class="_dashboard_content_body py-3 px-3">
 										<form class="row" method="post" enctype="multipart/form-data">
-											<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-											<div class="custom-file avater_uploads">
-												  <input type="file" class="custom-file-input" id="customFile">
-												  <label class="custom-file-label" for="customFile"><i class="fa fa-user"></i></label>
+										<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12" id="register">
+												<div class="custom-file avater_uploads">
+												
+												  
+												  <!-- <label class="custom-file-label" for="customFile"><i class="fa fa-user"></i></label> -->
+												  <img src='../Account/<?php  echo $profile_pic;?>' id='image' class='image' width='200px' height='200px'
+												style="margin-top:-20px; margin-left:50px; margin-top:20px;">
+												<input type="file" class="" id="customFile" style="margin-left:10px; margin-top:20px;" name="profile_pic">
+												<span style="color:red; font-size:12px; margin-left:10px; margin-top:10px;"><strong>Note:</strong> Profile picture will be updated once saved.</span>
 												</div>
+												
 											</div>
 											
 											<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
@@ -134,7 +140,7 @@ foreach($locations as $location2){
 													<div class="col-xl-6 col-lg-6">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Date of Birth</label>
-															<input type="date" name="dob" class="form-control rounded" value="<?php if(isset($dob) && $dob != ""){echo $dob;} else {echo "";} ?>" <?php if(isset($dob) && $dob != ""){echo "disabled";} else {echo "";} ?>>
+															<input type="date" name="dob" class="form-control rounded" value="<?php if(isset($dob) && $dob != ""){echo $dob;} else {echo "";} ?>">
 														</div>
 													</div>
 
