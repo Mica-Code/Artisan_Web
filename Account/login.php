@@ -92,10 +92,16 @@ if(!empty($error)){ ?>
                                 <p class="remember-label">
                                     <input type="checkbox" name="remember_me" id="cb1"><label for="cb1">Remember me</label>
                                 </p>
-                                <a href="forgotPassword.htm"><b>Forgot Password?</b></a>
+                                <a href="forgotPassword.php"><b>Forgot Password?</b></a>
                                 <div id="divTest2" class="col-lg-12">
                                     <button id="login" name="login" class="btn btn-success" type="submit">Login</button>
                                 </div>
+            </br>
+            </br>
+            </br>
+
+
+                                <a href="../Home/index.php" style="text-decoration:none;"><p style="color:#50B652;  margin-top:50px;">Back to Home</p></a>
                                 <div id="divTest" style="display: none;" class="col-lg-12">
                                     <button type="button" class="btn btn-success"><i class="fa fa-spinner fa-spin"></i> Loading, Please wait</button>
                                 </div>

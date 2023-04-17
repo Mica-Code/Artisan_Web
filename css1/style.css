@@ -932,7 +932,7 @@ label::after {
     color: #202020;
 }
 .account-popup > form > a {
-    float: right;
+    /* float: right; */
     font-family: Open Sans;
     font-size: 13px;
     text-decoration: underline;
