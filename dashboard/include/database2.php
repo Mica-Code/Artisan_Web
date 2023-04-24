@@ -1,6 +1,15 @@
 <?php
-$dbc = mysqli_connect("localhost", "root", "", "artisan");
 
+$servername = "localhost";
+$username = "lekkiler_artisan2";
+$password = "C8GaTPTiDCQY4qM";
+$dbname = "lekkiler_artisan2";
 
-$root = dirname($_SERVER['SCRIPT_NAME']);
+// Create connection
+$dbc = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($dbc->connect_error) {
+  die("Connection failed: " . $dbc->connect_error);
+}
+
 ?>

@@ -20,10 +20,11 @@ if (empty($lastname)){
 //Adding both first and last name together
 $fullname = $lastname." ".$firstname;
 
-$username = validate_input_text($_POST['username']);
-if (empty($username)){
+$uname = validate_input_text($_POST['username']);
+if (empty($uname)){
     $error[] = "You forgot to enter your Username";
 }
+
 
 $phone = validate_input_text($_POST['phone']);
 if (empty($phone)){
@@ -70,8 +71,8 @@ if (empty($skill_desc)){
     $error[] = "You have to input your work description";
 }
 
-$password = validate_input_text($_POST['password']);
-if (empty($password)){
+$pwd = validate_input_text($_POST['password']);
+if (empty($pwd)){
     $error[] = "You forgot to enter your password";
 }
 
@@ -82,7 +83,7 @@ if (empty($cfm_password)){
 
 
 //Checking if Password and Confirmed Password are the same
-if ($password !== $cfm_password){
+if ($pwd !== $cfm_password){
     $error[] = "Your Password must be the same";
 }
 
@@ -92,6 +93,9 @@ $userToken = sha1(uniqid(rand(),true));
 
 $files = $_FILES['profile_pic'];
 $profileImage = upload_profile('assets/profile/', $files);
+
+//acct verification code
+$acct_code = md5(time() . $fullname);
 
 
 // $imgContent = '';
@@ -125,36 +129,53 @@ $profileImage = upload_profile('assets/profile/', $files);
 // if (mysqli_num_rows($run) > 0){
 //     $error[] = "Email Already in use";
 // }
-
 if(empty($error)){
     // register a new user
     //$hashed_pass = password_hash($password, PASSWORD_DEFAULT);
     
     require ('../includes/mydatabase2.php');
-    $query = "SELECT email from `art_reg_tbl` WHERE email='$email'";
+    
+    $query = "SELECT username from `art_reg_tbl` WHERE username='$uname'";
     $run = mysqli_query($dbc, $query);
+   if(mysqli_num_rows($run) > 0){
+        $error[] = "Username Already Exists";
+        goto a;
+   }
+    $equery = "SELECT email from `art_reg_tbl` WHERE email='$email'";
+    $erun = mysqli_query($dbc, $equery);
+    //echo "<script>alert('I am here for email')</script>";
+   if(mysqli_num_rows($erun) > 0){
+        $error[] = "Email Already Exists";
+        goto a;
+   }
+    $pquery = "SELECT phone from `art_reg_tbl` WHERE phone='$phone'";
+    $prun = mysqli_query($dbc, $pquery);
+   if(mysqli_num_rows($prun) > 0){
+        $error[] = "Phone Number Already Exists";
+        goto a;
+   }
 
-    while ($row = mysqli_fetch_array($run)) {
+    // while ($row = mysqli_fetch_array($erun)) {
 
-        $demail = $row['email'];
-        if ($demail == $email) {
-            # code...
-        //    echo '<script>alert("Email Already existing")</script>';
-           $error[] = "Email Already Exists";
-           goto a;
-        }
-    }
+    //     $demail = $row['email'];
+    //     if ($demail == $email) {
+    //         # code...
+    //     //    echo '<script>alert("Email Already existing")</script>';
+    //       $error[] = "Email Already Exists";
+    //       goto a;
+    //     }
+        
+    // }
 
     $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, age, handwork, experience, jobType, address, skill_desc, location, profile_pic, userToken, reg_date) 
-    values ('$fullname', '$username', '$email', '".md5($password)."', '$phone', 'artisan', '$age', '$handwork', '$experience', '$jobtype', '$address', '$skill_desc', '$location', '$profileImage', '$userToken', now())" or die(mysqli_error($dbc));
+    values ('$fullname', '$uname', '$email', '".md5($pwd)."', '$phone', 'artisan', '$age', '$handwork', '$experience', '$jobtype', '$address', '$skill_desc', '$location', '$profileImage', '$userToken', now())" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){
+        
 
-        echo "<script>alert('Registration Successful')</script>";
-            
-        header('location: login.php?chk=successful');
-        exit();
+		include ('email.php');
+        
         
     }else{
         print "Error while registration...!";

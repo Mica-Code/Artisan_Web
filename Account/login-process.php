@@ -1,5 +1,5 @@
 <?php
-
+//echo "<script>alert('Inside Login Process')</script>";
 $status = "";
 
 // echo "<script>alert('Am inside login process')</script>";
@@ -15,44 +15,54 @@ if (empty($password)){
     $error[] = "You forgot to enter your password";
 }
 
-// echo "<script>alert('".$password."')</script>";
 
 
 
 if(empty($error)){
+    //echo "<script>alert('Error is empty')</script>";
     // sql query
-    $query = "SELECT * FROM art_reg_tbl WHERE email=?";
-    $q = mysqli_stmt_init($dbc);
-    mysqli_stmt_prepare($q, $query);
+    $query = "SELECT * FROM art_reg_tbl WHERE email='$email'";
+    $run = mysqli_query($dbc, $query);
     
-    // bind parameter
-    mysqli_stmt_bind_param($q, 's', $email);
-    //execute query
-    mysqli_stmt_execute($q);
+    //echo "<script>alert('".$email."')</script>";
 
-    $result = mysqli_stmt_get_result($q);
-
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	if(!$run){
+		echo 'Query failed while fetching data';
+		exit();
+	}
+    $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
     if (!empty($row)){
         // verify password
         if($row['password'] == md5($password)){
             
-            $_SESSION['userID'] = $row['userID'];
-            $_SESSION['loggedin_time'] = time();
+            if($row['verify'] == 1){
+                
+                //echo "<script>alert('Password')</script>";
+            
+                $_SESSION['userID'] = $row['userID'];
+                $_SESSION['loggedin_time'] = time();
+                $statusn = $row['status'];
+                
+                //echo "<script>alert('".$status."')</script>";
+    
+                if($statusn == 'client'){
+                    $status = "client";
+                    //echo "<script>alert('Going to client index')</script>";
+                    header("location: ../dashboard/client-index.php");
+                    
+                }
+                else{
+                    $status = "artisan";
+                    //echo "<script>alert('Going to artisan index')</script>";
+                    header("location: ../dashboard/artisan-index.php");
+                    
+                }
 
-            if($row['status'] == 'artisan'){
-                echo "<script>alert('".$password."')</script>";
-                $status = "artisan";
-                header("location: ../dashboard");
-                exit();
+                
+            }else{
+                $error[] = "Your Email has not been verified";
             }
-            else {
-                $status = "client";
-                header("location: ../dashboard/client-index.php");
-                exit();
-            }
-            
-            
+
             
         } else {
             $error[] = "Incorrect Email or Password!";

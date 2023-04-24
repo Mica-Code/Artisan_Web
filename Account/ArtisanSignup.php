@@ -128,6 +128,7 @@ $locations = array('', 'Agege', 'Ajeromi-Ifelodun', 'Alimosho', 'Amuwo-Odofin', 
 
 foreach($locations as $location){
     if(isset($_POST['location'])){
+        $location = $_POST['location'];
         echo "<option value=".$location." selected='selected'>".$location."</option>";
     }
     else{
@@ -140,27 +141,35 @@ foreach($locations as $location){
 </select>
                                 </div>
                               </div>
-  
+                              
+                              
                               <div class="col-lg-6">
-                                <span class="pf-title">Age</span>
+                                <span class="pf-title">Age Range</span>
                                 <div class="pf-field">
-                                  <select
-                                    data-placeholder="Your Age Range"
-                                    class="chosen"
-                                    name="age"
-                                    id="age"
-                                    value="<?php if (isset($_POST['age'])) echo $_POST['age'];  ?>"
-                                  >
-                                  <option></option>
-                                  <option>20-25 Years</option>
-                                    <option>26-30 Years</option>
-                                    <option>31-35 Years</option>
-                                    <option>36-40 Years</option>
-                                    <option>41-45 Years</option>
-                                    <option>45 Years and Above</option>
-                                  </select>
+                                <?php
+
+$ages = array('', '20-25-Years', '26-30-Years', '31-35-Years', '36-40-Years', '41-45-Years', '45-Years-&-Above')
+
+?>
+                                                <select class="chosen" id="age" name="age">
+                                                <?php
+
+foreach($ages as $age){
+    if(isset($_POST['age'])){
+        $age = $_POST['age'];
+        echo "<option value=".$age." selected='selected'>".$age."</option>";
+    }
+    else{
+        echo "<option value=".$age.">".$age."</option>";
+    }
+    
+}
+
+?>
+</select>
                                 </div>
                               </div>
+                              
   
                               <div class="col-lg-12">
                                 <span class="pf-title">Handwork</span>
@@ -186,6 +195,7 @@ $handworks = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance
 
 foreach($handworks as $handwork){
     if(isset($_POST['handwork'])){
+        $handwork = $_POST['handwork'];
         echo "<option value=".$handwork." selected='selected'>".$handwork."</option>";
     }
     else{
@@ -214,6 +224,7 @@ $experiences = array('', 'Beginner', 'Intermediate', 'Expert');
 
 foreach($experiences as $experience){
     if(isset($_POST['experience'])){
+        $experience = $_POST['experience'];
         echo "<option value=".$experience." selected='selected'>".$experience."</option>";
     }
     else{
@@ -240,6 +251,7 @@ $jobtypes = array('', 'Full-Time', 'Part-Time', 'Contract', 'Intern');
 
 foreach($jobtypes as $jobtype){
     if(isset($_POST['jobtype'])){
+        $jobtype = $_POST['jobtype'];
         echo "<option value=".$jobtype." selected='selected'>".$jobtype."</option>";
     }
     else{
@@ -340,8 +352,8 @@ foreach($jobtypes as $jobtype){
                                     id="skill_desc"
                                     maxlength="300"
                                     name="skill_desc"
-                                    value="<?php if (isset($_POST['skill_desc'])) echo $_POST['skill_desc'];  ?>"
-                                  ></textarea>
+                                    
+                                  ><?php if (isset($_POST['skill_desc'])) echo $_POST['skill_desc'];  ?></textarea>
                                 </div>
                               </div>
 

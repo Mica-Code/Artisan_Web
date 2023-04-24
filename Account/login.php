@@ -12,7 +12,9 @@ if(isset($_SESSION['userID'])){
 }
 // When form submitted, check and create user session.
 if (isset($_POST['login'])) {
+    //echo "<script>alert('Going to login process')</script>";
     require('login-process.php');
+    //echo "<script>alert('Back to login process')</script>";
 }
 // else {
 ?>
@@ -65,8 +67,23 @@ if (isset($_POST['login'])) {
 <form action="" method="post">           
 <?php
     if(isset($_GET['chk'])){
-        echo "<h3 style='color:green'>Registration Successful</h3>";
-        echo "<small>(Login to Access Your Account)</small></br>";
+        $message = $_GET['chk'];
+        
+        if($message == 'successful'){
+            echo "<h3 style='color:green'>Verification Successful</h3>";
+            echo "<small>(Login to Access Your Account)</small></br>";
+        }
+        
+        if($message == 'unverified'){
+            echo "<h3 style='color:green'>Registration Successful</h3>";
+            echo "<small style='color:red'>(A mail has been sent to you, verify your email to login)</small></br>";
+        }
+        if($message == 'invalid'){
+            echo "<h3 style='color:green'>Account Already Verified</h3>";
+             echo "<small>(Login to Access Your Account)</small></br>";
+        }
+        
+        
     }
 if(!empty($error)){ ?>
     <div class='alert alert-danger' style="text-align:left;">
@@ -92,10 +109,16 @@ if(!empty($error)){ ?>
                                 <p class="remember-label">
                                     <input type="checkbox" name="remember_me" id="cb1"><label for="cb1">Remember me</label>
                                 </p>
-                                <a href="forgotPassword.htm"><b>Forgot Password?</b></a>
+                                <a href="forgotPassword.php"><b>Forgot Password?</b></a>
                                 <div id="divTest2" class="col-lg-12">
                                     <button id="login" name="login" class="btn btn-success" type="submit">Login</button>
                                 </div>
+            </br>
+            </br>
+            </br>
+
+
+                                <a href="../Home/index.php" style="text-decoration:none;"><p style="color:#50B652;  margin-top:50px;">Back to Home</p></a>
                                 <div id="divTest" style="display: none;" class="col-lg-12">
                                     <button type="button" class="btn btn-success"><i class="fa fa-spinner fa-spin"></i> Loading, Please wait</button>
                                 </div>

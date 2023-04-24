@@ -221,6 +221,10 @@ foreach($locations as $location){
     </div>
 </section>
 
+<dialog>
+    
+</dialog>
+
 
 <script>
     $(document).ready(function () {

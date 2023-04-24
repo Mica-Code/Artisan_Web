@@ -12,8 +12,8 @@ if (empty($fullName)){
     $error[] = "You forgot to enter your Full Name";
 }
 
-$username = validate_input_text($_POST['username']);
-if (empty($username)){
+$uname = validate_input_text($_POST['username']);
+if (empty($uname)){
     $error[] = "You forgot to enter your Username";
 }
 
@@ -22,8 +22,8 @@ if (empty($email)){
     $error[] = "You forgot to enter your Email";
 }
 
-$password = validate_input_text($_POST['password']);
-if (empty($password)){
+$pwd = validate_input_text($_POST['password']);
+if (empty($pwd)){
     $error[] = "You forgot to enter your password";
 }
 
@@ -43,7 +43,7 @@ if (empty($location)){
 }
 
 //Checking if Password and Confirmed Password are the same
-if ($password !== $confirmPassword){
+if ($pwd !== $confirmPassword){
     $error[] = "Your Password must be the same";
 }
 
@@ -64,36 +64,39 @@ if(empty($error)){
     //$hashed_pass = password_hash($password, PASSWORD_DEFAULT);
     
     require ('../includes/mydatabase2.php');
-    $query = "SELECT email, username from `art_reg_tbl` WHERE email='$email' OR username='$username'";
-    $run = mysqli_query($dbc, $query);
 
-    while ($row = mysqli_fetch_array($run)) {
+    $uquery = "SELECT username from `art_reg_tbl` WHERE username='$uname'";
+    $urun = mysqli_query($dbc, $uquery);
+   if(mysqli_num_rows($urun) > 0){
+        $error[] = "Username Already Exists";
+        goto a;
+   }
+    $equery = "SELECT email from `art_reg_tbl` WHERE email='$email'";
+    $erun = mysqli_query($dbc, $equery);
+    //echo "<script>alert('I am here for email')</script>";
+   if(mysqli_num_rows($erun) > 0){
+        $error[] = "Email Already Exists";
+        goto a;
+   }
+    $pquery = "SELECT phone from `art_reg_tbl` WHERE phone='$phone'";
+    $prun = mysqli_query($dbc, $pquery);
+   if(mysqli_num_rows($prun) > 0){
+        $error[] = "Phone Number Already Exists";
+        goto a;
+   }
 
-        $demail = $row['email'];
-        $duname = $row['username'];
-        if ($demail == $email) {
-            # code...
-        //    echo '<script>alert("Email Already existing")</script>';
-           $error[] = "Email Already Exist";
-           goto a;
-        }
 
-        if ($duname == $username){
-            $error[] = "Username Already Exist";
-            goto a;
-        }
-    }
-
-
-    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, location, userToken, reg_date) values ('$fullName', '$username', '$email', '".md5($password)."', '$phone', 'client', '$location', '$userToken', now())" or die(mysqli_error($dbc));
+    $query = "INSERT into art_reg_tbl (fullname, username, email, password, phone, status, location, userToken, reg_date) values ('$fullName', '$uname', '$email', '".md5($pwd)."', '$phone', 'client', '$location', '$userToken', now())" or die(mysqli_error($dbc));
     $result = mysqli_query($dbc, $query);
 
     if($result){
+        
+        include ('email2.php');
 
-        echo "<script>alert('Registration Successful')</script>";
+        // echo "<script>alert('Registration Successful')</script>";
             
-        header('location: login.php?chk=successful');
-        exit();
+        // header('location: login.php?chk=successful');
+        // exit();
         
     }else{
         print "Error while registration...!";
