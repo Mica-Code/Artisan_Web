@@ -3470,7 +3470,8 @@ ul.jbd-social li a {
 -------------------------------------------------------------*/
 /*-------------- Form Elements ----------------*/
 .form-control, select.form-control {
-    height:52px !important;
+    /* height:52px !important; */
+    height:52px;
     padding: 10px 15px;
 	font-size:15px;
     border-radius: 1px;

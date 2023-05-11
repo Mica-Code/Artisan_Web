@@ -69,14 +69,14 @@ if(isset($_POST['postJob'])){
                                         <?php }?>
 														<div class="form-group">
 															<label class="text-dark ft-medium">Job Title</label>
-															<input type="text" id="postJobTitle" name="postJobTitle" class="form-control rounded" placeholder="Title">
+															<input type="text" id="postJobTitle" name="postJobTitle" class="form-control rounded" placeholder="Title" value="<?php if(isset($_POST['postJob'])){echo $_POST['postJobTitle'];}?>">
 														</div>
 													</div>
 													
 													<div class="col-xl-12 col-lg-12 col-md-12">
 														<div class="form-group">
 															<label class="text-dark ft-medium">Job Description</label>
-															<textarea id="postJobDesc" name="postJobDesc" class="form-control rounded" placeholder="Job Description"></textarea>
+															<textarea id="postJobDesc" name="postJobDesc" class="form-control rounded" placeholder="Job Description"><?php if(isset($_POST['postJob'])){echo $_POST['postJobDesc'];}?></textarea>
 														</div>
 													</div>
 													
@@ -99,7 +99,7 @@ if(isset($_POST['postJob'])){
 															<label class="text-dark ft-medium">Profession Needed</label>
                               <?php
 
-$handworks = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance-Maintenance', 'Architectural-Design',
+$Trades = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance-Maintenance', 'Architectural-Design',
 'Artist', 'Auto-Mechanic', 'Bathroom-Renovation', 'Bricklayer/Mason', 'CableTV/CCTV-Installer', 'CableTV-Installation', 'Car-Rewire/Car-tracker', 'Car-Upholstery',
 'Car-Wash', 'Carpentry', 'Catering', 'CCTV/Biometric-Access-Control', 'Ceiliing-Repair', 'Ceramic/Tiling', 'Cleaning', 'Cobbler', 'Cosmetologists',
 'Craftman', 'Curtain-Hanging', 'Deck-Building', 'Digital-Marketing', 'Door-Installation/Repair', 'Driver/Rider', 'Electrical', 'Electronic-Technician',
@@ -116,12 +116,13 @@ $handworks = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance
 <select class="form-control rounded" id="postJobProfession" name="postJobProfession">
 <?php
 
-foreach($handworks as $handwork){
+foreach($Trades as $Trade){
     if(isset($_POST['postJobProfession'])){
-        echo "<option value=".$handwork." selected='selected'>".$handwork."</option>";
+		$Trade = $_POST['handwork'];
+        echo "<option value=".$Trade." selected='selected'>".$Trade."</option>";
     }
     else{
-        echo "<option value=".$handwork.">".$handwork."</option>";
+        echo "<option value=".$Trade.">".$Trade."</option>";
     }
 
 }
@@ -315,7 +316,7 @@ foreach($locations as $location){
                                 <span class="arrow"></span>
                                 &#x20A6;
                                 </span>
-                                <input type="number" class="form-control" name="postJobMinBud" placeholder="Enter Minimum Amount" required>
+                                <input type="number" class="form-control" name="postJobMinBud" placeholder="Enter Minimum Amount" value="<?php if(isset($_POST['postJob'])){echo $_POST['postJobMinBud'];}?>" required>
                                 <span class="input-group-addon">
                                 <span class="arrow"></span>
                                 .00
@@ -333,7 +334,7 @@ foreach($locations as $location){
                                 <span class="arrow"></span>
                                 &#x20A6;
                                 </span>
-                                <input type="number" class="form-control" name="postJobMaxBud" placeholder="Enter Minimum Amount" required>
+                                <input type="number" class="form-control" name="postJobMaxBud" placeholder="Enter Minimum Amount" value="<?php if(isset($_POST['postJob'])){echo $_POST['postJobMaxBud'];}?>" required>
                                 <span class="input-group-addon">
                                 <span class="arrow"></span>
                                 .00

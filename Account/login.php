@@ -118,7 +118,7 @@ if(!empty($error)){ ?>
             </br>
 
 
-                                <a href="../Home/index.php" style="text-decoration:none;"><p style="color:#50B652;  margin-top:50px;">Back to Home</p></a>
+                                <a href="../index.php" style="text-decoration:none;"><p style="color:#50B652;  margin-top:50px;">Back to Home</p></a>
                                 <div id="divTest" style="display: none;" class="col-lg-12">
                                     <button type="button" class="btn btn-success"><i class="fa fa-spinner fa-spin"></i> Loading, Please wait</button>
                                 </div>

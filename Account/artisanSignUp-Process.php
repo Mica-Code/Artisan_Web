@@ -48,7 +48,7 @@ if (empty($age)){
 
 $handwork = validate_input_text($_POST['handwork']);
 if (empty($handwork)){
-    $error[] = "You have to have a Handwork";
+    $error[] = "You have to have a Trade";
 }
 
 $experience = validate_input_text($_POST['experience']);
@@ -73,7 +73,20 @@ if (empty($skill_desc)){
 
 $pwd = validate_input_text($_POST['password']);
 if (empty($pwd)){
-    $error[] = "You forgot to enter your password";
+    $error[] = "You forgot to Enter your Password";
+}
+else{
+    // Given password
+    //$password = 'user-input-pass';
+
+    $uppercase = preg_match('@[A-Z]@', $pwd);
+    $lowercase = preg_match('@[a-z]@', $pwd);
+    $number    = preg_match('@[0-9]@', $pwd);
+    $specialChars = preg_match('@[^\w]@', $pwd);
+
+    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($pwd) < 8) {
+        $error[] = "Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.";
+    }
 }
 
 $cfm_password = validate_input_text($_POST['cfm_password']);
@@ -92,7 +105,13 @@ $userToken = sha1(uniqid(rand(),true));
 //uploading the picture
 
 $files = $_FILES['profile_pic'];
-$profileImage = upload_profile('assets/profile/', $files);
+
+//means there is no file uploaded
+if($_FILES["profile_pic"]["error"] == 4) {
+    $error[] = "You have to Upload your profile picture";
+}else{
+    $profileImage = upload_profile('assets/profile/', $files);
+}
 
 //acct verification code
 $acct_code = md5(time() . $fullname);

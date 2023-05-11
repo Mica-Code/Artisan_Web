@@ -172,35 +172,41 @@ foreach($ages as $age){
                               
   
                               <div class="col-lg-12">
-                                <span class="pf-title">Handwork</span>
+                                <span class="pf-title">Trade</span>
                                 <div class="pf-field">
                                 <?php
 
-$handworks = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance-Maintenance', 'Architectural-Design',
-'Artist', 'Auto-Mechanic', 'Bathroom-Renovation', 'Bricklayer/Mason', 'CableTV/CCTV-Installer', 'CableTV-Installation', 'Car-Rewire/Car-tracker', 'Car-Upholstery',
-'Car-Wash', 'Carpentry', 'Catering', 'CCTV/Biometric-Access-Control', 'Ceiliing-Repair', 'Ceramic/Tiling', 'Cleaning', 'Cobbler', 'Cosmetologists',
-'Craftman', 'Curtain-Hanging', 'Deck-Building', 'Digital-Marketing', 'Door-Installation/Repair', 'Driver/Rider', 'Electrical', 'Electronic-Technician',
-'Event-Planner', 'Event-Usher', 'Factory-Worker', 'Farm-worker', 'Fascinators', 'Flooring-installation/Repair', 'Framing', 'Furniture-Refinishing', 'Gadgets-Repairs',
-'Gardening', 'Gas-Man', 'Hair-Stylist', 'Heating-Systems', 'Heavy-Duty Machines', 'Horticulturist', 'Hot-Tubs/Spa', 'House-Renovation', 'Housekeeping', 'Insulation-Installation',
-'Interior-Decoration', 'Inverter-Technician', 'Janitorial-Services', 'Landscaping', 'Laundry-Service', 'Makeup-Artist', 'Manicure/Pedicure', 'Mini-Generators',
-'Motor-mechanic', 'Musical-studio', 'Networking/Access-Control', 'Painting', 'Panel-Beater', 'Patio-Stone-Installation', 'Pest-Control', 'Photography', 'Plumbing',
-'POP Ceiling-Services', 'Porches', 'Property-Valuers', 'Refrigerator-Technician', 'Roofing', 'Septic-Systems', 'Solar/Inverter-Technician', 'Solar-Panels',
-'Soundproof/Mini-Generators', 'Soundproof-Generators', 'Soundproofing', 'Sprinkler-System', 'Stain-Removal', 'Surveyor', 'Swimming-Pool-Maintenance', 'System-Technici-an',
-'Tailoring', 'Tiling', 'Video/Graphics', 'vulcanizer', 'Wall-Building', 'Wallpapering', 'Waste/Junk-Removal', 'Water-Purification', 'Water-Softening', 'Web-Designer',
-'Welder', 'Window-Installation');
+// $handworks = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance-Maintenance', 'Architectural-Design',
+// 'Artist', 'Auto-Mechanic', 'Bathroom-Renovation', 'Bricklayer/Mason', 'CableTV/CCTV-Installer', 'CableTV-Installation', 'Car-Rewire/Car-tracker', 'Car-Upholstery',
+// 'Car-Wash', 'Carpentry', 'Catering', 'CCTV/Biometric-Access-Control', 'Ceiliing-Repair', 'Ceramic/Tiling', 'Cleaning', 'Cobbler', 'Cosmetologists',
+// 'Craftman', 'Curtain-Hanging', 'Deck-Building', 'Digital-Marketing', 'Door-Installation/Repair', 'Driver/Rider', 'Electrical', 'Electronic-Technician',
+// 'Event-Planner', 'Event-Usher', 'Factory-Worker', 'Farm-worker', 'Fascinators', 'Flooring-installation/Repair', 'Framing', 'Furniture-Refinishing', 'Gadgets-Repairs',
+// 'Gardening', 'Gas-Man', 'Hair-Stylist', 'Heating-Systems', 'Heavy-Duty Machines', 'Horticulturist', 'Hot-Tubs/Spa', 'House-Renovation', 'Housekeeping', 'Insulation-Installation',
+// 'Interior-Decoration', 'Inverter-Technician', 'Janitorial-Services', 'Landscaping', 'Laundry-Service', 'Makeup-Artist', 'Manicure/Pedicure', 'Mini-Generators',
+// 'Motor-mechanic', 'Musical-studio', 'Networking/Access-Control', 'Painting', 'Panel-Beater', 'Patio-Stone-Installation', 'Pest-Control', 'Photography', 'Plumbing',
+// 'POP Ceiling-Services', 'Porches', 'Property-Valuers', 'Refrigerator-Technician', 'Roofing', 'Septic-Systems', 'Solar/Inverter-Technician', 'Solar-Panels',
+// 'Soundproof/Mini-Generators', 'Soundproof-Generators', 'Soundproofing', 'Sprinkler-System', 'Stain-Removal', 'Surveyor', 'Swimming-Pool-Maintenance', 'System-Technici-an',
+// 'Tailoring', 'Tiling', 'Video/Graphics', 'vulcanizer', 'Wall-Building', 'Wallpapering', 'Waste/Junk-Removal', 'Water-Purification', 'Water-Softening', 'Web-Designer',
+// 'Welder', 'Window-Installation');
+
+
+$handworks = array('', 'Bricklaying-&-Mazery', 'Carpentry-&-Furniture', 'Catering', 'Electrical', 'Plumbering');
 
 ?>
 <select class="chosen" id="handwork" name="handwork">
 <?php
 
 foreach($handworks as $handwork){
-    if(isset($_POST['handwork'])){
-        $handwork = $_POST['handwork'];
-        echo "<option value=".$handwork." selected='selected'>".$handwork."</option>";
-    }
-    else{
-        echo "<option value=".$handwork.">".$handwork."</option>";
-    }
+
+  echo "<option value=".$handwork.">".$handwork."</option>";
+
+    // if(isset($_POST['handwork'])){
+    //     //$handwork = $_POST['handwork'];
+    //     echo "<option value=".$handwork." selected='selected'>".$handwork."</option>";
+    // }
+    // else{
+    //     echo "<option value=".$handwork.">".$handwork."</option>";
+    // }
 
 }
 
@@ -216,7 +222,7 @@ foreach($handworks as $handwork){
                                 <div class="pf-field">
                                 <?php
 
-$experiences = array('', 'Beginner', 'Intermediate', 'Expert');
+$experiences = array('', 'Below-1-year', '1-2-years', '2-4-years', 'Above-4-years');
 
 ?>
                                                 <select class="chosen" id="experience" name="experience">
@@ -239,11 +245,11 @@ foreach($experiences as $experience){
                               </div>
   
                               <div class="col-lg-6">
-                                <span class="pf-title">Job Type</span>
+                                <span class="pf-title">Job Duration</span>
                                 <div class="pf-field">
                                 <?php
 
-$jobtypes = array('', 'Full-Time', 'Part-Time', 'Contract', 'Intern');
+$jobtypes = array('', 'Below-1-Month', '1-2-Moths', '2-4-Moths', 'Above-4-Moths');
 
 ?>
                                                 <select class="chosen" id="jobtype" name="jobtype">
@@ -339,7 +345,7 @@ foreach($jobtypes as $jobtype){
                               <div class="col-lg-12">
                                 <span class="pf-title"
                                   >Skill Description - Tell us about your
-                                  handwork</span
+                                  Trade</span
                                 >
                                 <div class="pf-field">
                                   <textarea
@@ -352,7 +358,7 @@ foreach($jobtypes as $jobtype){
                                     id="skill_desc"
                                     maxlength="300"
                                     name="skill_desc"
-                                    
+                                    placeholder="Tell us what kind of work can you do. Are you a carpenter or an electrican, etc. Let people know your core area of specialization"
                                   ><?php if (isset($_POST['skill_desc'])) echo $_POST['skill_desc'];  ?></textarea>
                                 </div>
                               </div>
@@ -370,7 +376,10 @@ foreach($jobtypes as $jobtype){
                                   Sign up
                                 </button>
                               </div>
-  
+                              <div class="col-lg-12">
+                                <p style="margin-top:10px;">I Already have an Account <a href="login.php" style="color:green">Login Here</a></p>
+                                <p><a href="index.php" style="color:green">Back to Home</a></p>
+                              </div>
                               <ul>
                                 <li>
                                   <span
@@ -436,6 +445,7 @@ foreach($jobtypes as $jobtype){
                           />
                         </form>
                     </div>
+                    
                   </div>
                 </div>
               </div>

@@ -3,10 +3,9 @@
 $title = "Artisan Dashboard";
 $nav='<ul data-submenu-title="Main Navigation">
 <li class="active"><a href="index.php"><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
-<!--<li><a href="dashboard-manage-resume.php"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li> -->
 <li><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
+<li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Vacant Jobs</a></li>
 <li><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
-<li><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs</a></li>
 <!-- <li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li> -->
 <!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li> -->
 <!-- <li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
@@ -27,7 +26,7 @@ include_once('include/head.php');
 								<h1 class="ft-medium">Hello, <?php echo $fname ?></h1>
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb">
-										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>
+										<li class="breadcrumb-item text-muted"><a href="../index.php">Home</a></li>
 										<li class="breadcrumb-item"><a href="#" class="theme-cl">Dashboard</a></li>
 									</ol>
 								</nav>
@@ -38,32 +37,63 @@ include_once('include/head.php');
 					<div class="dashboard-widg-bar d-block">
 						<div class="row">
 							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-								<div class="dash-widgets py-5 px-4 rounded" style="background-color:#7460ee;">
-									<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $n_row;?></h2>
-									<p class="p-0 m-0 text-light fs-md">Applied Jobs</p>
-									<i class="lni lni-empty-file"></i>
-								</div>
+								<a href="dashboard-alert-job.php">
+									<div class="dash-widgets py-5 px-4 bg-dark rounded">
+										<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $n_row2;?></h2>
+										<p class="p-0 m-0 text-light fs-md">Vacant Jobs</p>
+										<i class="lni lni-alarm"></i>
+									</div>
+								</a>	
 							</div>
 							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-								<div class="dash-widgets py-5 px-4 bg-dark rounded">
-									<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $n_row+$n_row2;?></h2>
-									<p class="p-0 m-0 text-light fs-md">Notifications</p>
-									<i class="lni lni-users"></i>
-								</div>
+								<a href="dashboard-applied-jobs.php">
+									<div class="dash-widgets py-5 px-4 rounded" style="background-color:#000F5C;">
+										<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $n_row;?></h2>
+										<p class="p-0 m-0 text-light fs-md">Applied Jobs</p>
+										<i class="lni lni-files"></i>
+									</div>
+								</a>
 							</div>
+
 							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-								<div class="dash-widgets py-5 px-4 bg-warning rounded">
-									<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $n_row2;?></h2>
-									<p class="p-0 m-0 text-light fs-md">Alert Jobs</p>
-									<i class="lni lni-bar-chart"></i>
-								</div>
+								<a href="dashboard-applied-jobs.php?status=pending">
+									<div class="dash-widgets py-5 px-4 rounded bg-warning">
+										<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $pn_row;?></h2>
+										<p class="p-0 m-0 text-light fs-md">Pending Jobs</p>
+										<i class="lni lni-empty-file"></i>
+									</div>
+								</a>
 							</div>
+
 							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-								<div class="dash-widgets py-5 px-4 rounded" style="background-color:#1ac790;">
-									<h2 class="ft-medium mb-1 fs-xl text-light">0</h2>
-									<p class="p-0 m-0 text-light fs-md">Completed jobs</p>
-									<i class="lni lni-heart"></i>
-								</div>
+								<a href="dashboard-applied-jobs.php?status=active">
+									<div class="dash-widgets py-5 px-4 rounded" style="background-color:#7460ee;">
+										<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $an_row;?></h2>
+										<p class="p-0 m-0 text-light fs-md">Active Jobs</p>
+										<i class="lni lni-write"></i>
+									</div>
+								</a>
+							</div>
+
+							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+								<a href="dashboard-applied-jobs.php?status=completed">
+									<div class="dash-widgets py-5 px-4 rounded" style="background-color:#008113;">
+										<h2 class="ft-medium mb-1 fs-xl text-light"><?php echo $cn_row;?></h2>
+										<p class="p-0 m-0 text-light fs-md">Completed Jobs</p>
+										<i class="lni lni-folder"></i>
+									</div>
+								</a>
+							</div>
+
+							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+								<a href="report.php">
+									<div class="dash-widgets py-5 px-4 rounded" style="background-color:#821700/*#1ac790*/;">
+										<h2 class="ft-medium mb-1 fs-xl text-light">0</h2>
+										<p class="p-0 m-0 text-light fs-md">Generated Report</p>
+										<i class="lni lni-add-files"></i>
+									</div>
+								</a>
+								
 							</div>
 						</div>
 						
@@ -112,7 +142,7 @@ include_once('include/head.php');
 							
 							<div class="col-lg-6 col-md-12">
 								<div class="dashboard-gravity-list invoices with-icons">
-									<h4 class="mb-0 ft-medium">Invoices</h4>
+									<h4 class="mb-0 ft-medium">Notifications</h4>
 									<ul>
 										
 										<li><i class="dash-icon-box ti-files text-warning bg-light-warning"></i>

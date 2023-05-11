@@ -30,6 +30,28 @@ $qry = "SELECT * from appjob WHERE appArtisanID = $session_id";
 $rest = mysqli_query($dbc, $qry);
 $n_row = mysqli_num_rows($rest);
 
+//Getting Number of Pending Jobs
+$pqry = "SELECT * from appjob WHERE appArtisanID = $session_id AND appStatus = 'Pending'";
+												
+$prest = mysqli_query($dbc, $pqry);
+$pn_row = mysqli_num_rows($prest);
+
+//Getting Number of Active Jobs
+$aqry = "SELECT * from appjob WHERE appArtisanID = $session_id AND appStatus = 'Active'";
+												
+$arest = mysqli_query($dbc, $aqry);
+$an_row = mysqli_num_rows($arest);
+
+//Getting Number of Completed Jobs
+$cqry = "SELECT * from appjob WHERE appArtisanID = $session_id AND appStatus = 'Completed'";
+												
+$crest = mysqli_query($dbc, $cqry);
+$cn_row = mysqli_num_rows($crest);
+
+
+
+
+
 //Getting number of Job alerts
 $qry2 = "SELECT * from postjob WHERE (postJobProfession = '$handwork' AND postJobStatus = 'Pending')";
 													

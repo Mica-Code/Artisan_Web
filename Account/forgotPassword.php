@@ -6,9 +6,29 @@ $error = array();
 
 // When form submitted, check and create user session.
 if (isset($_POST['forgotPass'])) {
-    echo "<script>window.location='retrievePassword.php';</script>";
+    $email = $_POST['Email'];
+    echo "<script>alert('".$email."')</script>";
+    if($email == ""){
+        echo "<script>alert('Your Email is Required')</script>";
+    }else{
+        $queryEmail = "SELECT * FROM art_reg_tbl WHERE email='$email'";
+        $exeQueryEmail = mysqli_query($dbc, $queryEmail);
+        $noRow = mysqli_num_rows($exeQueryEmail);
+
+        if($noRow == 1){
+            echo "<script>alert('The email exist in the database')</script>";
+            require_once('email_forgetPass.php');
+        }
+        else{
+            echo "<script>alert('The email no dey database')</script>";
+        }
+    }
+
+    
+    //echo "<script>window.location='retrievePassword.php';</script>";
     //require('retrievePassword.php');
 }
+
 // else {
 ?>
 
@@ -22,10 +42,6 @@ if (isset($_POST['forgotPass'])) {
         <section>
 
             <section><br /><br /></section>
-            
-
-
-
 
 
 <section>
@@ -38,7 +54,28 @@ if (isset($_POST['forgotPass'])) {
                             <br />
                             <h3>forgot password</h3>
 
-<form method="post">                                    <div class="cfield">
+<form method="post">
+<?php
+    if(isset($_GET['chk'])){
+        $message = $_GET['chk'];
+        
+        if($message == 'sent'){
+            echo "<h3 style='color:green'>A Password Reset Email have been sent to ".$_POST['Email']."</h3>";
+            echo "<small>(Sign in to your email to reset your password)</small></br>";
+        }
+        
+        
+    }
+if(!empty($error)){ ?>
+    <div class='alert alert-danger' style="text-align:left;">
+    <ul>
+            <?php foreach($error as $err){?>
+                <li style="">&bull; <?php echo $err; ?></li>
+            <?php }?>
+        </ul>
+    </div>
+    <?php }?>
+    <div class="cfield">
                                         <input type="text" name="Email" id="Email" placeholder="Enter your Email address" class="form-control" />
                                         <i class="la la-codepen"></i>
 

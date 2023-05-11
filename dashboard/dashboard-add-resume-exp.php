@@ -1,7 +1,7 @@
 <?php
 
 
-echo "<script>alert('inside exp')</script>";
+//echo "<script>alert('inside exp')</script>";
 
 $jobToken = sha1(uniqid(rand(),true));
 

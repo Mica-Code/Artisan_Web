@@ -2,25 +2,24 @@
 
 $title = "Job Details";
 $nav='<ul data-submenu-title="Main Navigation">
-<li><a href="index.php"><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
-<!--<li><a href="dashboard-manage-resume.php"><i class="lni lni-files mr-2"></i>Manage Resumes</a></li>-->
+<li ><a href="index.php"><i class="lni lni-dashboard mr-2"></i>Dashboard</a></li>
 <li><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
+<li class="active"><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Vacant Jobs</a></li>
 <li><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
-<li class="active"><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Alert Jobs<span class="count-tag bg-warning">4</span></a></li>
 <!-- <li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li> -->
-<!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
-<li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
+<!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li> -->
+<!-- <li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
 </ul>
 <ul data-submenu-title="My Accounts">
 <li><a href="dashboard-my-profile.php"><i class="lni lni-user mr-2"></i>My Profile </a></li>
 <li><a href="dashboard-change-password.php"><i class="lni lni-lock-alt mr-2"></i>Change Password</a></li>
-<li><a href="javascript:void(0);"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
+<li><a onclick= "return confirm(\'You are about to Delete your account. \nData(s) related to you will be cleared from the system. \nThis action is irreversible.\')" href="dashboard-delete-acct.php"><i class="lni lni-trash-can mr-2"></i>Delete Account</a></li>
 <li><a href="logout.php"><i class="lni lni-power-switch mr-2"></i>Log Out</a></li>
 </ul>';
 
 include_once('include/head.php');
 
-$add_del_app = 0;
+// $add_del_app = 0;
 
 if (isset($_GET['JobID']) && isset($_GET['JobToken'])) {
 
@@ -72,14 +71,6 @@ if (isset($_GET['JobID']) && isset($_GET['JobToken'])) {
     echo "<script>window.location='dashboard-alert-job.php'</script>";
 }
 
-
-$q = "SELECT * from appjob WHERE appPostJobID=$jobId AND appArtisanID=$session_id";
-$r = mysqli_query($dbc, $q);
-$no_row = mysqli_num_rows($r);
-
-if($no_row >  0){
-	$add_del_app = 1;
-}
 ?>	
 				
 				<div class="dashboard-content">
@@ -91,7 +82,7 @@ if($no_row >  0){
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item text-muted"><a href="#">Home</a></li>
 										<li class="breadcrumb-item text-muted"><a href="index.php">Dashboard</a></li>
-										<li class="breadcrumb-item"><a href="dashboard-alert-job.php">Alert Jobs</a></li>
+										<li class="breadcrumb-item"><a href="dashboard-alert-job.php">Vacant Jobs</a></li>
 										<li class="breadcrumb-item"><a href="#" class="theme-cl">Job Details</a></li>
 									</ol>
 								</nav>
@@ -124,8 +115,30 @@ if($no_row >  0){
 									<div class="jbd-01-right text-right hide-1023">
 
 									<?php
-											if($add_del_app < 1){
-										?>
+										// echo "<script>alert('Before')</script>";
+										// $q1 = "SELECT * from appjob WHERE appPostJobID=$postJobIDa AND appStatus='Completed'";
+										$q1 = "SELECT * from appjob WHERE (appPostJobID = $postJobIDa AND appStatus = 'Active') OR (appPostJobID = $postJobIDa AND appStatus = 'Completed')";
+										// echo "<script>alert('After1')</script>";
+										$r1 = mysqli_query($dbc, $q1); 
+
+
+										// echo "<script>alert('After')</script>";
+										$no_row1 = mysqli_num_rows($r1);
+
+										
+
+
+										// echo "<script>alert('". $postJobIDa."')</script>";
+										// echo "<script>alert('".$no_row1."')</script>";
+
+										if($no_row1 < 1){
+
+											$q = "SELECT * from appjob WHERE appPostJobID=$postJobIDa AND appArtisanID=$session_id";
+											$r = mysqli_query($dbc, $q);
+											$no_row = mysqli_num_rows($r);
+
+											if($no_row <  1){
+											?>
 											<div class="jbl_button mb-2"><a onclick="return confirm('You are about to apply for this Job, \nYour Resume will be Provided to the Employer. \nIt is adviced to keep your resume up to date \nto increase your chances');" href="dashboard-apply-job.php?JobID=<?php echo $jobId; ?>&JobToken=<?php echo $jobToken;?>" class="btn rounded theme-bg-light theme-cl fs-sm ft-medium">Apply This Job</a></div>
 
 										<?php
@@ -135,6 +148,10 @@ if($no_row >  0){
 
 										<?php
 										}
+									}else{?>
+										<div class="jbl_button mb-2"><a class="btn rounded fs-sm ft-medium" style="color:#868E96; background-color:#EDEDED;">Application Closed</a></div>
+									<?php
+									}
 										?>
 
 										<div class="jbl_button"><a href="index.php" class="btn rounded bg-white border fs-sm ft-medium">Return Home</a></div>
@@ -151,83 +168,7 @@ if($no_row >  0){
 
 
 
-									
-									<!-- <div class="jbd-details mb-3">
-										<h5>Requirements:</h5>
-										<div class="position-relative row">
-											<div class="col-lg-12 col-md-12 col-12">
-												<div class="mb-2 mr-4 ml-lg-0 mr-lg-4">
-													<div class="d-flex align-items-center">
-													  <div class="rounded-circle bg-light-success theme-cl p-1 small d-flex align-items-center justify-content-center">
-														<i class="fas fa-check small"></i>
-													  </div>
-													  <h6 class="mb-0 ml-3 text-muted fs-sm">Strong core PHP Hands on experience.</h6>
-													</div>
-												</div>
-												<div class="mb-2 mr-4 ml-lg-0 mr-lg-4">
-													<div class="d-flex align-items-center">
-													  <div class="rounded-circle bg-light-success theme-cl p-1 small d-flex align-items-center justify-content-center">
-														<i class="fas fa-check small"></i>
-													  </div>
-													  <h6 class="mb-0 ml-3 text-muted fs-sm">Strong Expertise in CodeIgniter Framework .</h6>
-													</div>
-												</div>
-												<div class="mb-2 mr-4 ml-lg-0 mr-lg-4">
-													<div class="d-flex align-items-center">
-													  <div class="rounded-circle bg-light-success theme-cl p-1 small d-flex align-items-center justify-content-center">
-														<i class="fas fa-check small"></i>
-													  </div>
-													  <h6 class="mb-0 ml-3 text-muted fs-sm">Understanding of MVC design pattern.</h6>
-													</div>
-												</div>
-												<div class="mb-2 mr-4 ml-lg-0 mr-lg-4">
-													<div class="d-flex align-items-center">
-													  <div class="rounded-circle bg-light-success theme-cl p-1 small d-flex align-items-center justify-content-center">
-														<i class="fas fa-check small"></i>
-													  </div>
-													  <h6 class="mb-0 ml-3 text-muted fs-sm">Expertise in PHP, MVC Frameworks and good technology exposure of Codeigniter .</h6>
-													</div>
-												</div>
-												<div class="mb-2 mr-4 ml-lg-0 mr-lg-4">
-													<div class="d-flex align-items-center">
-													  <div class="rounded-circle bg-light-success theme-cl p-1 small d-flex align-items-center justify-content-center">
-														<i class="fas fa-check small"></i>
-													  </div>
-													  <h6 class="mb-0 ml-3 text-muted fs-sm">Basic understanding of front-end technologies, such as JavaScript, HTML5, and CSS3</h6>
-													</div>
-												</div>
-												<div class="mb-2 mr-4 ml-lg-0 mr-lg-4">
-													<div class="d-flex align-items-center">
-													  <div class="rounded-circle bg-light-success theme-cl p-1 small d-flex align-items-center justify-content-center">
-														<i class="fas fa-check small"></i>
-													  </div>
-													  <h6 class="mb-0 ml-3 text-muted fs-sm">Good knowledge of relational databases, version control tools and of developing web services.</h6>
-													</div>
-												</div>
-												<div class="mb-2 mr-4 ml-lg-0 mr-lg-4">
-													<div class="d-flex align-items-center">
-													  <div class="rounded-circle bg-light-success theme-cl p-1 small d-flex align-items-center justify-content-center">
-														<i class="fas fa-check small"></i>
-													  </div>
-													  <h6 class="mb-0 ml-3 text-muted fs-sm">Proficient understanding of code versioning tools, such as Git.</h6>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									
-									<!-- <div class="jbd-details mb-4">
-										<h5 class="ft-medium fs-md">Skills Required</h5>
-										<div class="other-details">
-											<div class="details ft-medium"><label class="text-muted">Role</label><span class="text-dark">Database Architect / Designer</span></div>
-											<div class="details ft-medium"><label class="text-muted">Industry Type</label><span class="text-dark">Advertising & Marketing</span></div>
-											<div class="details ft-medium"><label class="text-muted">Functional Area</label><span class="text-dark">Engineering - Software</span></div>
-											<div class="details ft-medium"><label class="text-muted">Employment Type</label><span class="text-dark">Full Time, Permanent</span></div>
-											<div class="details ft-medium"><label class="text-muted">Role Category</label><span class="text-dark">DBA / Data warehousing</span></div>
-										</div>
-									</div> -->
-
-					
+								
 														
 														
 
@@ -235,6 +176,7 @@ if($no_row >  0){
 									<div class="jbd-details mb-4">
 										<h5 class="ft-medium fs-md">Other Information</h5>
 										<div class="other-details">
+										<div class="details ft-medium"><label class="text-muted">Client Usename</label><span class="text-dark"><?php echo $postJobUserName;?></span></div>
 											<div class="details ft-medium"><label class="text-muted">Profession Needed</label><span class="text-dark"><?php echo $postJobProfessiona;?></span></div>
 											<div class="details ft-medium"><label class="text-muted">Experience</label><span class="text-dark"><?php echo $postJobLevela;?></span></div>
 											<div class="details ft-medium"><label class="text-muted">Employment Type</label><span class="text-dark"><?php echo $postJobTypea;?></span></div>
@@ -250,53 +192,54 @@ if($no_row >  0){
 											<div class="details ft-medium"><label class="text-muted">Address</label><span class="text-dark"><?php echo $postJobAddressa;?></span></div>
 										</div>
 									</div>
-									
-									<!-- <div class="jbd-details mb-1">
-										<h5 class="ft-medium fs-md">Key Skills</h5>
-										<ul class="p-0 skills_tag text-left">
-											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">Joomla</span></li>
-											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">WordPress</span></li>
-											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">Javascript</span></li>
-											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">PHP</span></li>
-											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">HTML5</span></li>
-											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">MS SQL</span></li>
-											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">SQL Development</span></li>
-											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">Dynamod</span></li>
-											<li><span class="px-2 py-1 medium skill-bg rounded text-dark">Database</span></li>
-										</ul>
-									</div>
-									
-								</div> -->
-
-
-
+								
 
 								
 								<div class="jbd-02 px-3 py-3 br-top">
 									<div class="jbd-02-flex d-flex align-items-center justify-content-between">
-										<!-- <div class="jbd-02-social">
-											<ul class="jbd-social">
-												<li><i class="ti-sharethis"></i></li>
-												<li><a href="javascript:void(0);"><i class="ti-facebook"></i></a></li>
-												<li><a href="javascript:void(0);"><i class="ti-twitter"></i></a></li>
-												<li><a href="javascript:void(0);"><i class="ti-linkedin"></i></a></li>
-												<li><a href="javascript:void(0);"><i class="ti-instagram"></i></a></li>
-											</ul>
-										</div> -->
+		
 										<div class="jbd-02-aply">
 											<div class="jbl_button mb-2">
 												<a href="index.php" class="btn btn-md rounded gray fs-sm ft-medium mr-2">Return Home</a>
+												
 												<?php
-											if($add_del_app < 1){
-										?>
+												// echo "<script>alert('Before')</script>";
+										// $q1 = "SELECT * from appjob WHERE appPostJobID=$postJobIDa AND appStatus='Completed'";
+										$q1 = "SELECT * from appjob WHERE (appPostJobID = $postJobIDa AND appStatus = 'Active') OR (appPostJobID = $postJobIDa AND appStatus = 'Completed')";
+										// echo "<script>alert('After1')</script>";
+										$r1 = mysqli_query($dbc, $q1); 
+
+
+										// echo "<script>alert('After')</script>";
+										$no_row1 = mysqli_num_rows($r1);
+
+										
+
+
+										// echo "<script>alert('". $postJobIDa."')</script>";
+										// echo "<script>alert('".$no_row1."')</script>";
+
+										if($no_row1 < 1){
+
+											$q = "SELECT * from appjob WHERE appPostJobID=$postJobIDa AND appArtisanID=$session_id";
+											$r = mysqli_query($dbc, $q);
+											$no_row = mysqli_num_rows($r);
+
+											if($no_row < 1){
+											?>
 											<a onclick="return confirm('You are about to apply for this Job, \nYour Resume will be Provided to the Employer. \nIt is adviced to keep your resume up to date \nto increase your chances');" href="dashboard-apply-job.php?JobID=<?php echo $jobId; ?>&JobToken=<?php echo $jobToken;?>" class="btn btn-md rounded theme-bg text-light fs-sm ft-medium">Apply Job</a>
 
 										<?php
 										}
 										else{?>
 											<a onclick="return confirm('You are about to cancel you application \nfor this Job.');" href="dashboard-delete-apply-job.php?JobID=<?php echo $jobId; ?>&JobToken=<?php echo $jobToken;?>" class="btn btn-md rounded text-light fs-sm ft-medium" style="background-color:#b62828;">Delete Application</a>
+										
 										<?php
 										}
+									}else{?>
+										<a class="btn btn-md rounded fs-sm ft-medium" style="color:#868E96; background-color:#EDEDED;">Application Closed</a>
+										<?php
+									}
 										?>
 											</div>
 										</div>

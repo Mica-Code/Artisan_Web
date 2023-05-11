@@ -142,7 +142,7 @@ if(isset($_POST['editJob'])){
 															<label class="text-dark ft-medium">Profession Needed</label>
 															<?php
 
-$handworks = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance-Maintenance', 'Architectural-Design',
+$Trades = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance-Maintenance', 'Architectural-Design',
 'Artist', 'Auto-Mechanic', 'Bathroom-Renovation', 'Bricklayer/Mason', 'CableTV/CCTV-Installer', 'CableTV-Installation', 'Car-Rewire/Car-tracker', 'Car-Upholstery',
 'Car-Wash', 'Carpentry', 'Catering', 'CCTV/Biometric-Access-Control', 'Ceiliing-Repair', 'Ceramic/Tiling', 'Cleaning', 'Cobbler', 'Cosmetologists',
 'Craftman', 'Curtain-Hanging', 'Deck-Building', 'Digital-Marketing', 'Door-Installation/Repair', 'Driver/Rider', 'Electrical', 'Electronic-Technician',
@@ -159,12 +159,12 @@ $handworks = array('', 'AC-Installation/Repair', 'Aluminium-Windows', 'Appliance
 <select class="form-control rounded" id="postJobProfession" name="postJobProfession">
 <?php
 
-foreach($handworks as $handwork2){
-    if($handwork2 == $postJobProfession){
-        echo "<option value=".$handwork2." selected='selected'>".$handwork2."</option>";
+foreach($Trades as $Trade2){
+    if($Trade2 == $postJobProfession){
+        echo "<option value=".$Trade2." selected='selected'>".$Trade2."</option>";
     }
     else{
-        echo "<option value=".$handwork2.">".$handwork2."</option>";
+        echo "<option value=".$Trade2.">".$Trade2."</option>";
     }
 
 }
