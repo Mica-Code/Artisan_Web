@@ -37,8 +37,6 @@
              
 
                             <!-- <div class="or-browser">
-
-<<<<<<< HEAD
                                 <span style="color:#006600;"><a href="https://myhandwork.ng/Handworks/handyjobs">Browse tasks</a></span>
                                 <a href="https://wa.me/message/S232FZLTJ6PBD1" target="_blank" title="" style="color:#006600;"><i class="la la-whatsapp"></i>Need help? </a>
                             </div> -->
@@ -48,14 +46,7 @@
                         <!-- <div class="scroll-to">
                             <a href="Home.html#scroll-here" title=""><i class="la la-arrow-down"></i></a>
                         </div> -->
-=======
-<form action="index.php" method="post">                                <p><div class="btn btn-lg btn-success active"><a href="ArtisanSignup.php"> I want to Register as an Artisan</a></div></p>
-                                <p><div class="btn btn-lg btn-light active"><a style="color:green; font-weight:400" href="ClientSignUp.php">I want to hire an Artisan for a Job</a></div></p>
-                                <br /> <br />
-                                <a href="../Home/index.php" style="text-decoration:none;"><p style="color:#50B652;">Back to Home</p></a>
-                                <br /> <br /> <br />
-<input name="__RequestVerificationToken" type="hidden" value="CfDJ8IxpwAgpJgZKhredemyMRdCMb17NohuDgv5lqEKi1J6UzwLngOAiSdaNUI-lKV5Kw8yRwIEPwJSgYxqfd7pRsqY5UpVfJQKxPgLUV8sfdMYph0eBVyZR6Jnbc2SLiSLttGiMGpzaFfL10-WtzFSqnfw" /></form>                        </div>
->>>>>>> f61dc1f325a3ad10767f1cc61ceb6e2e13d0cb3b
+
                     </div>
                     
                 </div>

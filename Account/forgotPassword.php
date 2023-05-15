@@ -6,7 +6,7 @@ $error = array();
 
 // When form submitted, check and create user session.
 if (isset($_POST['forgotPass'])) {
-<<<<<<< HEAD
+
     $email = $_POST['Email'];
     echo "<script>alert('".$email."')</script>";
     if($email == ""){
@@ -30,11 +30,6 @@ if (isset($_POST['forgotPass'])) {
     //require('retrievePassword.php');
 }
 
-=======
-    echo "<script>window.location='retrievePassword.php';</script>";
-    //require('retrievePassword.php');
-}
->>>>>>> f61dc1f325a3ad10767f1cc61ceb6e2e13d0cb3b
 // else {
 ?>
 
@@ -48,13 +43,6 @@ if (isset($_POST['forgotPass'])) {
         <section>
 
             <section><br /><br /></section>
-<<<<<<< HEAD
-=======
-            
-
-
-
->>>>>>> f61dc1f325a3ad10767f1cc61ceb6e2e13d0cb3b
 
 
 <section>
@@ -67,7 +55,6 @@ if (isset($_POST['forgotPass'])) {
                             <br />
                             <h3>forgot password</h3>
 
-<<<<<<< HEAD
 <form method="post">
 <?php
     if(isset($_GET['chk'])){
@@ -90,9 +77,7 @@ if(!empty($error)){ ?>
     </div>
     <?php }?>
     <div class="cfield">
-=======
-<form method="post">                                    <div class="cfield">
->>>>>>> f61dc1f325a3ad10767f1cc61ceb6e2e13d0cb3b
+
                                         <input type="text" name="Email" id="Email" placeholder="Enter your Email address" class="form-control" />
                                         <i class="la la-codepen"></i>
 

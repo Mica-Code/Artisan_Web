@@ -6,6 +6,7 @@ $nav='<ul data-submenu-title="Main Navigation">
 <li><a href="dashboard-add-resume.php"><i class="lni lni-add-files mr-2"></i>Create Resume</a></li>
 <li ><a href="dashboard-alert-job.php"><i class="ti-bell mr-2"></i>Vacant Jobs</a></li>
 <li class="active"><a href="dashboard-applied-jobs.php"><i class="lni lni-briefcase mr-2"></i>Applied jobs</a></li>
+<li ><a href="report.php"><i class="lni lni-files mr-2"></i>Generate Report</a></li>
 <!-- <li><a href="dashboard-saved-jobs.php"><i class="lni lni-bookmark mr-2"></i>Bookmark Jobs</a></li> -->
 <!-- <li><a href="dashboard-packages.php"><i class="lni lni-mastercard mr-2"></i>Packages</a></li> -->
 <!-- <li><a href="dashboard-messages.php"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
@@ -222,9 +223,23 @@ if (isset($_GET['status'])){
 													echo $mysqldate2;?>
 													</td>
 													<td>
-														<div class="dash-action">
+														<!-- <div class="dash-action">
 															<a href="dashboard-job-detail.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
 															<a onclick="return confirm('You are about to cancel you application \nfor this Job.');" href="dashboard-delete-apply-job.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+														</div> -->
+														<div class="dash-action">
+															<a href="dashboard-job-detail.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
+															<?php
+															if($appStatus == 'Active' || $appStatus == 'Completed'){
+															?>   
+															<a class="p-2 circle d-inline-flex align-items-center justify-content-center ml-1" style="pointer-events: none; color:#868E96; background-color:#EDEDED;"><i class="lni lni-trash-can"></i></a>
+															<?php
+															}else{
+															?>
+															<a onclick="return confirm('You are about to cancel you application \nfor this Job.');" href="dashboard-delete-apply-job.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+															<?php
+															}
+															?>
 														</div>
 													</td>
 												</tr>
@@ -374,19 +389,7 @@ if (isset($_GET['status'])){
 													<td>
 
 													<?php
-														if($appStatus == 'Pending'){
-															echo '<span style="color:#f3c621">'.$appStatus.'</span>';
-														}
-														elseif($appStatus == 'Active'){
-															echo '<span style="color:#2158f3">'.$appStatus.'</span>';
-														}
-														elseif($appStatus == 'Completed'){
-															
-															echo '<span style="color:#21f327">'.$appStatus.'</span>';
-														}
-														else{
-															echo '<span style="color:#f32121">'.$appStatus.'</span>';
-														}
+														echo '<span style="color:#f3c621">'.$appStatus.'</span>';
 													?>
 										
 
@@ -548,19 +551,7 @@ if (isset($_GET['status'])){
 													<td>
 
 													<?php
-														if($appStatus == 'Pending'){
-															echo '<span style="color:#f3c621">'.$appStatus.'</span>';
-														}
-														elseif($appStatus == 'Active'){
-															echo '<span style="color:#2158f3">'.$appStatus.'</span>';
-														}
-														elseif($appStatus == 'Completed'){
-															
-															echo '<span style="color:#21f327">'.$appStatus.'</span>';
-														}
-														else{
-															echo '<span style="color:#f32121">'.$appStatus.'</span>';
-														}
+														echo '<span style="color:#2158f3">'.$appStatus.'</span>';
 													?>
 										
 
@@ -574,7 +565,7 @@ if (isset($_GET['status'])){
 													<td>
 														<div class="dash-action">
 															<a href="dashboard-job-detail.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a onclick="return confirm('You are about to cancel you application \nfor this Job.');" href="dashboard-delete-apply-job.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+															<a class="p-2 circle d-inline-flex align-items-center justify-content-center ml-1" style="pointer-events: none; color:#868E96; background-color:#EDEDED;"><i class="lni lni-trash-can"></i></a>
 														</div>
 													</td>
 												</tr>
@@ -721,19 +712,7 @@ if (isset($_GET['status'])){
 													<td>
 
 													<?php
-														if($appStatus == 'Pending'){
-															echo '<span style="color:#f3c621">'.$appStatus.'</span>';
-														}
-														elseif($appStatus == 'Active'){
-															echo '<span style="color:#2158f3">'.$appStatus.'</span>';
-														}
-														elseif($appStatus == 'Completed'){
-															
-															echo '<span style="color:#21f327">'.$appStatus.'</span>';
-														}
-														else{
-															echo '<span style="color:#f32121">'.$appStatus.'</span>';
-														}
+														echo '<span style="color:#21f327">'.$appStatus.'</span>';
 													?>
 										
 
@@ -747,7 +726,7 @@ if (isset($_GET['status'])){
 													<td>
 														<div class="dash-action">
 															<a href="dashboard-job-detail.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-info bg-light-info d-inline-flex align-items-center justify-content-center mr-1"><i class="lni lni-eye"></i></a>
-															<a onclick="return confirm('You are about to cancel you application \nfor this Job.');" href="dashboard-delete-apply-job.php?JobID=<?php echo $appPostJobID; ?>&JobToken=<?php echo $postJobToken;?>" class="p-2 circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ml-1"><i class="lni lni-trash-can"></i></a>
+															<a class="p-2 circle d-inline-flex align-items-center justify-content-center ml-1" style="pointer-events: none; color:#868E96; background-color:#EDEDED;"><i class="lni lni-trash-can"></i></a>
 														</div>
 													</td>
 												</tr>
