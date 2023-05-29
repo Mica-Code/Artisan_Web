@@ -8,6 +8,8 @@ $query = "SELECT * from art_reg_tbl WHERE userID = $session_id ";
 $result = mysqli_query($dbc, $query);
 $row = mysqli_fetch_array($result);
 
+$n_row = mysqli_num_rows($result);
+
 $fname = $row['fullname'];
 $uname = $row['username'];
 $email = $row['email'];
@@ -21,6 +23,39 @@ $dob = $row['dob'];
 $about = $row['about'];
 $profile_pic = $row['profile_pic'];
 
+
+
+
+//Getting Number of Posted Jobs
+$qry = "SELECT * from postjob WHERE userID = $session_id";
+												
+$rest = mysqli_query($dbc, $qry);
+$n_row = mysqli_num_rows($rest);
+
+//Getting Number of Pending Jobs
+$pqry = "SELECT * from postjob WHERE userID = $session_id AND postJobStatus = 'Pending'";
+												
+$prest = mysqli_query($dbc, $pqry);
+$pn_row = mysqli_num_rows($prest);
+
+//Getting Number of Active Jobs
+$aqry = "SELECT * from postjob WHERE userID = $session_id AND postJobStatus = 'Active'";
+												
+$arest = mysqli_query($dbc, $aqry);
+$an_row = mysqli_num_rows($arest);
+
+//Getting Number of Completed Jobs
+$cqry = "SELECT * from postjob WHERE userID = $session_id AND postJobStatus = 'Completed'";
+												
+$crest = mysqli_query($dbc, $cqry);
+$cn_row = mysqli_num_rows($crest);
+
+
+//Getting Total Number of Applicants that has applied for jobs posted by this client
+$taqry = "SELECT * from appjob WHERE appClientID=$session_id";
+$taexec = mysqli_query($dbc, $taqry);
+//Assigning Value to the Global Declared variable at the top of this page for All Jobs
+$tan_row = mysqli_num_rows($taexec);
 
 
 

@@ -6,6 +6,7 @@ $nav='<ul data-submenu-title="Main Navigation">
 <li><a href="dashboard-post-job.php"><i class="lni lni-files mr-2"></i>Post New Job</a></li>
 <li><a href="dashboard-manage-jobs.php"><i class="lni lni-add-files mr-2"></i>Manage Jobs</a></li>
 <li class="active"><a href="dashboard-manage-applications.php"><i class="lni lni-briefcase mr-2"></i>Manage Applicants</a></li>
+<li ><a href="report-client.php"><i class="lni lni-files mr-2"></i>Generate Report</a></li>
 <!-- <li><a href="dashboard-shortlisted-resume.php"><i class="lni lni-bookmark mr-2"></i>BookmarkResumes<span class="count-tag bg-warning">4</span></a></li> -->
 <!-- <li><a href="dashboard-packages.html"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
 <li><a href="dashboard-messages.html"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
@@ -165,7 +166,87 @@ if (isset($_GET['rand']) && isset($_GET['token'])) {
 								</div>
 								
 								<div class="cdt_caps py-5 px-3">
-									<a href="#" class="btn btn-md theme-bg text-light rounded full-width">Download Resume</a>
+
+
+									<?php
+									
+									if (isset($_GET['JobID']) && isset($_GET['JobToken']) && isset($_GET['rand'])) {
+										
+										$JobId = $_GET['JobID'];
+										$JobToken = $_GET['JobToken'];
+										$ArtisanId = $_GET['rand'];
+
+										//Getting The Artisan Name
+										$artNameQ = mysqli_query($dbc, "SELECT * from art_reg_tbl where userID = '$ArtisanId'");
+										$artNameRow = mysqli_fetch_array($artNameQ);
+										$artName = $artNameRow['fullname'];
+
+										//Getting The Job Name
+										$jobNameQ = mysqli_query($dbc, "SELECT * from postjob where postJobID = '$JobId'");
+										$jobNameRow = mysqli_fetch_array($jobNameQ);
+										$jobName = $jobNameRow['postJobTitle'];
+										$jobCom = $jobNameRow['postJobCompletedDate'];
+										$jobAct = $jobNameRow['postJobActiveDate'];
+
+										$phpdatenew1 = strtotime( $jobCom );
+										$jobComDate = date( 'D: j M, y', $phpdatenew1);
+
+										$phpdatenew2 = strtotime( $jobAct );
+										$jobActDate = date( 'D: j M, y', $phpdatenew2);
+
+
+										$squery = "SELECT * from appjob where appPostJobID='$JobId' AND appArtisanID = '$ArtisanId'";
+										$sexecute = mysqli_query($dbc, $squery);
+
+										$srow = mysqli_fetch_array($sexecute);
+
+										$appStatus = $srow['appStatus'];
+
+										//echo "<script>alert('".$jobId." and ".$jobToken."');</script>";
+
+										if (($JobId != '') && ($JobToken != '')){
+											
+											$cquery = "SELECT * from appjob where appPostJobID='$JobId' AND (appStatus='Completed' or appStatus='Active')";
+											$cexecute = mysqli_query($dbc, $cquery);
+											//echo "<script>alert('I Am here')</script>";
+											if(mysqli_num_rows($cexecute) > 0){
+												if($appStatus == 'Completed'){
+
+													echo "<p class='text-success'>".$artName." Completed this Job: <br><strong>".$jobName."</strong> on ".$jobComDate." </a><br/><br/>";
+													// echo "<a class='btn btn-md bg-light-success text-success rounded full-width'>This Job is Completed </a>";
+												}
+												elseif($appStatus == 'Active'){
+
+													echo "<p class='text-info'>".$artName." became Active this Job: <br><strong>".$jobName."</strong> on ".$jobActDate." </a><br/><br/>";
+													echo "<a onclick='return confirm('You hereby acknowledge that".$artName." \nhas completed this Job: ".$jobName.".');' href='dashboard-complete-job.php?applicant=".$ArtisanId."&job=".$JobId."&token=".$JobToken."' class='btn btn-md bg-success text-light rounded full-width'>This Job is Completed </a><br/>";
+													echo "<p  class='text-danger'><strong>Please Note:- </strong>By clicking on the button, you acknowledge that ".$artName."  as completed this job: <strong>".$jobName."</strong> to your satisfaction.</a>";
+												}
+												else{
+													echo "<p class='text-gray'>".$artName." Applied for this Job: <br><strong>".$jobName."</strong> but was not selected. </a><br/><br/>";
+												}										
+
+												//$crow=mysqli_fetch_array($execute);
+
+											}else{
+												echo "<p class='text-warning'>".$artName." has Applied for this Job: <br><strong>".$jobName."</strong></a><br/><br/>";
+												echo "<a onclick='return confirm('You are about to Employ ".$artName." \nfor this Job: ".$jobName.".');' href='dashboard-employ-applicant.php?applicant=".$ArtisanId."&job=".$JobId."&token=".$JobToken."' class='btn btn-md bg-warning text-light rounded full-width'>Employ This Artisan </a><br/>";
+												echo "<p  class='text-danger'><strong>Please Note:- </strong>By Employing this Artisan, you acknowledge that you have gone through the Applicant's Information and have concluded that  <strong>".$artName."</strong> is the best candidate for this Job: <strong>".$jobName."</strong>.</a>";
+												
+											}
+										}else{
+											echo "<script>window.location='client-index.php'</script>";
+										}
+									}else{
+										echo "<script>window.location='client-index.php'</script>";
+									}
+								
+								?>
+
+
+
+
+
+									<!-- <a href="#" class="btn btn-md theme-bg text-light rounded full-width">Download Resume</a> -->
 								</div>
 								
 							</div>

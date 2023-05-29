@@ -6,6 +6,7 @@ $nav='<ul data-submenu-title="Main Navigation">
 <li><a href="dashboard-post-job.php"><i class="lni lni-files mr-2"></i>Post New Job</a></li>
 <li class="active"><a href="dashboard-manage-jobs.php"><i class="lni lni-add-files mr-2"></i>Manage Jobs</a></li>
 <li><a href="dashboard-manage-applications.php"><i class="lni lni-briefcase mr-2"></i>Manage Applicants</a></li>
+<li ><a href="report-client.php"><i class="lni lni-files mr-2"></i>Generate Report</a></li>
 <!-- <li><a href="dashboard-shortlisted-resume.php"><i class="lni lni-bookmark mr-2"></i>BookmarkResumes<span class="count-tag bg-warning">4</span></a></li> -->
 <!-- <li><a href="dashboard-packages.html"><i class="lni lni-mastercard mr-2"></i>Packages</a></li>
 <li><a href="dashboard-messages.html"><i class="lni lni-envelope mr-2"></i>Messages<span class="count-tag">4</span></a></li> -->
@@ -58,6 +59,7 @@ if (isset($_GET['JobID']) && isset($_GET['JobToken'])) {
 			$row2=mysqli_fetch_array($execute2);
 
 			$postJobUserName = $row2['username'];
+
 			
           
         }else{
@@ -151,6 +153,92 @@ if(isset($_POST['editJob'])){
 													echo $mysqldate;?></span></div>
 											<div class="details ft-medium"><label class="text-muted">Address</label><span class="text-dark"><?php echo $postJobAddress;?></span></div>
 										</div>
+
+
+										<!-- The Job status -->
+
+										<br><h5 class="ft-medium fs-md">Job Status: 
+											<?php 
+										
+												//Getting Applicants for the Job
+												$query3 = "SELECT * from appjob where appPostJobID=$postJobID and (appStatus='Active' OR appStatus='Completed')";
+												$execute3 = mysqli_query($dbc, $query3);
+
+												if(mysqli_num_rows($execute3) > 0){
+													$row3=mysqli_fetch_array($execute3);
+													$appPostJobStatus = $row3['appStatus'];
+													$appArtisanID = $row3['appArtisanID'];
+													$appActiveDate = $row3['activeJobDate'];
+													$appCompleteDate = $row3['completedJobDate'];
+
+													$query3b = "SELECT * from art_reg_tbl where userID=$appArtisanID";
+													$execute3b = mysqli_query($dbc, $query3b);
+
+													$row3b=mysqli_fetch_array($execute3b);
+
+													$applicantName = $row3b["fullname"];
+													$passToken = $row3b['userToken'];
+
+													if($appPostJobStatus == 'Completed'){
+	
+													$phpdate2 = strtotime( $appCompleteDate );
+													$mysqldate2 = date( 'j M Y', $phpdate2);
+
+
+														echo "<span class='btn text-success' style='font-size:20px;'>Completed on </span><span><i class='lni lni-calendar mr-1'></i>".$mysqldate2."</span>";
+
+														echo "<br>";
+
+														echo "<span style='color:#821700;'>".$applicantName."</span> Completed this Job - <a href='candidate-detail.php?rand=".$appArtisanID."&token=".$passToken."&JobID=".$postJobID."&JobToken=".$postJobToken."'><span class='btn bg-light-info text-info'>View Info</span></a>";
+													}
+													elseif($appPostJobStatus == 'Active'){
+														$phpdate2 = strtotime( $appActiveDate );
+														$mysqldate2 = date( 'j M Y', $phpdate2);
+
+
+														echo "<span class='btn text-info' style='font-size:20px;'>Active on </span><span><i class='lni lni-calendar mr-1'></i>".$mysqldate2."</span>";
+
+														echo "<br>";
+
+														echo "<span style='color:#821700;'>".$applicantName."</span> is Currently Active on this Job - <a href='candidate-detail.php?rand=".$appArtisanID."&token=".$passToken."&JobID=".$postJobID."&JobToken=".$postJobToken."'><span class='btn bg-light-info text-info'>View Info</span></a>";
+													}
+												}else{
+													$query4 = "SELECT * from appjob where appPostJobID=$postJobID and appStatus='Pending'";
+													$execute4 = mysqli_query($dbc, $query4);
+
+													if(mysqli_num_rows($execute4) > 0){
+														$sn = 1;
+														while($row4=mysqli_fetch_array($execute4)){
+														$appPostJobStatus = $row4['appStatus'];
+														$appArtisanID = $row4['appArtisanID'];
+
+														$query4b = "SELECT * from art_reg_tbl where userID=$appArtisanID";
+														$execute4b = mysqli_query($dbc, $query4b);
+
+														$row4b=mysqli_fetch_array($execute4b);
+
+														$applicantName = $row4b["fullname"];
+														$passToken = $row4b['userToken'];
+
+														echo "<span class='text-warning' style='font-size:20px;'>Pending</span>";
+
+														echo "<br><br>";
+
+														echo "<h5 class='ft-medium fs-md'>List of Applicant(s) for this Job</h5>";
+
+														echo "".$sn.".<span style='color:#821700; font-size:16px; font-weight:bold;'> ".$applicantName."</span> - <a href='candidate-detail.php?rand=".$appArtisanID."&token=".$passToken."&JobID=".$postJobID."&JobToken=".$postJobToken."'><span class='btn bg-light-info text-info' style='font-size:14px; padding:5px;'>View Info</span></a>";
+														$sn++;
+														}
+														// echo "<span class='text-warning' style='font-size:24px;'>Pending</span>";
+													}else{
+														echo "<span class='text-warning' style='font-size:24px;'>Pending</span>";
+														// echo "No One has Applied for this Job";
+													}
+												}
+
+												
+											?>
+											</h5>
 									</div>
 									
 									<!-- <div class="jbd-details mb-3">
@@ -248,8 +336,18 @@ if(isset($_POST['editJob'])){
 								<div class="jbd-02 mt-4">
 									<div class="jbd-02-flex d-flex align-items-center justify-content-between">
 										<div class="jbl_button mb-2">
+											<?php
+											if ($postJobStatus == 'Pending'){?>
 											<a href="dashboard-edit-job.php?JobID=<?php echo $postJobID;?>&JobToken=<?php echo $postJobToken;?>" class="btn btn-md btn-warning rounded fs-sm ft-medium mr-2">Edit Job</a>
 											<a onclick="return confirm('Are you sure you want to delete this Job? \n This Action cannot be reversed!');" href='dashboard-delete-job.php?JobID=<?php echo $postJobID; ?>&JobToken=<?php echo $postJobToken;?>' class="btn btn-md btn-danger rounded text-light fs-sm ft-medium">Delete Job</a>
+											<?php
+											}else{
+												?>
+											<a class="btn btn-md rounded fs-sm ft-medium mr-2" style="color:#868E96; background-color:#EDEDED;">Edit Job</a>
+											<a class="btn btn-md rounded fs-sm ft-medium" style="color:#868E96; background-color:#EDEDED;">Delete Job</a>
+
+											<!-- <h5 class="text-danger" style="margin-top:20px;">This Job is <?php echo $postJobStatus; ?></h5> -->
+											<?php } ?>
 										</div>
 									</div>
 								</div>

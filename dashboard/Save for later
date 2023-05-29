@@ -1,0 +1,5 @@
+<!-- <a href="dashboard-employ-applicant.php?applicant=
+														<?php echo $appArtisanID?>&job=<?php echo $appPostJobID?>&token=
+														<?php echo $jobToken?>&client=<?php echo $appClientID?>" 
+														class="btn bg-light-warning text-warning ft-medium apply-btn fs-sm rounded mr-1" 
+														style="margin-top:10px;"><i class="lni lni-arrow-right-circle mr-1"></i> Pending (View Job Info)</a> -->
